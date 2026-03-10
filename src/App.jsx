@@ -158,6 +158,126 @@ function Hero() {
       <div className="th-hero-blob th-hero-blob-2"></div>
       <div className="th-hero-blob th-hero-blob-3"></div>
 
+      {/* Mobile Search Bar - Top of Page (Mobile Only) */}
+      <div className="fb-mobile-search-top">
+        <div className="fb-mobile-fullscreen">
+          <div className="fb-mobile-card-full">
+            <h1 className="fb-mobile-title-hero-top">Facebook Video Downloader</h1>
+            <form className="fb-mobile-search-form" onSubmit={submitHandler}>
+              <div className="fb-mobile-input-full">
+                <i className="fab fa-facebook-f"></i>
+                <input
+                  type="url"
+                  placeholder="Paste Facebook video URL here"
+                  value={url}
+                  onChange={(e) => {
+                    setUrl(e.target.value);
+                    setStatus('idle');
+                  }}
+                  disabled={loading}
+                />
+              </div>
+              <button className="fb-mobile-btn-full" type="submit" disabled={loading}>
+                {loading ? (
+                  <>
+                    <i className="fas fa-spinner fa-spin"></i>
+                    <span>Processing...</span>
+                  </>
+                ) : (
+                  <>
+                    <i className="fas fa-magnifying-glass"></i>
+                    <span>Analyze Link</span>
+                  </>
+                )}
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      {/* Tablet View - Centered Card Layout */}
+      <div className="fb-tablet-hero">
+        <div className="fb-tablet-fullscreen">
+          <div className="fb-tablet-card-full">
+            <div className="fb-preview-top">
+              <div className="fb-preview-brand">
+                <span className="fb-preview-dot"></span>
+                <strong>Facebook Video Downloader</strong>
+              </div>
+              <span className="fb-preview-badge">HD Ready</span>
+            </div>
+
+            <h1 className="fb-tablet-title-full">Facebook Video Downloader</h1>
+            <form className="fb-preview-form" onSubmit={submitHandler}>
+              <div className="fb-preview-input-wrap">
+                <i className="fab fa-facebook-f"></i>
+                <input
+                  id="video-url-tablet"
+                  type="url"
+                  placeholder="https://www.facebook.com/..."
+                  value={url}
+                  onChange={(e) => {
+                    setUrl(e.target.value);
+                    setStatus('idle');
+                  }}
+                  disabled={loading}
+                />
+              </div>
+              <button className="th-btn th-btn-primary w-100" type="submit" disabled={loading}>
+                {loading ? (
+                  <>
+                    <i className="fas fa-spinner fa-spin me-2"></i>Processing...
+                  </>
+                ) : (
+                  <>
+                    <i className="fas fa-cloud-arrow-down me-2"></i>Download Video
+                  </>
+                )}
+              </button>
+            </form>
+
+            <div className={`fb-preview-result ${status}`}>
+              {status === 'idle' && (
+                <div className="fb-result-box neutral">
+                  <i className="fas fa-link"></i>
+                  <div>
+                    <strong>Paste a public Facebook link</strong>
+                    <p>Video pages, post URLs and Facebook Reels links usually start the workflow.</p>
+                  </div>
+                </div>
+              )}
+              {status === 'loading' && (
+                <div className="fb-result-box neutral">
+                  <i className="fas fa-spinner fa-spin"></i>
+                  <div>
+                    <strong>Processing your link...</strong>
+                    <p>Please wait while we fetch the video data.</p>
+                  </div>
+                </div>
+              )}
+              {status === 'error' && (
+                <div className="fb-result-box danger">
+                  <i className="fas fa-circle-exclamation"></i>
+                  <div>
+                    <strong>Please enter a valid Facebook URL</strong>
+                    <p>Add a public video or Reel link to continue.</p>
+                  </div>
+                </div>
+              )}
+              {status === 'ready' && (
+                <div className="fb-result-box success">
+                  <i className="fas fa-circle-check"></i>
+                  <div>
+                    <strong>Link processed successfully</strong>
+                    <p>Scroll down to view download options and get your video.</p>
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div className="th-container">
         <div className="th-hero-grid">
           <div className="th-hero-content">
@@ -219,7 +339,7 @@ function Hero() {
             <div className="th-hero-img-wrap fb-tool-preview">
               <div className="th-hero-img-bg"></div>
               <div className="fb-preview-card">
-                <div className="fb-preview-top">
+                <div className="fb-preview-top fb-desktop-only">
                   <div className="fb-preview-brand">
                     <span className="fb-preview-dot"></span>
                     <strong>Facebook Video Downloader</strong>
@@ -227,8 +347,10 @@ function Hero() {
                   <span className="fb-preview-badge">HD Ready</span>
                 </div>
 
+                <h3 className="fb-mobile-title-hero">Facebook Video Downloader</h3>
+
                 <form className="fb-preview-form" onSubmit={submitHandler}>
-                  <label htmlFor="video-url" className="fb-preview-label">Paste Facebook video URL</label>
+                  <label htmlFor="video-url" className="fb-preview-label fb-desktop-only">Paste Facebook video URL</label>
                   <div className="fb-preview-input-wrap">
                     <i className="fab fa-facebook-f"></i>
                     <input
@@ -240,6 +362,7 @@ function Hero() {
                         setUrl(e.target.value);
                         setStatus('idle');
                       }}
+                      disabled={loading}
                     />
                   </div>
                   <button className="th-btn th-btn-primary w-100 mt-2" type="submit" disabled={loading}>
@@ -386,7 +509,19 @@ function DownloaderSection() {
   const [activeVideoUrl, setActiveVideoUrl] = useState(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [showPlayPauseIcon, setShowPlayPauseIcon] = useState(true);
+  const [isMobileView, setIsMobileView] = useState(false);
   const videoRef = React.useRef(null);
+
+  // Convert h2 to h1 on mobile/tablet (<= 991px)
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsMobileView(window.innerWidth <= 991);
+    };
+
+    checkScreenSize();
+    window.addEventListener('resize', checkScreenSize);
+    return () => window.removeEventListener('resize', checkScreenSize);
+  }, []);
 
   // Listen for events from the Hero section so both search fields control the same video area
   useEffect(() => {
@@ -470,16 +605,68 @@ function DownloaderSection() {
     fetchVideoData(link);
   };
 
-  const handleDownload = (downloadUrl, quality = '') => {
-    if (downloadUrl) {
-      // Create a temporary anchor element for direct download
+  const handleDownload = async (downloadUrl, quality = '') => {
+    if (!downloadUrl) return;
+
+    try {
+      // Ensure URL has download parameter
+      let urlWithDownload = downloadUrl;
+      if (!urlWithDownload.includes('&dl=1') && !urlWithDownload.includes('?dl=1')) {
+        urlWithDownload = urlWithDownload + (urlWithDownload.includes('?') ? '&dl=1' : '?dl=1');
+      }
+
+      // Try fetching as blob first (works if CORS allows)
+      try {
+        const response = await fetch(urlWithDownload, {
+          method: 'GET',
+          mode: 'cors',
+          credentials: 'omit',
+        });
+
+        if (response.ok) {
+          const blob = await response.blob();
+          const blobUrl = window.URL.createObjectURL(blob);
+          const link = document.createElement('a');
+          link.style.display = 'none';
+          link.href = blobUrl;
+          link.download = `facebook-video-${quality || 'download'}.mp4`;
+          document.body.appendChild(link);
+          link.click();
+          
+          // Clean up
+          setTimeout(() => {
+            document.body.removeChild(link);
+            window.URL.revokeObjectURL(blobUrl);
+          }, 100);
+          return;
+        }
+      } catch (fetchError) {
+        console.log('Fetch failed, trying alternative method:', fetchError);
+      }
+
+      // Alternative: Use iframe for download (works better with cross-origin)
+      const iframe = document.createElement('iframe');
+      iframe.style.display = 'none';
+      iframe.src = urlWithDownload;
+      document.body.appendChild(iframe);
+      
+      // Clean up iframe after a delay
+      setTimeout(() => {
+        document.body.removeChild(iframe);
+      }, 5000);
+
+    } catch (error) {
+      console.error('Download error:', error);
+      // Final fallback: direct link
       const link = document.createElement('a');
       link.href = downloadUrl;
       link.download = `facebook-video-${quality || 'download'}.mp4`;
-      link.target = '_self'; // Download in same tab, don't open new tab
+      link.style.display = 'none';
       document.body.appendChild(link);
       link.click();
-      document.body.removeChild(link);
+      setTimeout(() => {
+        document.body.removeChild(link);
+      }, 100);
     }
   };
 
@@ -488,7 +675,11 @@ function DownloaderSection() {
       <div className="th-container">
         <div className="th-section-header">
           <div className="th-badge mb-3"><i className="fas fa-cloud-arrow-down me-2"></i>Downloader Tool Area</div>
-          <h2 className="th-section-title">Facebook <span className="th-gradient-text">Video Downloader</span> Tool UI</h2>
+          {isMobileView ? (
+            <h1 className="th-section-title fb-section-title-responsive">Facebook <span className="th-gradient-text">Video Downloader</span> Tool UI</h1>
+          ) : (
+            <h2 className="th-section-title fb-section-title-responsive">Facebook <span className="th-gradient-text">Video Downloader</span> Tool UI</h2>
+          )}
           <p className="th-section-desc">
             Paste a public Facebook video URL below to download videos in HD quality. This section is designed like a premium tool landing page with clean form spacing, result cards and action-ready buttons.
           </p>
@@ -498,8 +689,8 @@ function DownloaderSection() {
           <div className="row g-4 align-items-stretch">
             <div className="col-lg-12">
               <div className="fb-tool-card">
-                <h3>Paste Facebook Link</h3>
-                <p>
+                <h3 className="fb-mobile-hide">Paste Facebook Link</h3>
+                <p className="fb-mobile-hide">
                   Copy the video URL from Facebook, paste it here, then continue to view the supported quality buttons. This is the central downloader area for users searching terms like <strong>download Facebook video</strong>, <strong>save Facebook Reel</strong> and <strong>Facebook video downloader HD</strong>.
                 </p>
                 <form onSubmit={handleSubmit}>
@@ -517,6 +708,7 @@ function DownloaderSection() {
                       disabled={loading}
                     />
                   </div>
+                  <h3 className="fb-mobile-title">Facebook Video Downloader</h3>
                   <div className="fb-action-row">
                     <button type="submit" className="th-btn th-btn-primary" disabled={loading}>
                       {loading ? (
@@ -574,6 +766,7 @@ function DownloaderSection() {
                                 ref={videoRef}
                                 src={activeVideoUrl}
                                 controls
+                                muted
                                 style={{ width: '100%', maxHeight: '420px', background: 'black', display: 'block' }}
                                 onPlay={() => {
                                   setIsPlaying(true);
