@@ -1,83 +1,108 @@
 import React, { useEffect, useMemo, useState } from 'react';
+import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom';
+import About from './pages/About';
+import ContactPage from './pages/Contact';
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import TermsConditions from './pages/TermsConditions';
+import Blog from './pages/Blog';
 
 function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [activeLink, setActiveLink] = useState('home');
+  const location = useLocation();
+  const isHomePage = location.pathname === '/';
 
   useEffect(() => {
     const onScroll = () => {
       setScrolled(window.scrollY > 40);
-      const sections = ['home', 'downloader', 'features', 'guides', 'faq', 'contact'];
-      let current = 'home';
-      sections.forEach((id) => {
-        const el = document.getElementById(id);
-        if (el) {
-          const top = el.offsetTop - 120;
-          const height = el.offsetHeight;
-          if (window.scrollY >= top && window.scrollY < top + height) {
-            current = id;
+      if (isHomePage) {
+        const sections = ['home', 'downloader', 'features', 'guides', 'faq', 'contact'];
+        let current = 'home';
+        sections.forEach((id) => {
+          const el = document.getElementById(id);
+          if (el) {
+            const top = el.offsetTop - 120;
+            const height = el.offsetHeight;
+            if (window.scrollY >= top && window.scrollY < top + height) {
+              current = id;
+            }
           }
-        }
-      });
-      setActiveLink(current);
+        });
+      }
     };
 
     onScroll();
     window.addEventListener('scroll', onScroll);
     return () => window.removeEventListener('scroll', onScroll);
-  }, []);
+  }, [isHomePage]);
 
   const scrollToSection = (id) => {
     setMenuOpen(false);
-    setActiveLink(id);
-    const el = document.getElementById(id);
-    if (el) {
-      const offset = el.getBoundingClientRect().top + window.scrollY - 82;
-      window.scrollTo({ top: offset, behavior: 'smooth' });
+    if (isHomePage) {
+      const el = document.getElementById(id);
+      if (el) {
+        const offset = el.getBoundingClientRect().top + window.scrollY - 82;
+        window.scrollTo({ top: offset, behavior: 'smooth' });
+      }
     }
   };
 
-  const links = [
-    { id: 'home', label: 'Home' },
-    { id: 'downloader', label: 'Downloader' },
-    { id: 'features', label: 'Features' },
-    { id: 'guides', label: 'Guides' },
-    { id: 'faq', label: 'FAQ' },
-    { id: 'contact', label: 'Contact' },
+  const navLinks = [
+    { path: '/', label: 'Home', id: 'home' },
+    { path: '/blog', label: 'Blog', id: null },
+    { path: '/about', label: 'About', id: null },
+    { path: '/contact', label: 'Contact', id: 'contact' },
   ];
 
   return (
     <nav className={`th-navbar${scrolled ? ' scrolled' : ''}`}>
       <div className="th-container">
         <div className="th-nav-inner">
-          <div className="th-logo" onClick={() => scrollToSection('home')}>
+          <Link to="/" className="th-logo" style={{ textDecoration: 'none', cursor: 'pointer' }}>
             <div className="th-logo-icon">
               <i className="fab fa-facebook-f"></i>
             </div>
             <span className="th-logo-text">FB<span>Save</span> HD</span>
-          </div>
+          </Link>
 
           <ul className="th-nav-links">
-            {links.map((link) => (
-              <li key={link.id}>
-                <button
-                  className={`th-nav-link${activeLink === link.id ? ' active' : ''}`}
-                  onClick={() => scrollToSection(link.id)}
-                >
-                  {link.label}
-                </button>
+            {navLinks.map((link) => (
+              <li key={link.path}>
+                {link.id && isHomePage ? (
+                  <button
+                    className="th-nav-link"
+                    onClick={() => scrollToSection(link.id)}
+                  >
+                    {link.label}
+                  </button>
+                ) : (
+                  <Link
+                    to={link.path}
+                    className="th-nav-link"
+                    onClick={() => setMenuOpen(false)}
+                  >
+                    {link.label}
+                  </Link>
+                )}
               </li>
             ))}
           </ul>
 
           <div className="th-nav-cta">
-            <button className="th-btn th-btn-outline-sm" onClick={() => scrollToSection('guides')}>
-              User Guide
-            </button>
-            <button className="th-btn th-btn-primary-sm" onClick={() => scrollToSection('downloader')}>
-              Download Now
-            </button>
+            {isHomePage ? (
+              <>
+                <button className="th-btn th-btn-outline-sm" onClick={() => scrollToSection('guides')}>
+                  User Guide
+                </button>
+                <button className="th-btn th-btn-primary-sm" onClick={() => scrollToSection('downloader')}>
+                  Download Now
+                </button>
+              </>
+            ) : (
+              <Link to="/" className="th-btn th-btn-primary-sm">
+                Download Now
+              </Link>
+            )}
           </div>
 
           <button
@@ -92,18 +117,41 @@ function Navbar() {
         </div>
 
         <div className={`th-mobile-menu${menuOpen ? ' open' : ''}`}>
-          {links.map((link) => (
-            <button
-              key={link.id}
-              className={`th-mobile-link${activeLink === link.id ? ' active' : ''}`}
-              onClick={() => scrollToSection(link.id)}
-            >
-              {link.label}
-            </button>
+          {navLinks.map((link) => (
+            <div key={link.path}>
+              {link.id && isHomePage ? (
+                <button
+                  className="th-mobile-link"
+                  onClick={() => {
+                    scrollToSection(link.id);
+                    setMenuOpen(false);
+                  }}
+                >
+                  {link.label}
+                </button>
+              ) : (
+                <Link
+                  to={link.path}
+                  className="th-mobile-link"
+                  onClick={() => setMenuOpen(false)}
+                >
+                  {link.label}
+                </Link>
+              )}
+            </div>
           ))}
-          <button className="th-btn th-btn-primary-sm w-100 mt-3" onClick={() => scrollToSection('downloader')}>
-            Start Download
-          </button>
+          {isHomePage ? (
+            <button className="th-btn th-btn-primary-sm w-100 mt-3" onClick={() => {
+              scrollToSection('downloader');
+              setMenuOpen(false);
+            }}>
+              Start Download
+            </button>
+          ) : (
+            <Link to="/" className="th-btn th-btn-primary-sm w-100 mt-3" onClick={() => setMenuOpen(false)}>
+              Start Download
+            </Link>
+          )}
         </div>
       </div>
     </nav>
@@ -1505,9 +1553,9 @@ function Footer() {
           <div className="th-footer-bottom-inner">
             <p>© {new Date().getFullYear()} FBSave HD. Built as a premium Facebook downloader style interface.</p>
             <div className="th-footer-bottom-links">
-              <a href="#">Privacy</a>
-              <a href="#">Terms</a>
-              <a href="#">Disclaimer</a>
+              <Link to="/privacy-policy">Privacy</Link>
+              <Link to="/terms-conditions">Terms</Link>
+              <Link to="/about">About</Link>
             </div>
           </div>
         </div>
@@ -1538,27 +1586,108 @@ function ScrollTopBtn() {
   );
 }
 
+function HomePage() {
+  useEffect(() => {
+    // Add structured data for home page
+    const addStructuredData = () => {
+      // Remove existing structured data if any
+      const existing = document.querySelectorAll('script[type="application/ld+json"]');
+      existing.forEach(el => {
+        if (el.textContent.includes('@type') && !el.textContent.includes('WebSite')) {
+          el.remove();
+        }
+      });
+
+      // Add Organization schema
+      const organizationSchema = {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Facebook Video Downloader HD",
+        "url": "https://facebookvideodownloader.com",
+        "logo": "https://facebookvideodownloader.com/logo.png",
+        "description": "Free online tool to download Facebook videos, Reels, and public clips in HD quality",
+        "sameAs": [
+          "https://www.facebook.com",
+          "https://twitter.com"
+        ]
+      };
+
+      const orgScript = document.createElement('script');
+      orgScript.type = 'application/ld+json';
+      orgScript.textContent = JSON.stringify(organizationSchema);
+      document.head.appendChild(orgScript);
+
+      // Add SoftwareApplication schema
+      const softwareSchema = {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Facebook Video Downloader",
+        "applicationCategory": "MultimediaApplication",
+        "operatingSystem": "Web Browser",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.8",
+          "ratingCount": "1250"
+        }
+      };
+
+      const softwareScript = document.createElement('script');
+      softwareScript.type = 'application/ld+json';
+      softwareScript.textContent = JSON.stringify(softwareSchema);
+      document.head.appendChild(softwareScript);
+    };
+
+    addStructuredData();
+  }, []);
+
+  return (
+    <>
+      <Hero />
+      <TrustedBy />
+      <DownloaderSection />
+      <Features />
+      <InfoSection />
+      <StatsBanner />
+      <Guides />
+      <FAQ />
+      <Contact />
+    </>
+  );
+}
+
+function Layout({ children }) {
+  return (
+    <>
+      <Navbar />
+      <main style={{ minHeight: '100vh' }}>{children}</main>
+      <Footer />
+      <ScrollTopBtn />
+    </>
+  );
+}
+
 export default function App() {
   useEffect(() => {
     document.title = 'Facebook Video Downloader HD - Download Facebook Videos, Reels & Clips Online';
   }, []);
 
   return (
-    <>
-      <Navbar />
-      <main>
-        <Hero />
-        <TrustedBy />
-        <DownloaderSection />
-        <Features />
-        <InfoSection />
-        <StatsBanner />
-        <Guides />
-        <FAQ />
-        <Contact />
-      </main>
-      <Footer />
-      <ScrollTopBtn />
-    </>
+    <Router>
+      <Layout>
+        <Routes>
+          <Route index path="/" element={<HomePage />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/terms-conditions" element={<TermsConditions />} />
+          <Route path="/blog" element={<Blog />} />
+        </Routes>
+      </Layout>
+    </Router>
   );
 }

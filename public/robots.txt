@@ -1,4 +1,22 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://example.com/sitemap.xml
+# Disallow admin and private areas
+Disallow: /admin/
+Disallow: /api/
+Disallow: /_next/
+Disallow: /private/
+
+# Allow important pages
+Allow: /
+Allow: /about
+Allow: /blog
+Allow: /contact
+Allow: /privacy-policy
+Allow: /terms-conditions
+
+# Sitemap location
+Sitemap: https://facebookvideodownloader.com/sitemap.xml
+
+# Crawl delay (optional, adjust as needed)
+Crawl-delay: 1

@@ -1,0 +1,51 @@
+# LLM.txt for Facebook Video Downloader
+
+## Site Information
+Site Name: Facebook Video Downloader HD
+Description: Free online tool to download Facebook videos, Reels, and public clips in HD quality
+URL: https://facebookvideodownloader.com
+Language: English
+Primary Purpose: Video Download Tool
+
+## Main Pages
+- / (Home) - Main downloader interface with video download functionality
+- /about - Information about the service and Facebook platform
+- /blog - Blog posts about Facebook video downloading, guides, and tips
+- /contact - Contact form and support information
+- /privacy-policy - Privacy policy and data handling information
+- /terms-conditions - Terms of service and usage guidelines
+
+## Key Features
+- Download Facebook videos in HD quality (720p, 1080p)
+- Support for Facebook Reels
+- Multiple quality options (HD, SD)
+- Mobile and desktop support
+- No registration required
+- Free to use
+- Direct download functionality
+
+## Content Structure
+The site provides:
+1. Video downloader tool (main functionality)
+2. Educational content about Facebook videos
+3. Guides and tutorials
+4. Legal information (Privacy Policy, Terms)
+5. Blog with tips and best practices
+
+## API Information
+- Uses backend API: https://facebookvideo-downloader-backend.vercel.app/api/meta/download
+- Processes publicly available Facebook video URLs
+- Returns video data including thumbnails, titles, and download links
+
+## Technical Details
+- Built with React
+- Responsive design (Mobile, Tablet, Desktop)
+- Client-side routing with React Router
+- SEO optimized with meta tags and structured data
+
+## Important Notes
+- Only processes public Facebook content
+- Respects copyright and intellectual property rights
+- Does not store downloaded videos
+- Privacy-focused service
+
