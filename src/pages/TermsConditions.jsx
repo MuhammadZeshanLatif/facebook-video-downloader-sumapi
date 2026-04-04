@@ -5,9 +5,9 @@ function TermsConditions() {
   return (
     <>
       <SEO
-        title="Terms and Conditions - Facebook Video Downloader"
-        description="Read our terms and conditions for using Facebook Video Downloader service. Understand your rights and responsibilities."
-        keywords="terms and conditions, terms of service, legal, facebook video downloader terms"
+        title="Terms of Service - FBSave HD Facebook Video Downloader"
+        description="Read the terms of service for FBSave HD. Understand the rules and guidelines for using our free tool to download public Facebook videos and Reels responsibly."
+        keywords="facebook video downloader terms of service, fbsave hd terms, terms and conditions, usage policy, facebook downloader legal"
         ogUrl="https://facebookvideodownloader.com/terms-conditions"
       />
       <div className="th-section" style={{ paddingTop: '120px' }}>

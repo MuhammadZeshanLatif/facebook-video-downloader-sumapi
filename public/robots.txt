@@ -1,22 +1,22 @@
 User-agent: *
 Allow: /
 
-# Disallow admin and private areas
+# Disallow private/system areas
 Disallow: /admin/
 Disallow: /api/
-Disallow: /_next/
 Disallow: /private/
+Disallow: /_next/
+Disallow: /src/
 
-# Allow important pages
+# Allow all important pages explicitly
 Allow: /
-Allow: /about
+Allow: /user-guide
 Allow: /blog
+Allow: /blog/top-10-tips-facebook-video-downloading
+Allow: /about
 Allow: /contact
 Allow: /privacy-policy
 Allow: /terms-conditions
 
-# Sitemap location
+# Sitemap
 Sitemap: https://facebookvideodownloader.com/sitemap.xml
-
-# Crawl delay (optional, adjust as needed)
-Crawl-delay: 1

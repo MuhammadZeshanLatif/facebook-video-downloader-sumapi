@@ -80,9 +80,9 @@ function UserGuide() {
   return (
     <>
       <SEO
-        title="FB Video Downloader User Guide (Download FB Videos Easily)"
-        description="Learn how to download Facebook videos with this simple FB video downloader user guide. Works on mobile and desktop without any app or login fast needed."
-        keywords="fb video downloader user guide, download facebook video, facebook video downloader, save facebook reels, download facebook video without app"
+        title="How to Download Facebook Videos - Step-by-Step User Guide | FBSave HD"
+        description="Step-by-step guide to download Facebook videos and Reels in HD for free. Works on Android, iPhone, PC, and Mac without any app or Facebook login required."
+        keywords="how to download facebook videos, fb video downloader guide, download facebook reels step by step, save facebook video without app, facebook video downloader tutorial, download fb video mobile"
         ogUrl="https://facebookvideodownloader.com/user-guide"
       />
 

@@ -1,51 +1,48 @@
-# LLM.txt for Facebook Video Downloader
+# LLM.txt — FBSave HD (Facebook Video Downloader)
 
 ## Site Information
-Site Name: Facebook Video Downloader HD
-Description: Free online tool to download Facebook videos, Reels, and public clips in HD quality
+Site Name: FBSave HD — Facebook Video Downloader
+Alternate Name: Facebook Video Downloader HD
+Description: Free online tool to download public Facebook videos and Reels in HD quality without login or app installation.
 URL: https://facebookvideodownloader.com
-Language: English
+Language: English (en-US)
 Primary Purpose: Video Download Tool
 
-## Main Pages
-- / (Home) - Main downloader interface with video download functionality
-- /about - Information about the service and Facebook platform
-- /blog - Blog posts about Facebook video downloading, guides, and tips
-- /contact - Contact form and support information
-- /privacy-policy - Privacy policy and data handling information
-- /terms-conditions - Terms of service and usage guidelines
+## Pages
+- / (Home) — Main downloader interface with video URL input, HD/SD quality selection, features, guides, and FAQ
+- /user-guide — Step-by-step guide to downloading Facebook videos on Android, iPhone, PC, and Mac
+- /blog — Blog listing with guides, tips, and tutorials about Facebook video downloading
+- /blog/top-10-tips-facebook-video-downloading — Full article: Top 10 Tips for Facebook Video Downloading
+- /about — About FBSave HD: mission, features, and service information
+- /contact — Contact form and support information
+- /privacy-policy — Privacy policy and data handling (no data stored, no login required)
+- /terms-conditions — Terms of service and usage guidelines
 
 ## Key Features
-- Download Facebook videos in HD quality (720p, 1080p)
-- Support for Facebook Reels
-- Multiple quality options (HD, SD)
-- Mobile and desktop support
-- No registration required
-- Free to use
-- Direct download functionality
+- Download Facebook videos in HD quality (720p, 1080p where available)
+- Download Facebook Reels
+- Multiple quality options: HD and SD
+- Output format: MP4
+- Mobile and desktop support (Android, iPhone, Windows, macOS)
+- No registration or login required
+- Completely free to use
+- No video storage — privacy-focused
 
-## Content Structure
-The site provides:
-1. Video downloader tool (main functionality)
-2. Educational content about Facebook videos
-3. Guides and tutorials
+## Content
+1. Free Facebook video downloader tool (main functionality)
+2. User guide for all devices
+3. Blog with tips, tutorials, and guides
 4. Legal information (Privacy Policy, Terms)
-5. Blog with tips and best practices
 
-## API Information
-- Uses backend API: https://facebookvideo-downloader-backend.vercel.app/api/meta/download
-- Processes publicly available Facebook video URLs
-- Returns video data including thumbnails, titles, and download links
-
-## Technical Details
-- Built with React
-- Responsive design (Mobile, Tablet, Desktop)
+## Technical
+- Built with React + Vite
 - Client-side routing with React Router
-- SEO optimized with meta tags and structured data
+- Responsive design (mobile-first)
+- SEO: structured data (WebSite, Organization, SoftwareApplication, FAQPage, BlogPosting, BreadcrumbList schemas)
+- API: https://facebookvideo-downloader-backend.vercel.app/api/meta/download
 
 ## Important Notes
-- Only processes public Facebook content
+- Only processes publicly accessible Facebook content
 - Respects copyright and intellectual property rights
-- Does not store downloaded videos
-- Privacy-focused service
-
+- Does not store or cache downloaded videos
+- No Facebook credentials are ever requested or stored

@@ -5,7 +5,25 @@ import ContactPage from './pages/Contact';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsConditions from './pages/TermsConditions';
 import Blog from './pages/Blog';
+import BlogPostTop10Tips from './pages/BlogPostTop10Tips';
 import UserGuide from './pages/UserGuide';
+import SEO from './components/SEO';
+
+const LOGO_SRC = '/images/logo.webp';
+
+function BrandLogo({ className = '', footer = false }) {
+  return (
+    <img
+      src={LOGO_SRC}
+      alt="FBSave HD — Facebook Video Downloader"
+      className={`th-logo-img${footer ? ' th-logo-img--footer' : ''}${className ? ` ${className}` : ''}`}
+      width={200}
+      height={48}
+      decoding="async"
+      fetchPriority="high"
+    />
+  );
+}
 
 function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -61,10 +79,7 @@ function Navbar() {
       <div className="th-container">
         <div className="th-nav-inner">
           <Link to="/" className="th-logo" style={{ textDecoration: 'none', cursor: 'pointer' }}>
-            <div className="th-logo-icon">
-              <i className="fab fa-facebook-f"></i>
-            </div>
-            <span className="th-logo-text">FB<span>Save</span> HD</span>
+            <BrandLogo />
           </Link>
 
           <ul className="th-nav-links">
@@ -1487,10 +1502,9 @@ function Footer() {
         <div className="th-container">
           <div className="th-footer-grid">
             <div className="th-footer-brand-col">
-              <div className="th-logo mb-3" onClick={() => scrollToSection('home')}>
-                <div className="th-logo-icon"><i className="fab fa-facebook-f"></i></div>
-                <span className="th-logo-text">FB<span>Save</span> HD</span>
-              </div>
+              <Link to="/" className="th-logo th-logo-footer mb-3">
+                <BrandLogo footer />
+              </Link>
               <p className="th-footer-desc">
                 FBSaveHD is an online tool created to help users easily save Facebook videos and reels for offline viewing. The tool focuses on providing a simple interface, fast processing, and compatibility across multiple devices and browsers.
               </p>
@@ -1621,7 +1635,7 @@ function HomePage() {
         "@type": "Organization",
         "name": "Facebook Video Downloader HD",
         "url": "https://facebookvideodownloader.com",
-        "logo": "https://facebookvideodownloader.com/logo.png",
+        "logo": "https://facebookvideodownloader.com/images/logo.webp",
         "description": "Free online tool to download Facebook videos, Reels, and public clips in HD quality",
         "sameAs": [
           "https://www.facebook.com",
@@ -1664,6 +1678,12 @@ function HomePage() {
 
   return (
     <>
+      <SEO
+        title="Download Facebook Videos & Reels HD Free - FB Video Downloader"
+        description="Download any public Facebook video or Reel in HD quality online for free. No login, no app needed. Paste the FB video link and save it instantly on Android, iPhone, or PC."
+        keywords="facebook video downloader, download facebook videos, fb video downloader, facebook reels downloader, save facebook video online, download fb video hd, free facebook downloader, download fb reels, facebook video saver, fb video download"
+        ogUrl="https://facebookvideodownloader.com/"
+      />
       <Hero />
       <TrustedBy />
       <DownloaderSection />
@@ -1677,6 +1697,38 @@ function HomePage() {
   );
 }
 
+function FloatingSocials() {
+  const socials = [
+    { href: 'https://www.facebook.com/',  icon: 'fab fa-facebook-f', label: 'Facebook',  cls: 'th-float-social--fb' },
+    { href: 'https://wa.me/',             icon: 'fab fa-whatsapp',   label: 'WhatsApp',  cls: 'th-float-social--wa' },
+    { href: 'https://www.youtube.com/',   icon: 'fab fa-youtube',    label: 'YouTube',   cls: 'th-float-social--yt' },
+    { href: 'https://www.instagram.com/', icon: 'fab fa-instagram',  label: 'Instagram', cls: 'th-float-social--ig' },
+    { href: 'https://x.com/',             icon: 'fab fa-x-twitter',  label: 'X / Twitter', cls: 'th-float-social--tw' },
+    { href: 'https://www.pinterest.com/', icon: 'fab fa-pinterest-p',label: 'Pinterest', cls: 'th-float-social--pt' },
+  ];
+
+  return (
+    <div className="th-float-socials" aria-label="Follow us on social media">
+      {socials.map(({ href, icon, label, cls }) => (
+        <a
+          key={label}
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={`th-float-social ${cls}`}
+          aria-label={label}
+          title={label}
+        >
+          <span className="th-float-social-icon" aria-hidden="true">
+            <i className={icon}></i>
+          </span>
+          <span className="th-float-social-label">{label}</span>
+        </a>
+      ))}
+    </div>
+  );
+}
+
 function Layout({ children }) {
   return (
     <>
@@ -1684,6 +1736,7 @@ function Layout({ children }) {
       <main style={{ minHeight: '100vh' }}>{children}</main>
       <Footer />
       <ScrollTopBtn />
+      <FloatingSocials />
     </>
   );
 }
@@ -1703,6 +1756,7 @@ export default function App() {
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/terms-conditions" element={<TermsConditions />} />
           <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/top-10-tips-facebook-video-downloading" element={<BlogPostTop10Tips />} />
           <Route path="/user-guide" element={<UserGuide />} />
         </Routes>
       </Layout>

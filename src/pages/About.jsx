@@ -5,9 +5,9 @@ function About() {
   return (
     <>
       <SEO
-        title="About Us - Facebook Video Downloader | Learn About Our Service"
-        description="Learn about Facebook Video Downloader, our mission, features, and how we help you download Facebook videos, Reels, and public clips in HD quality."
-        keywords="about facebook video downloader, facebook downloader information, facebook video tool, about us"
+        title="About FBSave HD - Free Facebook Video Downloader | Our Mission"
+        description="FBSave HD is a free online Facebook video downloader. Learn how our tool helps you download any public Facebook video or Reel in HD quality without login or app installation."
+        keywords="about facebook video downloader, fbsave hd, free facebook downloader, about us, facebook video tool, fb video saver"
         ogUrl="https://facebookvideodownloader.com/about"
       />
       <div className="th-section" style={{ paddingTop: '120px' }}>

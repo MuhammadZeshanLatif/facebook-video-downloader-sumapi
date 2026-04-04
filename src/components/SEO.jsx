@@ -1,64 +1,113 @@
 import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
-const SEO = ({ title, description, keywords, ogImage, ogUrl, type = 'website' }) => {
+const SITE_NAME   = 'FBSave HD';
+const DOMAIN      = 'https://facebookvideodownloader.com';
+const DEFAULT_IMG = `${DOMAIN}/images/top-10-tips-for-facebook-video-downloading.webp`;
+const DEFAULT_TITLE =
+  'Download Facebook Videos & Reels HD Free - FB Video Downloader';
+const DEFAULT_DESC =
+  'Download any public Facebook video or Reel in HD quality online for free. No login, no app needed. Paste the FB video link and save it instantly on Android, iPhone, or PC.';
+
+const SEO = ({
+  title,
+  description,
+  keywords,
+  ogImage,
+  ogUrl,
+  type = 'website',
+  articlePublishedTime,
+  articleModifiedTime,
+  articleAuthor,
+}) => {
   const location = useLocation();
+  const resolvedTitle = title || DEFAULT_TITLE;
+  const resolvedDesc  = description || DEFAULT_DESC;
+  const resolvedImg   = ogImage || DEFAULT_IMG;
+  const resolvedUrl   = ogUrl || `${DOMAIN}${location.pathname}`;
+  const canonical     = `${DOMAIN}${location.pathname}`;
 
   useEffect(() => {
-    // Update document title
-    document.title = title || 'Facebook Video Downloader HD - Download Facebook Videos, Reels & Clips Online';
+    // ── Title ──────────────────────────────────────────────
+    document.title = resolvedTitle;
 
-    // Update or create meta tags
-    const updateMetaTag = (name, content, isProperty = false) => {
-      const attribute = isProperty ? 'property' : 'name';
-      let element = document.querySelector(`meta[${attribute}="${name}"]`);
-      if (!element) {
-        element = document.createElement('meta');
-        element.setAttribute(attribute, name);
-        document.head.appendChild(element);
+    // ── Helper: upsert a <meta> tag ────────────────────────
+    const setMeta = (attr, value, content) => {
+      let el = document.querySelector(`meta[${attr}="${value}"]`);
+      if (!el) {
+        el = document.createElement('meta');
+        el.setAttribute(attr, value);
+        document.head.appendChild(el);
       }
-      element.setAttribute('content', content);
+      el.setAttribute('content', content);
+    };
+    const removeMeta = (attr, value) => {
+      document.querySelectorAll(`meta[${attr}="${value}"]`).forEach((el) => el.remove());
     };
 
-    // Update description
-    if (description) {
-      updateMetaTag('description', description);
-      updateMetaTag('og:description', description, true);
-      updateMetaTag('twitter:description', description);
+    // ── Basic ──────────────────────────────────────────────
+    setMeta('name', 'description',  resolvedDesc);
+    setMeta('name', 'author',       SITE_NAME);
+    setMeta('name', 'robots',       'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1');
+    if (keywords) setMeta('name', 'keywords', keywords);
+
+    // ── Open Graph ─────────────────────────────────────────
+    setMeta('property', 'og:type',        type);
+    setMeta('property', 'og:site_name',   SITE_NAME);
+    setMeta('property', 'og:locale',      'en_US');
+    setMeta('property', 'og:title',       resolvedTitle);
+    setMeta('property', 'og:description', resolvedDesc);
+    setMeta('property', 'og:image',       resolvedImg);
+    setMeta('property', 'og:image:width', '1200');
+    setMeta('property', 'og:image:height','630');
+    setMeta('property', 'og:image:alt',   `${SITE_NAME} - ${resolvedTitle}`);
+    setMeta('property', 'og:url',         resolvedUrl);
+
+    // ── Twitter ────────────────────────────────────────────
+    setMeta('name', 'twitter:card',        'summary_large_image');
+    setMeta('name', 'twitter:site',        '@FBSaveHD');
+    setMeta('name', 'twitter:creator',     '@FBSaveHD');
+    setMeta('name', 'twitter:title',       resolvedTitle);
+    setMeta('name', 'twitter:description', resolvedDesc);
+    setMeta('name', 'twitter:image',       resolvedImg);
+    setMeta('name', 'twitter:image:alt',   `${SITE_NAME} - ${resolvedTitle}`);
+
+    // ── Article tags ───────────────────────────────────────
+    if (type === 'article' && articlePublishedTime) {
+      setMeta('property', 'article:published_time', articlePublishedTime);
+      setMeta('property', 'article:modified_time',  articleModifiedTime || articlePublishedTime);
+      setMeta('property', 'article:author',         articleAuthor || SITE_NAME);
+      setMeta('property', 'article:section',        'Technology');
+    } else {
+      removeMeta('property', 'article:published_time');
+      removeMeta('property', 'article:modified_time');
+      removeMeta('property', 'article:author');
+      removeMeta('property', 'article:section');
     }
 
-    // Update keywords
-    if (keywords) {
-      updateMetaTag('keywords', keywords);
+    // ── Canonical ──────────────────────────────────────────
+    let link = document.querySelector('link[rel="canonical"]');
+    if (!link) {
+      link = document.createElement('link');
+      link.setAttribute('rel', 'canonical');
+      document.head.appendChild(link);
     }
+    link.setAttribute('href', canonical);
 
-    // Update OG tags
-    if (ogImage) {
-      updateMetaTag('og:image', ogImage, true);
-      updateMetaTag('twitter:image', ogImage);
-    }
-
-    if (ogUrl) {
-      updateMetaTag('og:url', ogUrl, true);
-    }
-
-    updateMetaTag('og:type', type, true);
-    updateMetaTag('og:title', title || document.title, true);
-    updateMetaTag('twitter:title', title || document.title);
-
-    // Update canonical URL
-    let canonical = document.querySelector('link[rel="canonical"]');
-    if (!canonical) {
-      canonical = document.createElement('link');
-      canonical.setAttribute('rel', 'canonical');
-      document.head.appendChild(canonical);
-    }
-    canonical.setAttribute('href', `https://facebookvideodownloader.com${location.pathname}`);
-
-  }, [title, description, keywords, ogImage, ogUrl, type, location.pathname]);
+  }, [
+    resolvedTitle,
+    resolvedDesc,
+    resolvedImg,
+    resolvedUrl,
+    canonical,
+    keywords,
+    type,
+    articlePublishedTime,
+    articleModifiedTime,
+    articleAuthor,
+  ]);
 
   return null;
 };
 
 export default SEO;
-
