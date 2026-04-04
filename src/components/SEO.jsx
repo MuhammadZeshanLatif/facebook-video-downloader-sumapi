@@ -3,7 +3,9 @@ import { useLocation } from 'react-router-dom';
 
 const SITE_NAME   = 'FBSave HD';
 const DOMAIN      = 'https://facebookvideodownloader.com';
-const DEFAULT_IMG = `${DOMAIN}/images/top-10-tips-for-facebook-video-downloading.webp`;
+// Use current origin so the image URL always matches the deployed domain
+const ORIGIN      = typeof window !== 'undefined' ? window.location.origin : DOMAIN;
+const DEFAULT_IMG = `${ORIGIN}/images/og-image.png`;
 const DEFAULT_TITLE =
   'Download Facebook Videos & Reels HD Free - FB Video Downloader';
 const DEFAULT_DESC =

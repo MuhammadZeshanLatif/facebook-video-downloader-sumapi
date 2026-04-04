@@ -7,7 +7,7 @@ const SLUG = 'top-10-tips-facebook-video-downloading';
 const POST_PATH = `/blog/${SLUG}`;
 const POST_URL = `${SITE_ORIGIN}${POST_PATH}`;
 const PUBLISHED = '2026-04-04';
-const OG_IMAGE = `${SITE_ORIGIN}/images/top-10-tips-for-facebook-video-downloading.webp`;
+const OG_IMAGE = `${window.location.origin}/images/og-image.png`;
 
 const toc = [
   { id: 'what-is-facebook-video-downloading', label: 'What is Facebook Video Downloading?' },
