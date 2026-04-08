@@ -6,6 +6,11 @@ import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsConditions from './pages/TermsConditions';
 import Blog from './pages/Blog';
 import BlogPostTop10Tips from './pages/BlogPostTop10Tips';
+import BlogPostHowToDownloadHDQuality from './pages/BlogPostHowToDownloadHDQuality';
+import BlogPostIsItLegalFacebookVideos from './pages/BlogPostIsItLegalFacebookVideos';
+import BlogPostMobileVsDesktop from './pages/BlogPostMobileVsDesktop';
+import BlogPostFacebookReelsCompleteGuide from './pages/BlogPostFacebookReelsCompleteGuide';
+import BlogPostUnderstandingFormatsQuality from './pages/BlogPostUnderstandingFormatsQuality';
 import UserGuide from './pages/UserGuide';
 import SEO from './components/SEO';
 
@@ -1756,6 +1761,11 @@ export default function App() {
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/terms-conditions" element={<TermsConditions />} />
           <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/is-it-legal-to-download-facebook-videos-complete-guide" element={<BlogPostIsItLegalFacebookVideos />} />
+          <Route path="/blog/facebook-video-downloader-mobile-vs-desktop-which-is-better" element={<BlogPostMobileVsDesktop />} />
+          <Route path="/blog/facebook-reels-complete-download-guide-hd-mobile-desktop" element={<BlogPostFacebookReelsCompleteGuide />} />
+          <Route path="/blog/understanding-facebook-video-formats-and-quality" element={<BlogPostUnderstandingFormatsQuality />} />
+          <Route path="/blog/how-to-download-facebook-videos-in-hd-quality-complete-guide" element={<BlogPostHowToDownloadHDQuality />} />
           <Route path="/blog/top-10-tips-facebook-video-downloading" element={<BlogPostTop10Tips />} />
           <Route path="/user-guide" element={<UserGuide />} />
         </Routes>

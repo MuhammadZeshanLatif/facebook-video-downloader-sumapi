@@ -1,6 +1,61 @@
 /** Shared blog listing metadata (order: newest first for "latest") */
 export const BLOG_POSTS = [
   {
+    slug: 'understanding-facebook-video-formats-and-quality',
+    title: 'Understanding Facebook Video Formats and Quality',
+    excerpt:
+      'Watching Facebook videos is easy, but many users get confused about video formats and quality.',
+    date: '2026-04-08',
+    category: 'Technical',
+    readTime: '11 min read',
+    image: '/images/understanding-facebook-video-formats-andquality.webp',
+    imageAlt: 'Understanding Facebook Video Formats and Quality',
+  },
+  {
+    slug: 'facebook-reels-complete-download-guide-hd-mobile-desktop',
+    title: 'Facebook Reels: Complete Download Guide (HD, Mobile & Desktop)',
+    excerpt:
+      'Downloading Facebook Reels sounds easy, but it often doesn’t work. You copy the link, try a tool, and nothing happens.',
+    date: '2026-04-08',
+    category: 'Guide',
+    readTime: '11 min read',
+    image: '/images/facebook-reels-complete-download-guide.webp',
+    imageAlt: 'Facebook Reels: Complete Download Guide (HD, Mobile & Desktop)',
+  },
+  {
+    slug: 'facebook-video-downloader-mobile-vs-desktop-which-is-better',
+    title: 'Facebook Video Downloader: Mobile vs Desktop (Which Is Better?)',
+    excerpt:
+      'Downloading Facebook videos looks simple, but many users get confused when choosing between mobile and desktop.',
+    date: '2026-04-08',
+    category: 'Comparison',
+    readTime: '11 min read',
+    image: '/images/mobile-vs-desktop-facebook-videos.webp',
+    imageAlt: 'Facebook Video Downloader: Mobile vs Desktop (Which Is Better?)',
+  },
+  {
+    slug: 'is-it-legal-to-download-facebook-videos-complete-guide',
+    title: 'Is It Legal to Download Facebook Videos? (Complete Guide)',
+    excerpt:
+      'Downloading a Facebook video feels simple, but many people hesitate. You copy the link, open a downloader, and then stop.',
+    date: '2026-04-08',
+    category: 'Legal',
+    readTime: '11 min read',
+    image: '/images/is-it-legal-to-download-facebook-videos.webp',
+    imageAlt: 'Is It Legal to Download Facebook Videos? Complete Guide',
+  },
+  {
+    slug: 'how-to-download-facebook-videos-in-hd-quality-complete-guide',
+    title: 'How to Download Facebook Videos in HD Quality (Complete Guide)',
+    excerpt:
+      'Downloading a Facebook video sounds simple, but it often fails. You copy the link, paste it into a downloader, and expect HD quality.',
+    date: '2026-04-08',
+    category: 'Guide',
+    readTime: '12 min read',
+    image: '/images/how-to-download-facebook-videos-in-hd-quality.webp',
+    imageAlt: 'How to Download Facebook Videos in HD Quality',
+  },
+  {
     slug: 'top-10-tips-facebook-video-downloading',
     title: 'Top 10 Tips for Facebook Video Downloading',
     excerpt:

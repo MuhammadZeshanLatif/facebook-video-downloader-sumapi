@@ -12,6 +12,11 @@ Disallow: /src/
 Allow: /
 Allow: /user-guide
 Allow: /blog
+Allow: /blog/understanding-facebook-video-formats-and-quality
+Allow: /blog/facebook-reels-complete-download-guide-hd-mobile-desktop
+Allow: /blog/facebook-video-downloader-mobile-vs-desktop-which-is-better
+Allow: /blog/is-it-legal-to-download-facebook-videos-complete-guide
+Allow: /blog/how-to-download-facebook-videos-in-hd-quality-complete-guide
 Allow: /blog/top-10-tips-facebook-video-downloading
 Allow: /about
 Allow: /contact
