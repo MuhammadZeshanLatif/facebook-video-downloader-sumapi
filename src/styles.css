@@ -84,35 +84,6 @@ a { text-decoration: none; color: inherit; }
   background-clip: text;
 }
 
-/* ── Badge ── */
-.th-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: rgba(37,99,235,0.08);
-  color: var(--th-primary);
-  border: 1px solid rgba(37,99,235,0.2);
-  padding: 6px 16px;
-  border-radius: var(--th-radius-full);
-  font-size: 0.78rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-}
-
-.th-badge-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: rgba(37,99,235,0.08);
-  color: var(--th-primary);
-  border: 1px solid rgba(37,99,235,0.2);
-  padding: 6px 16px;
-  border-radius: var(--th-radius-full);
-  font-size: 0.8rem;
-  font-weight: 600;
-}
-
 /* ── Tag ── */
 .th-tag {
   display: inline-block;

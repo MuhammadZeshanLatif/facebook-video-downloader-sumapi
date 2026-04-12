@@ -8,14 +8,11 @@ function PrivacyPolicy() {
         title="Privacy Policy - FBSave HD Facebook Video Downloader"
         description="Read FBSave HD's privacy policy to understand how we handle your data. We do not store your videos or require your Facebook login. Your privacy is our priority."
         keywords="facebook video downloader privacy policy, fbsave hd privacy, data protection, no login required, facebook downloader safe"
-        ogUrl="https://facebookvideodownloader.com/privacy-policy"
+        ogUrl="https://fbvideodownloaders.com/privacy-policy"
       />
       <div className="th-section" style={{ paddingTop: '120px' }}>
       <div className="th-container">
         <div className="th-section-header">
-          <div className="th-badge mb-3">
-            <i className="fas fa-shield-alt me-2"></i>Privacy Policy
-          </div>
           <h1 className="th-section-title">Privacy Policy</h1>
           <p className="th-section-desc">
             Last Updated: {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}

@@ -140,7 +140,7 @@ export const BLOG_POSTS = [
   },
 ];
 
-export const SITE_ORIGIN = 'https://facebookvideodownloader.com';
+export const SITE_ORIGIN = 'https://fbvideodownloaders.com';
 
 export function getPostBySlug(slug) {
   return BLOG_POSTS.find((p) => p.slug === slug) || null;

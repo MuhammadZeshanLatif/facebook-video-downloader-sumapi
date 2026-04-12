@@ -8,14 +8,11 @@ function TermsConditions() {
         title="Terms of Service - FBSave HD Facebook Video Downloader"
         description="Read the terms of service for FBSave HD. Understand the rules and guidelines for using our free tool to download public Facebook videos and Reels responsibly."
         keywords="facebook video downloader terms of service, fbsave hd terms, terms and conditions, usage policy, facebook downloader legal"
-        ogUrl="https://facebookvideodownloader.com/terms-conditions"
+        ogUrl="https://fbvideodownloaders.com/terms-conditions"
       />
       <div className="th-section" style={{ paddingTop: '120px' }}>
       <div className="th-container">
         <div className="th-section-header">
-          <div className="th-badge mb-3">
-            <i className="fas fa-file-contract me-2"></i>Terms & Conditions
-          </div>
           <h1 className="th-section-title">Terms and Conditions</h1>
           <p className="th-section-desc">
             Last Updated: {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}

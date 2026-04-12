@@ -1,4 +1,4 @@
-# Next.js on Apache - .htaccess
+# React/Vite SPA on Apache - .htaccess
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteBase /
@@ -6,7 +6,7 @@
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
   RewriteCond %{REQUEST_FILENAME} !-l
-  RewriteRule . / [L]
+  RewriteRule . /index.html [L]
 </IfModule>
 
 # Cache static assets

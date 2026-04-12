@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
 const SITE_NAME   = 'FBSave HD';
-const DOMAIN      = 'https://facebookvideodownloader.com';
+const DOMAIN      = 'https://fbvideodownloaders.com';
 // Use current origin so the image URL always matches the deployed domain
 const ORIGIN      = typeof window !== 'undefined' ? window.location.origin : DOMAIN;
 const DEFAULT_IMG = `${ORIGIN}/images/og-image.png`;

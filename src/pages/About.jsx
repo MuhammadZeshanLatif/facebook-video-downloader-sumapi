@@ -8,14 +8,11 @@ function About() {
         title="About FBSave HD - Free Facebook Video Downloader | Our Mission"
         description="FBSave HD is a free online Facebook video downloader. Learn how our tool helps you download any public Facebook video or Reel in HD quality without login or app installation."
         keywords="about facebook video downloader, fbsave hd, free facebook downloader, about us, facebook video tool, fb video saver"
-        ogUrl="https://facebookvideodownloader.com/about"
+        ogUrl="https://fbvideodownloaders.com/about"
       />
       <div className="th-section" style={{ paddingTop: '120px' }}>
       <div className="th-container">
         <div className="th-section-header">
-          <div className="th-badge mb-3">
-            <i className="fas fa-info-circle me-2"></i>About Us
-          </div>
           <h1 className="th-section-title">About Facebook Video Downloader</h1>
           <p className="th-section-desc">
             Your trusted platform for downloading Facebook videos, Reels, and public content in high quality.

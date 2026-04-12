@@ -83,16 +83,13 @@ function UserGuide() {
         title="How to Download Facebook Videos - Step-by-Step User Guide | FBSave HD"
         description="Step-by-step guide to download Facebook videos and Reels in HD for free. Works on Android, iPhone, PC, and Mac without any app or Facebook login required."
         keywords="how to download facebook videos, fb video downloader guide, download facebook reels step by step, save facebook video without app, facebook video downloader tutorial, download fb video mobile"
-        ogUrl="https://facebookvideodownloader.com/user-guide"
+        ogUrl="https://fbvideodownloaders.com/user-guide"
       />
 
       {/* Hero */}
       <div className="th-section" style={{ paddingTop: '120px', paddingBottom: '2rem' }}>
         <div className="th-container">
           <div className="th-section-header">
-            <div className="th-badge mb-3">
-              <i className="fas fa-book-open me-2"></i>User Guide
-            </div>
             <h1 className="th-section-title">How to Use a <span className="th-gradient-text">FB Video Downloader</span></h1>
             <p className="th-section-desc">
               This FB video downloader user guide explains the fastest way to download Facebook videos using a browser. It works on both mobile and desktop without an app.
@@ -181,7 +178,6 @@ function UserGuide() {
       <section className="th-section th-section-alt">
         <div className="th-container">
           <div className="th-section-header">
-            <div className="th-badge mb-3"><i className="fas fa-circle-question me-2"></i>Common Questions</div>
             <h2 className="th-section-title">FB Video Downloader <span className="th-gradient-text">FAQs</span></h2>
             <p className="th-section-desc">
               This FB video downloader user guide answers the most common questions users have.
@@ -221,7 +217,6 @@ function UserGuide() {
       <section className="th-section">
         <div className="th-container">
           <div className="th-section-header">
-            <div className="th-badge mb-3"><i className="fas fa-envelope-open-text me-2"></i>Reach Out</div>
             <h2 className="th-section-title">Contact the <span className="th-gradient-text">FBSave HD</span> Team</h2>
             <p className="th-section-desc">
               Use this section for user questions about Facebook video link format, mobile use, HD availability, page usability, and feature suggestions.

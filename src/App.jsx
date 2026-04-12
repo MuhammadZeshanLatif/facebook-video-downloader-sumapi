@@ -356,9 +356,6 @@ function Hero() {
       <div className="th-container">
         <div className="th-hero-grid">
           <div className="th-hero-content">
-            <div className="th-badge th-badge-pill mb-3">
-              <i className="fas fa-bolt me-2"></i>Fast Facebook Video Downloader Interface
-            </div>
             <h1 className="th-hero-title">
               Download <span className="th-gradient-text">Facebook Videos</span>, Reels & Public Clips in HD
             </h1>
@@ -747,7 +744,6 @@ function DownloaderSection() {
     <section id="downloader" className="th-section">
       <div className="th-container">
         <div className="th-section-header">
-          <div className="th-badge mb-3"><i className="fas fa-cloud-arrow-down me-2"></i>Downloader Tool Area</div>
           {isMobileView ? (
             <h1 className="th-section-title fb-section-title-responsive">Facebook <span className="th-gradient-text">Video Downloader</span> Tool UI</h1>
           ) : (
@@ -1086,7 +1082,6 @@ function Features() {
     <section id="features" className="th-section th-section-alt">
       <div className="th-container">
         <div className="th-section-header">
-          <div className="th-badge mb-3"><i className="fas fa-star me-2"></i>Feature Highlights</div>
           <h2 className="th-section-title">Why Choose <span className="th-gradient-text">FBSaveHD</span> Facebook Video Downloader</h2>
           <p className="th-section-desc">
             FBSaveHD helps users download Facebook videos, reels, and public clips directly from their browser. The tool is built with a simple workflow and works smoothly on phones, tablets, laptops, and desktop browsers.
@@ -1148,7 +1143,6 @@ function InfoSection() {
       <div className="th-container">
         <div className="th-about-grid fb-info-grid">
           <div className="th-about-content">
-            <div className="th-badge mb-3"><i className="fas fa-circle-info me-2"></i>Facebook Video Saving Info</div>
             <h2 className="th-section-title text-start">
               Facebook Video Content You Can <span className="th-gradient-text">Download</span>
             </h2>
@@ -1243,7 +1237,6 @@ function Guides() {
     <section id="guides" className="th-section th-section-alt">
       <div className="th-container">
         <div className="th-section-header">
-          <div className="th-badge mb-3"><i className="fas fa-list-check me-2"></i>Step by Step</div>
           <h2 className="th-section-title">How to Download a <span className="th-gradient-text">Facebook Video or Reel</span></h2>
           <p className="th-section-desc">
             Follow these simple steps to download Facebook videos using FBSaveHD. Once downloaded, you can watch the video anytime even without an internet connection.
@@ -1350,7 +1343,6 @@ function FAQ() {
     <section id="faq" className="th-section">
       <div className="th-container">
         <div className="th-section-header">
-          <div className="th-badge mb-3"><i className="fas fa-circle-question me-2"></i>Common Questions</div>
           <h2 className="th-section-title">Frequently Asked <span className="th-gradient-text">Questions</span></h2>
           <p className="th-section-desc">
             These frequently asked questions cover the most common things users ask about FBSaveHD and downloading Facebook videos, clips, or Reels online.
@@ -1406,7 +1398,6 @@ function Contact() {
     <section id="contact" className="th-section th-section-alt">
       <div className="th-container">
         <div className="th-section-header">
-          <div className="th-badge mb-3"><i className="fas fa-envelope-open-text me-2"></i>Reach Out</div>
           <h2 className="th-section-title">Contact the <span className="th-gradient-text">FBSaveHD</span> Team</h2>
           <p className="th-section-desc">
             Have questions about FBSaveHD? Reach out for help with Facebook video links, mobile downloading, HD quality, or any other tool-related questions.
@@ -1639,8 +1630,8 @@ function HomePage() {
         "@context": "https://schema.org",
         "@type": "Organization",
         "name": "Facebook Video Downloader HD",
-        "url": "https://facebookvideodownloader.com",
-        "logo": "https://facebookvideodownloader.com/images/logo.webp",
+        "url": "https://fbvideodownloaders.com",
+        "logo": "https://fbvideodownloaders.com/images/logo.webp",
         "description": "Free online tool to download Facebook videos, Reels, and public clips in HD quality",
         "sameAs": [
           "https://www.facebook.com",
@@ -1687,7 +1678,7 @@ function HomePage() {
         title="Download Facebook Videos & Reels HD Free - FB Video Downloader"
         description="Download any public Facebook video or Reel in HD quality online for free. No login, no app needed. Paste the FB video link and save it instantly on Android, iPhone, or PC."
         keywords="facebook video downloader, download facebook videos, fb video downloader, facebook reels downloader, save facebook video online, download fb video hd, free facebook downloader, download fb reels, facebook video saver, fb video download"
-        ogUrl="https://facebookvideodownloader.com/"
+        ogUrl="https://fbvideodownloaders.com/"
       />
       <Hero />
       <TrustedBy />

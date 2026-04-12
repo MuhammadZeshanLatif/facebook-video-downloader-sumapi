@@ -4,7 +4,7 @@
 Site Name: FBSave HD — Facebook Video Downloader
 Alternate Name: Facebook Video Downloader HD
 Description: Free online tool to download public Facebook videos and Reels in HD quality without login or app installation.
-URL: https://facebookvideodownloader.com
+URL: https://fbvideodownloaders.com
 Language: English (en-US)
 Primary Purpose: Video Download Tool
 

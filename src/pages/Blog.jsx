@@ -21,7 +21,7 @@ function Blog() {
         title="Facebook Video Downloader Blog - Guides, Tips & Tutorials | FBSave HD"
         description="Read expert guides and tutorials on how to download Facebook videos and Reels in HD quality. Tips, tricks, and best practices for saving Facebook content easily and safely."
         keywords="facebook video downloader blog, download facebook video guide, facebook reels tips, fb video download tutorial, how to download facebook videos, facebook video tips"
-        ogUrl="https://facebookvideodownloader.com/blog"
+        ogUrl="https://fbvideodownloaders.com/blog"
       />
 
       <div className="th-section" style={{ paddingTop: '110px' }}>
@@ -29,9 +29,6 @@ function Blog() {
 
           {/* Page Header */}
           <div className="th-blog-hero">
-            <div className="th-badge mb-3">
-              <i className="fas fa-rss me-2"></i>Blog
-            </div>
             <h1 className="th-blog-hero-title">
               Tips, Guides &amp;{' '}
               <span className="th-gradient-text">Tutorials</span>

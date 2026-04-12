@@ -24,4 +24,4 @@ Allow: /privacy-policy
 Allow: /terms-conditions
 
 # Sitemap
-Sitemap: https://facebookvideodownloader.com/sitemap.xml
+Sitemap: https://fbvideodownloaders.com/sitemap.xml

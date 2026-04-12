@@ -27,14 +27,11 @@ function ContactPage() {
         title="Contact Us - FBSave HD Facebook Video Downloader Support"
         description="Have questions about downloading Facebook videos or Reels? Contact the FBSave HD support team for help, feedback, or inquiries. We respond within 24 hours."
         keywords="contact facebook video downloader, fbsave hd support, facebook downloader help, fb video downloader contact, support"
-        ogUrl="https://facebookvideodownloader.com/contact"
+        ogUrl="https://fbvideodownloaders.com/contact"
       />
       <div className="th-section" style={{ paddingTop: '120px' }}>
       <div className="th-container">
         <div className="th-section-header">
-          <div className="th-badge mb-3">
-            <i className="fas fa-envelope me-2"></i>Get In Touch
-          </div>
           <h1 className="th-section-title">Contact Us</h1>
           <p className="th-section-desc">
             Have questions or feedback? We'd love to hear from you. Reach out to us using the form below.
@@ -134,7 +131,7 @@ function ContactPage() {
                     <div className="text-center p-3" style={{ background: 'var(--th-bg-alt)', borderRadius: '12px' }}>
                       <i className="fas fa-envelope mb-2" style={{ fontSize: '1.5rem', color: 'var(--th-primary)' }}></i>
                       <h6>Email</h6>
-                      <p className="small text-muted mb-0">support@facebookvideodownloader.com</p>
+                      <p className="small text-muted mb-0">support@fbvideodownloaders.com</p>
                     </div>
                   </div>
                   <div className="col-md-4">
