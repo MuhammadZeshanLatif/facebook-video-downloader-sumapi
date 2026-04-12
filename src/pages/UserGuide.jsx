@@ -229,14 +229,14 @@ function UserGuide() {
                 <div className="th-contact-icon th-icon-blue"><i className="fas fa-link"></i></div>
                 <div>
                   <h5 className="th-contact-info-title">Facebook Link Help</h5>
-                  <p className="th-contact-info-line">Need help copying the correct Facebook video or Reel URL to use with FBSaveHD?</p>
+                  <p className="th-contact-info-line">Need help copying the correct Facebook video or Reel URL to use with Facebook Video Downloader?</p>
                 </div>
               </div>
               <div className="th-contact-info-card">
                 <div className="th-contact-icon th-icon-green"><i className="fas fa-mobile-screen-button"></i></div>
                 <div>
                   <h5 className="th-contact-info-title">Mobile Experience</h5>
-                  <p className="th-contact-info-line">Questions about downloading Facebook videos on Android phones, iPhones, or tablets using FBSaveHD.</p>
+                  <p className="th-contact-info-line">Questions about downloading Facebook videos on Android phones, iPhones, or tablets using Facebook Video Downloader.</p>
                 </div>
               </div>
               <div className="th-contact-info-card">

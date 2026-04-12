@@ -67,8 +67,8 @@ const SEO = ({
 
     // ── Twitter ────────────────────────────────────────────
     setMeta('name', 'twitter:card',        'summary_large_image');
-    setMeta('name', 'twitter:site',        '@FBSaveHD');
-    setMeta('name', 'twitter:creator',     '@FBSaveHD');
+    setMeta('name', 'twitter:site',        '@Facebook Video Downloader');
+    setMeta('name', 'twitter:creator',     '@Facebook Video Downloader');
     setMeta('name', 'twitter:title',       resolvedTitle);
     setMeta('name', 'twitter:description', resolvedDesc);
     setMeta('name', 'twitter:image',       resolvedImg);

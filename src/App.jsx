@@ -360,7 +360,7 @@ function Hero() {
               Download <span className="th-gradient-text">Facebook Videos</span>, Reels & Public Clips in HD
             </h1>
             <p className="th-hero-desc">
-              FBSaveHD helps users download Facebook videos, reels, and public clips directly from their browser. Users only need to copy the Facebook video link, paste it into the downloader, and choose the video quality they prefer. The system then processes the link and generates download options based on the original video quality available.
+              Facebook Video Downloader helps users download Facebook videos, reels, and public clips directly from their browser. Users only need to copy the Facebook video link, paste it into the downloader, and choose the video quality they prefer. The system then processes the link and generates download options based on the original video quality available.
             </p>
 
             <div className="th-hero-stats">
@@ -555,7 +555,7 @@ function TrustedBy() {
   return (
     <div className="th-trusted">
       <div className="th-container">
-        <p className="th-trusted-label">FBSaveHD — Download Facebook videos, reels, and public clips in HD</p>
+        <p className="th-trusted-label">Facebook Video Downloader — Download Facebook videos, reels, and public clips in HD</p>
       </div>
       <div className="th-marquee-wrap">
         <div className="th-marquee">
@@ -985,13 +985,13 @@ function DownloaderSection() {
                   <li><i className="fas fa-check-circle"></i>No copies of downloaded videos are stored</li>
                   <li><i className="fas fa-check-circle"></i>No account login is required</li>
                   <li><i className="fas fa-check-circle"></i>Works with publicly accessible videos only</li>
-                  <li><i className="fas fa-check-circle"></i>FBSaveHD does not store videos on its servers</li>
+                  <li><i className="fas fa-check-circle"></i>Facebook Video Downloader does not store videos on its servers</li>
                 </ul>
 
                 <div className="fb-note-box">
                   <i className="fas fa-circle-info"></i>
                   <p>
-                    FBSaveHD simply processes the Facebook video link and provides downloadable versions directly from Facebook servers. This approach helps protect user privacy and keeps the downloading process simple.
+                    Facebook Video Downloader simply processes the Facebook video link and provides downloadable versions directly from Facebook servers. This approach helps protect user privacy and keeps the downloading process simple.
                   </p>
                 </div>
 
@@ -1024,14 +1024,14 @@ function Features() {
       icon: 'fas fa-bolt',
       color: 'blue',
       title: 'Fast Link Processing',
-      desc: 'FBSaveHD quickly processes Facebook video links and generates download options within seconds. This helps users save videos without delays.',
+      desc: 'Facebook Video Downloader quickly processes Facebook video links and generates download options within seconds. This helps users save videos without delays.',
       tags: ['Speed', 'UX'],
     },
     {
       icon: 'fas fa-mobile-screen-button',
       color: 'green',
       title: 'Mobile Responsive Design',
-      desc: 'Most Facebook video downloads happen on mobile devices. FBSaveHD automatically adjusts to different screen sizes and works smoothly on Android phones, iPhones, tablets, and desktop browsers.',
+      desc: 'Most Facebook video downloads happen on mobile devices. Facebook Video Downloader automatically adjusts to different screen sizes and works smoothly on Android phones, iPhones, tablets, and desktop browsers.',
       tags: ['Responsive', 'Mobile'],
     },
     {
@@ -1045,7 +1045,7 @@ function Features() {
       icon: 'fas fa-film',
       color: 'orange',
       title: 'Facebook Reels Support',
-      desc: 'Short-form videos are very popular on Facebook. FBSaveHD supports downloading public Facebook reels as long as the reel link is accessible.',
+      desc: 'Short-form videos are very popular on Facebook. Facebook Video Downloader supports downloading public Facebook reels as long as the reel link is accessible.',
       tags: ['Reels', 'Short Video'],
     },
     {
@@ -1073,7 +1073,7 @@ function Features() {
       icon: 'fas fa-laptop-code',
       color: 'red',
       title: 'Browser-Based Tool',
-      desc: 'FBSaveHD works directly in your browser. Users do not need to install software, extensions, or apps to download Facebook videos.',
+      desc: 'Facebook Video Downloader works directly in your browser. Users do not need to install software, extensions, or apps to download Facebook videos.',
       tags: ['Browser Tool', 'Online'],
     },
   ];
@@ -1082,9 +1082,9 @@ function Features() {
     <section id="features" className="th-section th-section-alt">
       <div className="th-container">
         <div className="th-section-header">
-          <h2 className="th-section-title">Why Choose <span className="th-gradient-text">FBSaveHD</span> Facebook Video Downloader</h2>
+          <h2 className="th-section-title">Why Choose <span className="th-gradient-text">Facebook Video Downloader</span> Facebook Video Downloader</h2>
           <p className="th-section-desc">
-            FBSaveHD helps users download Facebook videos, reels, and public clips directly from their browser. The tool is built with a simple workflow and works smoothly on phones, tablets, laptops, and desktop browsers.
+            Facebook Video Downloader helps users download Facebook videos, reels, and public clips directly from their browser. The tool is built with a simple workflow and works smoothly on phones, tablets, laptops, and desktop browsers.
           </p>
         </div>
 
@@ -1119,22 +1119,22 @@ function InfoSection() {
     {
       icon: 'fas fa-copy',
       title: 'Videos shared on Facebook timeline posts',
-      desc: 'Copy the video link from any public Facebook timeline post and paste it into FBSaveHD to download it directly to your device in HD or SD quality.',
+      desc: 'Copy the video link from any public Facebook timeline post and paste it into Facebook Video Downloader to download it directly to your device in HD or SD quality.',
     },
     {
       icon: 'fas fa-flag',
       title: 'Media uploaded on Facebook pages',
-      desc: 'FBSaveHD supports videos uploaded on public Facebook pages. Simply copy the video link from the page and use the downloader to save it.',
+      desc: 'Facebook Video Downloader supports videos uploaded on public Facebook pages. Simply copy the video link from the page and use the downloader to save it.',
     },
     {
       icon: 'fas fa-users',
       title: 'Videos shared in public Facebook groups',
-      desc: 'Public Facebook group videos can also be downloaded using FBSaveHD. Make sure the group and video post are publicly accessible before copying the link.',
+      desc: 'Public Facebook group videos can also be downloaded using Facebook Video Downloader. Make sure the group and video post are publicly accessible before copying the link.',
     },
     {
       icon: 'fas fa-film',
       title: 'Facebook Reels and short-form videos',
-      desc: 'FBSaveHD fully supports downloading public Facebook Reels and short-form video clips shared by creators across Facebook.',
+      desc: 'Facebook Video Downloader fully supports downloading public Facebook Reels and short-form video clips shared by creators across Facebook.',
     },
   ];
 
@@ -1147,7 +1147,7 @@ function InfoSection() {
               Facebook Video Content You Can <span className="th-gradient-text">Download</span>
             </h2>
             <p className="th-about-text">
-              FBSaveHD supports downloading several types of public Facebook content. The tool works when the video post is publicly accessible.
+              Facebook Video Downloader supports downloading several types of public Facebook content. The tool works when the video post is publicly accessible.
             </p>
             <p className="th-about-text">
               Users commonly download videos shared on Facebook timeline posts, media uploaded on Facebook pages, videos shared in public Facebook groups, Facebook Reels and short-form videos, and public video clips shared by creators.
@@ -1223,7 +1223,7 @@ function Guides() {
       icon: 'fas fa-paste',
       num: '03',
       title: 'Paste in the Downloader',
-      desc: 'Paste the copied link into the FBSaveHD downloader tool.',
+      desc: 'Paste the copied link into the Facebook Video Downloader downloader tool.',
     },
     {
       icon: 'fas fa-download',
@@ -1239,7 +1239,7 @@ function Guides() {
         <div className="th-section-header">
           <h2 className="th-section-title">How to Download a <span className="th-gradient-text">Facebook Video or Reel</span></h2>
           <p className="th-section-desc">
-            Follow these simple steps to download Facebook videos using FBSaveHD. Once downloaded, you can watch the video anytime even without an internet connection.
+            Follow these simple steps to download Facebook videos using Facebook Video Downloader. Once downloaded, you can watch the video anytime even without an internet connection.
           </p>
         </div>
 
@@ -1283,7 +1283,7 @@ function Guides() {
               <div className="fb-content-card">
                 <h3>Facebook Video Content You Can Download</h3>
                 <p>
-                  FBSaveHD supports downloading several types of public Facebook content. The tool works when the video post is publicly accessible.
+                  Facebook Video Downloader supports downloading several types of public Facebook content. The tool works when the video post is publicly accessible.
                 </p>
                 <ul className="fb-bullet-list">
                   <li>Videos shared on Facebook timeline posts</li>
@@ -1306,12 +1306,12 @@ function Guides() {
 function FAQ() {
   const faqs = [
     {
-      q: 'Is FBSaveHD free to use?',
-      a: 'Yes. FBSaveHD is a free online tool that allows users to download Facebook videos without registration or subscription.',
+      q: 'Is Facebook Video Downloader free to use?',
+      a: 'Yes. Facebook Video Downloader is a free online tool that allows users to download Facebook videos without registration or subscription.',
     },
     {
       q: 'Can I download Facebook reels with this tool?',
-      a: 'Yes. FBSaveHD supports downloading public Facebook reels. Simply copy the reel link and paste it into the downloader.',
+      a: 'Yes. Facebook Video Downloader supports downloading public Facebook reels. Simply copy the reel link and paste it into the downloader.',
     },
     {
       q: 'Do I need to install any software?',
@@ -1319,7 +1319,7 @@ function FAQ() {
     },
     {
       q: 'Can I download Facebook videos on my phone?',
-      a: 'Yes. FBSaveHD works on Android phones and iPhones as long as you use a web browser.',
+      a: 'Yes. Facebook Video Downloader works on Android phones and iPhones as long as you use a web browser.',
     },
     {
       q: 'Why is my Facebook video not downloading?',
@@ -1331,7 +1331,7 @@ function FAQ() {
     },
     {
       q: 'Does the downloader store my videos?',
-      a: 'No. FBSaveHD does not keep copies of videos. The files are downloaded directly to your device.',
+      a: 'No. Facebook Video Downloader does not keep copies of videos. The files are downloaded directly to your device.',
     },
     {
       q: 'Can I download private Facebook videos?',
@@ -1345,7 +1345,7 @@ function FAQ() {
         <div className="th-section-header">
           <h2 className="th-section-title">Frequently Asked <span className="th-gradient-text">Questions</span></h2>
           <p className="th-section-desc">
-            These frequently asked questions cover the most common things users ask about FBSaveHD and downloading Facebook videos, clips, or Reels online.
+            These frequently asked questions cover the most common things users ask about Facebook Video Downloader and downloading Facebook videos, clips, or Reels online.
           </p>
         </div>
 
@@ -1398,9 +1398,9 @@ function Contact() {
     <section id="contact" className="th-section th-section-alt">
       <div className="th-container">
         <div className="th-section-header">
-          <h2 className="th-section-title">Contact the <span className="th-gradient-text">FBSaveHD</span> Team</h2>
+          <h2 className="th-section-title">Contact the <span className="th-gradient-text">Facebook Video Downloader</span> Team</h2>
           <p className="th-section-desc">
-            Have questions about FBSaveHD? Reach out for help with Facebook video links, mobile downloading, HD quality, or any other tool-related questions.
+            Have questions about Facebook Video Downloader? Reach out for help with Facebook video links, mobile downloading, HD quality, or any other tool-related questions.
           </p>
         </div>
 
@@ -1410,14 +1410,14 @@ function Contact() {
               <div className="th-contact-icon th-icon-blue"><i className="fas fa-link"></i></div>
               <div>
                 <h5 className="th-contact-info-title">Facebook Link Help</h5>
-                <p className="th-contact-info-line">Need help copying the correct Facebook video or Reel URL to use with FBSaveHD?</p>
+                <p className="th-contact-info-line">Need help copying the correct Facebook video or Reel URL to use with Facebook Video Downloader?</p>
               </div>
             </div>
             <div className="th-contact-info-card">
               <div className="th-contact-icon th-icon-green"><i className="fas fa-mobile-screen-button"></i></div>
               <div>
                 <h5 className="th-contact-info-title">Mobile Experience</h5>
-                <p className="th-contact-info-line">Questions about downloading Facebook videos on Android phones, iPhones, or tablets using FBSaveHD.</p>
+                <p className="th-contact-info-line">Questions about downloading Facebook videos on Android phones, iPhones, or tablets using Facebook Video Downloader.</p>
               </div>
             </div>
             <div className="th-contact-info-card">
@@ -1436,9 +1436,9 @@ function Contact() {
             </div>
 
             <div className="fb-side-card mt-3">
-              <h4>About FBSaveHD</h4>
+              <h4>About Facebook Video Downloader</h4>
               <p>
-                FBSaveHD is an online tool created to help users easily save Facebook videos and reels for offline viewing. Our goal is to make downloading public Facebook videos easy while maintaining respect for user privacy and content ownership.
+                Facebook Video Downloader is an online tool created to help users easily save Facebook videos and reels for offline viewing. Our goal is to make downloading public Facebook videos easy while maintaining respect for user privacy and content ownership.
               </p>
             </div>
           </div>
@@ -1502,12 +1502,12 @@ function Footer() {
                 <BrandLogo footer />
               </Link>
               <p className="th-footer-desc">
-                FBSaveHD is an online tool created to help users easily save Facebook videos and reels for offline viewing. The tool focuses on providing a simple interface, fast processing, and compatibility across multiple devices and browsers.
+                Facebook Video Downloader is an online tool created to help users easily save Facebook videos and reels for offline viewing. The tool focuses on providing a simple interface, fast processing, and compatibility across multiple devices and browsers.
               </p>
               <div className="th-footer-socials">
                 <a href="#" aria-label="Facebook" className="th-social-link"><i className="fab fa-facebook-f"></i></a>
                 <a href="#" aria-label="Twitter" className="th-social-link"><i className="fab fa-x-twitter"></i></a>
-                <a href="#" aria-label="Instagram" className="th-social-link"><i className="fab fa-instagram"></i></a>
+                <a href="https://www.instagram.com/fbvideodownloaders/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="th-social-link"><i className="fab fa-instagram"></i></a>
                 <a href="#" aria-label="YouTube" className="th-social-link"><i className="fab fa-youtube"></i></a>
               </div>
             </div>
@@ -1553,7 +1553,7 @@ function Footer() {
             <div className="th-footer-contact-col">
               <h5>Quick Notes</h5>
               <p className="th-footer-newsletter-text">
-                FBSaveHD is an independent tool with no connection to Facebook or the Meta group. This service is intended for personal use only. Respect copyright, creator ownership, and platform rules.
+                Facebook Video Downloader is an independent tool with no connection to Facebook or the Meta group. This service is intended for personal use only. Respect copyright, creator ownership, and platform rules.
               </p>
               <div className="th-footer-contact-items">
                 <div className="th-footer-contact-item">
@@ -1698,7 +1698,7 @@ function FloatingSocials() {
     { href: 'https://www.facebook.com/',  icon: 'fab fa-facebook-f', label: 'Facebook',  cls: 'th-float-social--fb' },
     { href: 'https://wa.me/',             icon: 'fab fa-whatsapp',   label: 'WhatsApp',  cls: 'th-float-social--wa' },
     { href: 'https://www.youtube.com/',   icon: 'fab fa-youtube',    label: 'YouTube',   cls: 'th-float-social--yt' },
-    { href: 'https://www.instagram.com/', icon: 'fab fa-instagram',  label: 'Instagram', cls: 'th-float-social--ig' },
+    { href: 'https://www.instagram.com/fbvideodownloaders/', icon: 'fab fa-instagram',  label: 'Instagram', cls: 'th-float-social--ig' },
     { href: 'https://x.com/',             icon: 'fab fa-x-twitter',  label: 'X / Twitter', cls: 'th-float-social--tw' },
     { href: 'https://www.pinterest.com/', icon: 'fab fa-pinterest-p',label: 'Pinterest', cls: 'th-float-social--pt' },
   ];
