@@ -13,6 +13,7 @@ import BlogPostFacebookReelsCompleteGuide from './pages/BlogPostFacebookReelsCom
 import BlogPostUnderstandingFormatsQuality from './pages/BlogPostUnderstandingFormatsQuality';
 import UserGuide from './pages/UserGuide';
 import SEO from './components/SEO';
+import { buildHomeJsonLd } from './data/pageSchemas';
 
 const LOGO_SRC = '/images/logo.webp';
 
@@ -1508,7 +1509,7 @@ function Footer() {
                 <a href="#" aria-label="Facebook" className="th-social-link"><i className="fab fa-facebook-f"></i></a>
                 <a href="#" aria-label="Twitter" className="th-social-link"><i className="fab fa-x-twitter"></i></a>
                 <a href="https://www.instagram.com/fbvideodownloaders/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="th-social-link"><i className="fab fa-instagram"></i></a>
-                <a href="#" aria-label="YouTube" className="th-social-link"><i className="fab fa-youtube"></i></a>
+                <a href="https://www.youtube.com/@FacebookVideoDownloader-n8h" target="_blank" rel="noopener noreferrer" aria-label="YouTube" className="th-social-link"><i className="fab fa-youtube"></i></a>
               </div>
             </div>
 
@@ -1614,64 +1615,6 @@ function ScrollTopBtn() {
 }
 
 function HomePage() {
-  useEffect(() => {
-    // Add structured data for home page
-    const addStructuredData = () => {
-      // Remove existing structured data if any
-      const existing = document.querySelectorAll('script[type="application/ld+json"]');
-      existing.forEach(el => {
-        if (el.textContent.includes('@type') && !el.textContent.includes('WebSite')) {
-          el.remove();
-        }
-      });
-
-      // Add Organization schema
-      const organizationSchema = {
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "Facebook Video Downloader HD",
-        "url": "https://fbvideodownloaders.com",
-        "logo": "https://fbvideodownloaders.com/images/logo.webp",
-        "description": "Free online tool to download Facebook videos, Reels, and public clips in HD quality",
-        "sameAs": [
-          "https://www.facebook.com",
-          "https://twitter.com"
-        ]
-      };
-
-      const orgScript = document.createElement('script');
-      orgScript.type = 'application/ld+json';
-      orgScript.textContent = JSON.stringify(organizationSchema);
-      document.head.appendChild(orgScript);
-
-      // Add SoftwareApplication schema
-      const softwareSchema = {
-        "@context": "https://schema.org",
-        "@type": "SoftwareApplication",
-        "name": "Facebook Video Downloader",
-        "applicationCategory": "MultimediaApplication",
-        "operatingSystem": "Web Browser",
-        "offers": {
-          "@type": "Offer",
-          "price": "0",
-          "priceCurrency": "USD"
-        },
-        "aggregateRating": {
-          "@type": "AggregateRating",
-          "ratingValue": "4.8",
-          "ratingCount": "1250"
-        }
-      };
-
-      const softwareScript = document.createElement('script');
-      softwareScript.type = 'application/ld+json';
-      softwareScript.textContent = JSON.stringify(softwareSchema);
-      document.head.appendChild(softwareScript);
-    };
-
-    addStructuredData();
-  }, []);
-
   return (
     <>
       <SEO
@@ -1679,6 +1622,7 @@ function HomePage() {
         description="Download any public Facebook video or Reel in HD quality online for free. No login, no app needed. Paste the FB video link and save it instantly on Android, iPhone, or PC."
         keywords="facebook video downloader, download facebook videos, fb video downloader, facebook reels downloader, save facebook video online, download fb video hd, free facebook downloader, download fb reels, facebook video saver, fb video download"
         ogUrl="https://fbvideodownloaders.com/"
+        jsonLd={buildHomeJsonLd()}
       />
       <Hero />
       <TrustedBy />
@@ -1697,7 +1641,7 @@ function FloatingSocials() {
   const socials = [
     { href: 'https://www.facebook.com/',  icon: 'fab fa-facebook-f', label: 'Facebook',  cls: 'th-float-social--fb' },
     { href: 'https://wa.me/',             icon: 'fab fa-whatsapp',   label: 'WhatsApp',  cls: 'th-float-social--wa' },
-    { href: 'https://www.youtube.com/',   icon: 'fab fa-youtube',    label: 'YouTube',   cls: 'th-float-social--yt' },
+    { href: 'https://www.youtube.com/@FacebookVideoDownloader-n8h', icon: 'fab fa-youtube', label: 'YouTube', cls: 'th-float-social--yt' },
     { href: 'https://www.instagram.com/fbvideodownloaders/', icon: 'fab fa-instagram',  label: 'Instagram', cls: 'th-float-social--ig' },
     { href: 'https://x.com/',             icon: 'fab fa-x-twitter',  label: 'X / Twitter', cls: 'th-float-social--tw' },
     { href: 'https://www.pinterest.com/', icon: 'fab fa-pinterest-p',label: 'Pinterest', cls: 'th-float-social--pt' },

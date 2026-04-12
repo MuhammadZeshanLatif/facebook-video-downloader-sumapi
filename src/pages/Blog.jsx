@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
 import { BLOG_POSTS } from '../data/blogPostsList';
+import { buildBlogIndexJsonLd } from '../data/pageSchemas';
 
 const CATEGORY_ICONS = {
   Tips:       'fa-lightbulb',
@@ -22,6 +23,7 @@ function Blog() {
         description="Read expert guides and tutorials on how to download Facebook videos and Reels in HD quality. Tips, tricks, and best practices for saving Facebook content easily and safely."
         keywords="facebook video downloader blog, download facebook video guide, facebook reels tips, fb video download tutorial, how to download facebook videos, facebook video tips"
         ogUrl="https://fbvideodownloaders.com/blog"
+        jsonLd={buildBlogIndexJsonLd()}
       />
 
       <div className="th-section" style={{ paddingTop: '110px' }}>

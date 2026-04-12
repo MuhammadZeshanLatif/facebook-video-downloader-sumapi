@@ -1,7 +1,8 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
 import { BLOG_POSTS, SITE_ORIGIN } from '../data/blogPostsList';
+import { buildBlogArticleJsonLd } from '../data/pageSchemas';
 
 const SLUG = 'understanding-facebook-video-formats-and-quality';
 const POST_PATH = `/blog/${SLUG}`;
@@ -29,35 +30,6 @@ export default function BlogPostUnderstandingFormatsQuality() {
   const latest = [...BLOG_POSTS].sort((a, b) => new Date(b.date) - new Date(a.date)).slice(0, 5);
   const related = BLOG_POSTS.filter((p) => p.slug !== SLUG).slice(0, 4);
 
-  useEffect(() => {
-    const blogPosting = {
-      '@context': 'https://schema.org',
-      '@type': 'BlogPosting',
-      headline: 'Understanding Facebook Video Formats and Quality',
-      image: [`${SITE_ORIGIN}${FEATURED_IMAGE}`],
-      datePublished: `${PUBLISHED}T08:00:00+00:00`,
-      dateModified: `${PUBLISHED}T08:00:00+00:00`,
-      author: { '@type': 'Organization', name: 'FBSave HD' },
-      publisher: {
-        '@type': 'Organization',
-        name: 'FBSave HD',
-        logo: { '@type': 'ImageObject', url: `${SITE_ORIGIN}/images/logo.webp` },
-      },
-      description:
-        'Understanding Facebook Video Formats and Quality: simple guide to format types, HD vs SD, compression, and settings.',
-      mainEntityOfPage: { '@type': 'WebPage', '@id': POST_URL },
-    };
-    let el = document.getElementById('ld-blog-formats-quality');
-    if (!el) {
-      el = document.createElement('script');
-      el.id = 'ld-blog-formats-quality';
-      el.type = 'application/ld+json';
-      document.head.appendChild(el);
-    }
-    el.textContent = JSON.stringify(blogPosting);
-    return () => document.getElementById('ld-blog-formats-quality')?.remove();
-  }, []);
-
   return (
     <>
       <SEO
@@ -68,6 +40,16 @@ export default function BlogPostUnderstandingFormatsQuality() {
         type="article"
         articlePublishedTime={`${PUBLISHED}T08:00:00+00:00`}
         articleModifiedTime={`${PUBLISHED}T08:00:00+00:00`}
+        jsonLd={buildBlogArticleJsonLd({
+          idPrefix: 'formats-quality',
+          postUrl: POST_URL,
+          headline: 'Understanding Facebook Video Formats and Quality',
+          description:
+            'Understanding Facebook Video Formats and Quality: simple guide to format types, HD vs SD, compression, and settings.',
+          images: [`${SITE_ORIGIN}${FEATURED_IMAGE}`],
+          published: PUBLISHED,
+          breadcrumbTitle: 'Understanding Facebook Video Formats and Quality',
+        })}
       />
 
       <div className="th-section blog-article-page" style={{ paddingTop: '120px' }}>

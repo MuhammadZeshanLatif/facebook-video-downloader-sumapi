@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import SEO from '../components/SEO';
+import { buildUserGuideJsonLd } from '../data/pageSchemas';
 
 function UserGuide() {
   const steps = [
@@ -84,6 +85,7 @@ function UserGuide() {
         description="Step-by-step guide to download Facebook videos and Reels in HD for free. Works on Android, iPhone, PC, and Mac without any app or Facebook login required."
         keywords="how to download facebook videos, fb video downloader guide, download facebook reels step by step, save facebook video without app, facebook video downloader tutorial, download fb video mobile"
         ogUrl="https://fbvideodownloaders.com/user-guide"
+        jsonLd={buildUserGuideJsonLd()}
       />
 
       {/* Hero */}
@@ -94,6 +96,25 @@ function UserGuide() {
             <p className="th-section-desc">
               This FB video downloader user guide explains the fastest way to download Facebook videos using a browser. It works on both mobile and desktop without an app.
               Users can save public Facebook videos, Reels, and clips in just a few simple steps.
+            </p>
+          </div>
+
+          <div className="fb-youtube-embed">
+            <h2 className="th-section-title" style={{ fontSize: 'clamp(1.25rem, 3vw, 1.65rem)', marginBottom: '1rem', textAlign: 'center' }}>
+              Video tutorial: <span className="th-gradient-text">download step by step</span>
+            </h2>
+            <div className="fb-youtube-embed-inner">
+              <iframe
+                src="https://www.youtube.com/embed/MrANb2fytwU"
+                title="How to download Facebook videos — FBSave HD guide"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="strict-origin-when-cross-origin"
+              />
+            </div>
+            <p className="fb-youtube-embed-caption">
+              Prefer watching? Follow the same steps in the video, then use the written steps below on any device.
             </p>
           </div>
 

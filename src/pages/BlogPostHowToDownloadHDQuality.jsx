@@ -1,7 +1,8 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
 import { BLOG_POSTS, SITE_ORIGIN } from '../data/blogPostsList';
+import { buildBlogArticleJsonLd } from '../data/pageSchemas';
 
 const SLUG = 'how-to-download-facebook-videos-in-hd-quality-complete-guide';
 const POST_PATH = `/blog/${SLUG}`;
@@ -29,56 +30,6 @@ function BlogPostHowToDownloadHDQuality() {
   const latest = [...BLOG_POSTS].sort((a, b) => new Date(b.date) - new Date(a.date)).slice(0, 5);
   const related = BLOG_POSTS.filter((p) => p.slug !== SLUG).slice(0, 4);
 
-  useEffect(() => {
-    const blogPosting = {
-      '@context': 'https://schema.org',
-      '@type': 'BlogPosting',
-      headline: 'How to Download Facebook Videos in HD Quality (Complete Guide)',
-      image: [`${SITE_ORIGIN}${FEATURED_IMAGE}`],
-      datePublished: `${PUBLISHED}T08:00:00+00:00`,
-      dateModified: `${PUBLISHED}T08:00:00+00:00`,
-      author: { '@type': 'Organization', name: 'FBSave HD' },
-      publisher: {
-        '@type': 'Organization',
-        name: 'FBSave HD',
-        logo: { '@type': 'ImageObject', url: `${SITE_ORIGIN}/images/logo.webp` },
-      },
-      description:
-        'Learn how to download Facebook videos in HD quality using simple and fast methods. Works on mobile, PC, and supports reels.',
-      mainEntityOfPage: { '@type': 'WebPage', '@id': POST_URL },
-      keywords:
-        'how to download facebook videos in hd quality, facebook video downloader, download facebook reels in hd, facebook video download guide',
-    };
-
-    const breadcrumb = {
-      '@context': 'https://schema.org',
-      '@type': 'BreadcrumbList',
-      itemListElement: [
-        { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE_ORIGIN}/` },
-        { '@type': 'ListItem', position: 2, name: 'Blog', item: `${SITE_ORIGIN}/blog` },
-        { '@type': 'ListItem', position: 3, name: 'How to Download Facebook Videos in HD Quality (Complete Guide)', item: POST_URL },
-      ],
-    };
-
-    const inject = (id, data) => {
-      let el = document.getElementById(id);
-      if (!el) {
-        el = document.createElement('script');
-        el.id = id;
-        el.type = 'application/ld+json';
-        document.head.appendChild(el);
-      }
-      el.textContent = JSON.stringify(data);
-    };
-
-    inject('ld-blog-hd-guide', blogPosting);
-    inject('ld-breadcrumb-hd-guide', breadcrumb);
-
-    return () => {
-      ['ld-blog-hd-guide', 'ld-breadcrumb-hd-guide'].forEach((id) => document.getElementById(id)?.remove());
-    };
-  }, []);
-
   return (
     <>
       <SEO
@@ -90,6 +41,18 @@ function BlogPostHowToDownloadHDQuality() {
         type="article"
         articlePublishedTime={`${PUBLISHED}T08:00:00+00:00`}
         articleModifiedTime={`${PUBLISHED}T08:00:00+00:00`}
+        jsonLd={buildBlogArticleJsonLd({
+          idPrefix: 'hd-guide',
+          postUrl: POST_URL,
+          headline: 'How to Download Facebook Videos in HD Quality (Complete Guide)',
+          description:
+            'Learn how to download Facebook videos in HD quality using simple and fast methods. Works on mobile, PC, and supports reels.',
+          images: [`${SITE_ORIGIN}${FEATURED_IMAGE}`],
+          published: PUBLISHED,
+          keywords:
+            'how to download facebook videos in hd quality, facebook video downloader, download facebook reels in hd, facebook video download guide',
+          breadcrumbTitle: 'How to Download Facebook Videos in HD Quality (Complete Guide)',
+        })}
       />
 
       <div className="th-section blog-article-page" style={{ paddingTop: '120px' }}>

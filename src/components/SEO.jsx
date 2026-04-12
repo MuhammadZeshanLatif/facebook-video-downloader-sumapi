@@ -21,6 +21,8 @@ const SEO = ({
   articlePublishedTime,
   articleModifiedTime,
   articleAuthor,
+  /** @type {{ id: string, data: Record<string, unknown> }[] | null | undefined} */
+  jsonLd,
 }) => {
   const location = useLocation();
   const resolvedTitle = title || DEFAULT_TITLE;
@@ -67,8 +69,8 @@ const SEO = ({
 
     // ── Twitter ────────────────────────────────────────────
     setMeta('name', 'twitter:card',        'summary_large_image');
-    setMeta('name', 'twitter:site',        '@Facebook Video Downloader');
-    setMeta('name', 'twitter:creator',     '@Facebook Video Downloader');
+    setMeta('name', 'twitter:site',        '@fbvideodownloads');
+    setMeta('name', 'twitter:creator',     '@fbvideodownloads');
     setMeta('name', 'twitter:title',       resolvedTitle);
     setMeta('name', 'twitter:description', resolvedDesc);
     setMeta('name', 'twitter:image',       resolvedImg);
@@ -108,6 +110,29 @@ const SEO = ({
     articleModifiedTime,
     articleAuthor,
   ]);
+
+  const jsonLdKey =
+    jsonLd && jsonLd.length > 0
+      ? JSON.stringify(jsonLd.map((b) => [b.id, b.data]))
+      : '';
+
+  useEffect(() => {
+    const removeManaged = () => {
+      document.querySelectorAll('script[data-seo-jsonld]').forEach((n) => n.remove());
+    };
+    removeManaged();
+    if (!jsonLd || !Array.isArray(jsonLd) || jsonLd.length === 0) {
+      return removeManaged;
+    }
+    jsonLd.forEach((block) => {
+      const script = document.createElement('script');
+      script.type = 'application/ld+json';
+      script.setAttribute('data-seo-jsonld', block.id || 'schema');
+      script.textContent = JSON.stringify(block.data);
+      document.head.appendChild(script);
+    });
+    return removeManaged;
+  }, [jsonLdKey, location.pathname]);
 
   return null;
 };

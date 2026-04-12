@@ -1,7 +1,8 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
 import { BLOG_POSTS, SITE_ORIGIN } from '../data/blogPostsList';
+import { buildBlogArticleJsonLd } from '../data/pageSchemas';
 
 const SLUG = 'facebook-video-downloader-mobile-vs-desktop-which-is-better';
 const POST_PATH = `/blog/${SLUG}`;
@@ -29,56 +30,6 @@ function BlogPostMobileVsDesktop() {
   const latest = [...BLOG_POSTS].sort((a, b) => new Date(b.date) - new Date(a.date)).slice(0, 5);
   const related = BLOG_POSTS.filter((p) => p.slug !== SLUG).slice(0, 4);
 
-  useEffect(() => {
-    const blogPosting = {
-      '@context': 'https://schema.org',
-      '@type': 'BlogPosting',
-      headline: 'Facebook Video Downloader: Mobile vs Desktop (Which Is Better?)',
-      image: [`${SITE_ORIGIN}${FEATURED_IMAGE}`],
-      datePublished: `${PUBLISHED}T08:00:00+00:00`,
-      dateModified: `${PUBLISHED}T08:00:00+00:00`,
-      author: { '@type': 'Organization', name: 'FBSave HD' },
-      publisher: {
-        '@type': 'Organization',
-        name: 'FBSave HD',
-        logo: { '@type': 'ImageObject', url: `${SITE_ORIGIN}/images/logo.webp` },
-      },
-      description:
-        'Facebook Video Downloader: Mobile vs Desktop comparison for speed, stability, quality, and real-world use cases.',
-      mainEntityOfPage: { '@type': 'WebPage', '@id': POST_URL },
-      keywords:
-        'facebook video downloader mobile vs desktop, mobile vs desktop facebook video download, facebook reels download mobile desktop',
-    };
-
-    const breadcrumb = {
-      '@context': 'https://schema.org',
-      '@type': 'BreadcrumbList',
-      itemListElement: [
-        { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE_ORIGIN}/` },
-        { '@type': 'ListItem', position: 2, name: 'Blog', item: `${SITE_ORIGIN}/blog` },
-        { '@type': 'ListItem', position: 3, name: 'Facebook Video Downloader: Mobile vs Desktop (Which Is Better?)', item: POST_URL },
-      ],
-    };
-
-    const inject = (id, data) => {
-      let el = document.getElementById(id);
-      if (!el) {
-        el = document.createElement('script');
-        el.id = id;
-        el.type = 'application/ld+json';
-        document.head.appendChild(el);
-      }
-      el.textContent = JSON.stringify(data);
-    };
-
-    inject('ld-blog-mobile-desktop', blogPosting);
-    inject('ld-breadcrumb-mobile-desktop', breadcrumb);
-
-    return () => {
-      ['ld-blog-mobile-desktop', 'ld-breadcrumb-mobile-desktop'].forEach((id) => document.getElementById(id)?.remove());
-    };
-  }, []);
-
   return (
     <>
       <SEO
@@ -90,6 +41,18 @@ function BlogPostMobileVsDesktop() {
         type="article"
         articlePublishedTime={`${PUBLISHED}T08:00:00+00:00`}
         articleModifiedTime={`${PUBLISHED}T08:00:00+00:00`}
+        jsonLd={buildBlogArticleJsonLd({
+          idPrefix: 'mobile-desktop',
+          postUrl: POST_URL,
+          headline: 'Facebook Video Downloader: Mobile vs Desktop (Which Is Better?)',
+          description:
+            'Facebook Video Downloader: Mobile vs Desktop comparison for speed, stability, quality, and real-world use cases.',
+          images: [`${SITE_ORIGIN}${FEATURED_IMAGE}`],
+          published: PUBLISHED,
+          keywords:
+            'facebook video downloader mobile vs desktop, mobile vs desktop facebook video download, facebook reels download mobile desktop',
+          breadcrumbTitle: 'Facebook Video Downloader: Mobile vs Desktop (Which Is Better?)',
+        })}
       />
 
       <div className="th-section blog-article-page" style={{ paddingTop: '120px' }}>

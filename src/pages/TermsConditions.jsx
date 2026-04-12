@@ -1,5 +1,6 @@
 import React from 'react';
 import SEO from '../components/SEO';
+import { buildTermsJsonLd } from '../data/pageSchemas';
 
 function TermsConditions() {
   return (
@@ -9,6 +10,7 @@ function TermsConditions() {
         description="Read the terms of service for FBSave HD. Understand the rules and guidelines for using our free tool to download public Facebook videos and Reels responsibly."
         keywords="facebook video downloader terms of service, fbsave hd terms, terms and conditions, usage policy, facebook downloader legal"
         ogUrl="https://fbvideodownloaders.com/terms-conditions"
+        jsonLd={buildTermsJsonLd()}
       />
       <div className="th-section" style={{ paddingTop: '120px' }}>
       <div className="th-container">

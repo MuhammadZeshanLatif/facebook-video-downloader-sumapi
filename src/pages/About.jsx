@@ -1,5 +1,6 @@
 import React from 'react';
 import SEO from '../components/SEO';
+import { buildAboutJsonLd } from '../data/pageSchemas';
 
 function About() {
   return (
@@ -9,6 +10,7 @@ function About() {
         description="FBSave HD is a free online Facebook video downloader. Learn how our tool helps you download any public Facebook video or Reel in HD quality without login or app installation."
         keywords="about facebook video downloader, fbsave hd, free facebook downloader, about us, facebook video tool, fb video saver"
         ogUrl="https://fbvideodownloaders.com/about"
+        jsonLd={buildAboutJsonLd()}
       />
       <div className="th-section" style={{ paddingTop: '120px' }}>
       <div className="th-container">

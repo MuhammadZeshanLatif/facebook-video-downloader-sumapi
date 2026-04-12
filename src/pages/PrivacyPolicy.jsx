@@ -1,5 +1,6 @@
 import React from 'react';
 import SEO from '../components/SEO';
+import { buildPrivacyJsonLd } from '../data/pageSchemas';
 
 function PrivacyPolicy() {
   return (
@@ -9,6 +10,7 @@ function PrivacyPolicy() {
         description="Read FBSave HD's privacy policy to understand how we handle your data. We do not store your videos or require your Facebook login. Your privacy is our priority."
         keywords="facebook video downloader privacy policy, fbsave hd privacy, data protection, no login required, facebook downloader safe"
         ogUrl="https://fbvideodownloaders.com/privacy-policy"
+        jsonLd={buildPrivacyJsonLd()}
       />
       <div className="th-section" style={{ paddingTop: '120px' }}>
       <div className="th-container">

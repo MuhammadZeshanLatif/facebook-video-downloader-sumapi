@@ -1,13 +1,14 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
 import { BLOG_POSTS, SITE_ORIGIN } from '../data/blogPostsList';
+import { buildBlogArticleJsonLd } from '../data/pageSchemas';
 
 const SLUG = 'top-10-tips-facebook-video-downloading';
 const POST_PATH = `/blog/${SLUG}`;
 const POST_URL = `${SITE_ORIGIN}${POST_PATH}`;
 const PUBLISHED = '2026-04-04';
-const OG_IMAGE = `${window.location.origin}/images/og-image.png`;
+const OG_IMAGE = `${SITE_ORIGIN}/images/og-image.png`;
 
 const toc = [
   { id: 'what-is-facebook-video-downloading', label: 'What is Facebook Video Downloading?' },
@@ -37,112 +38,6 @@ function BlogPostTop10Tips() {
   const latest = [...BLOG_POSTS].sort((a, b) => new Date(b.date) - new Date(a.date)).slice(0, 5);
   const related = BLOG_POSTS.filter((p) => p.slug !== SLUG).slice(0, 4);
 
-  useEffect(() => {
-    const blogPosting = {
-      '@context': 'https://schema.org',
-      '@type': 'BlogPosting',
-      headline: 'Top 10 Tips for Facebook Video Downloading',
-      image: [OG_IMAGE],
-      datePublished: `${PUBLISHED}T08:00:00+00:00`,
-      dateModified: `${PUBLISHED}T08:00:00+00:00`,
-      author: {
-        '@type': 'Organization',
-        name: 'FBSave HD',
-      },
-      publisher: {
-        '@type': 'Organization',
-        name: 'FBSave HD',
-        logo: {
-          '@type': 'ImageObject',
-          url: `${SITE_ORIGIN}/images/logo.webp`,
-        },
-      },
-      description:
-        'Many people try to download a Facebook video and it fails. The link looks correct, but nothing happens. Sometimes the video downloads in low quality, or the sound is missing.',
-      mainEntityOfPage: {
-        '@type': 'WebPage',
-        '@id': POST_URL,
-      },
-      keywords:
-        'Facebook video downloading, download Facebook video, Facebook reels, HD quality, MP4, online tools',
-    };
-
-    const breadcrumb = {
-      '@context': 'https://schema.org',
-      '@type': 'BreadcrumbList',
-      itemListElement: [
-        { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE_ORIGIN}/` },
-        { '@type': 'ListItem', position: 2, name: 'Blog', item: `${SITE_ORIGIN}/blog` },
-        {
-          '@type': 'ListItem',
-          position: 3,
-          name: 'Top 10 Tips for Facebook Video Downloading',
-          item: POST_URL,
-        },
-      ],
-    };
-
-    const faqPage = {
-      '@context': 'https://schema.org',
-      '@type': 'FAQPage',
-      mainEntity: [
-        {
-          '@type': 'Question',
-          name: 'Can I download Facebook videos without an app?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'Yes, online tools work directly in browsers.',
-          },
-        },
-        {
-          '@type': 'Question',
-          name: 'Why is my video low quality?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'You may have selected SD or the original video is low quality.',
-          },
-        },
-        {
-          '@type': 'Question',
-          name: 'Can I download Facebook reels?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'Yes, but some tools may not support them.',
-          },
-        },
-        {
-          '@type': 'Question',
-          name: 'Is it safe to use downloaders?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'Yes, if they do not ask for login.',
-          },
-        },
-      ],
-    };
-
-    const inject = (id, data) => {
-      let el = document.getElementById(id);
-      if (!el) {
-        el = document.createElement('script');
-        el.id = id;
-        el.type = 'application/ld+json';
-        document.head.appendChild(el);
-      }
-      el.textContent = JSON.stringify(data);
-    };
-
-    inject('ld-blog-top10', blogPosting);
-    inject('ld-breadcrumb-top10', breadcrumb);
-    inject('ld-faq-top10', faqPage);
-
-    return () => {
-      ['ld-blog-top10', 'ld-breadcrumb-top10', 'ld-faq-top10'].forEach((id) => {
-        document.getElementById(id)?.remove();
-      });
-    };
-  }, []);
-
   return (
     <>
       <SEO
@@ -155,6 +50,36 @@ function BlogPostTop10Tips() {
         articlePublishedTime={`${PUBLISHED}T08:00:00+00:00`}
         articleModifiedTime={`${PUBLISHED}T08:00:00+00:00`}
         articleAuthor="FBSave HD"
+        jsonLd={buildBlogArticleJsonLd({
+          idPrefix: 'top10',
+          postUrl: POST_URL,
+          headline: 'Top 10 Tips for Facebook Video Downloading',
+          description:
+            'Many people try to download a Facebook video and it fails. The link looks correct, but nothing happens. Sometimes the video downloads in low quality, or the sound is missing.',
+          images: [`${SITE_ORIGIN}/images/top-10-tips-for-facebook-video-downloading.webp`],
+          published: PUBLISHED,
+          keywords:
+            'Facebook video downloading, download Facebook video, Facebook reels, HD quality, MP4, online tools',
+          breadcrumbTitle: 'Top 10 Tips for Facebook Video Downloading',
+          faqEntities: [
+            {
+              name: 'Can I download Facebook videos without an app?',
+              text: 'Yes, online tools work directly in browsers.',
+            },
+            {
+              name: 'Why is my video low quality?',
+              text: 'You may have selected SD or the original video is low quality.',
+            },
+            {
+              name: 'Can I download Facebook reels?',
+              text: 'Yes, but some tools may not support them.',
+            },
+            {
+              name: 'Is it safe to use downloaders?',
+              text: 'Yes, if they do not ask for login.',
+            },
+          ],
+        })}
       />
 
       <div className="th-section blog-article-page" style={{ paddingTop: '120px' }}>

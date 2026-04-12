@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import SEO from '../components/SEO';
+import { buildContactJsonLd } from '../data/pageSchemas';
 
 function ContactPage() {
   const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' });
@@ -28,6 +29,7 @@ function ContactPage() {
         description="Have questions about downloading Facebook videos or Reels? Contact the FBSave HD support team for help, feedback, or inquiries. We respond within 24 hours."
         keywords="contact facebook video downloader, fbsave hd support, facebook downloader help, fb video downloader contact, support"
         ogUrl="https://fbvideodownloaders.com/contact"
+        jsonLd={buildContactJsonLd()}
       />
       <div className="th-section" style={{ paddingTop: '120px' }}>
       <div className="th-container">

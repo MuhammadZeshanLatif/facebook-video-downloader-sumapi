@@ -1,7 +1,8 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
 import { BLOG_POSTS, SITE_ORIGIN } from '../data/blogPostsList';
+import { buildBlogArticleJsonLd } from '../data/pageSchemas';
 
 const SLUG = 'facebook-reels-complete-download-guide-hd-mobile-desktop';
 const POST_PATH = `/blog/${SLUG}`;
@@ -29,56 +30,6 @@ function BlogPostFacebookReelsCompleteGuide() {
   const latest = [...BLOG_POSTS].sort((a, b) => new Date(b.date) - new Date(a.date)).slice(0, 5);
   const related = BLOG_POSTS.filter((p) => p.slug !== SLUG).slice(0, 4);
 
-  useEffect(() => {
-    const blogPosting = {
-      '@context': 'https://schema.org',
-      '@type': 'BlogPosting',
-      headline: 'Facebook Reels: Complete Download Guide (HD, Mobile & Desktop)',
-      image: [`${SITE_ORIGIN}${FEATURED_IMAGE}`],
-      datePublished: `${PUBLISHED}T08:00:00+00:00`,
-      dateModified: `${PUBLISHED}T08:00:00+00:00`,
-      author: { '@type': 'Organization', name: 'FBSave HD' },
-      publisher: {
-        '@type': 'Organization',
-        name: 'FBSave HD',
-        logo: { '@type': 'ImageObject', url: `${SITE_ORIGIN}/images/logo.webp` },
-      },
-      description:
-        'Learn how to download Facebook Reels in HD on mobile and desktop. Follow this complete guide with easy steps, tips, and safe methods using a browser-based tool.',
-      mainEntityOfPage: { '@type': 'WebPage', '@id': POST_URL },
-      keywords:
-        'facebook reels complete download guide, download facebook reels hd, facebook reels mobile desktop, Facebook Video Downloader reels downloader',
-    };
-
-    const breadcrumb = {
-      '@context': 'https://schema.org',
-      '@type': 'BreadcrumbList',
-      itemListElement: [
-        { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE_ORIGIN}/` },
-        { '@type': 'ListItem', position: 2, name: 'Blog', item: `${SITE_ORIGIN}/blog` },
-        { '@type': 'ListItem', position: 3, name: 'Facebook Reels: Complete Download Guide (HD, Mobile & Desktop)', item: POST_URL },
-      ],
-    };
-
-    const inject = (id, data) => {
-      let el = document.getElementById(id);
-      if (!el) {
-        el = document.createElement('script');
-        el.id = id;
-        el.type = 'application/ld+json';
-        document.head.appendChild(el);
-      }
-      el.textContent = JSON.stringify(data);
-    };
-
-    inject('ld-blog-reels-guide', blogPosting);
-    inject('ld-breadcrumb-reels-guide', breadcrumb);
-
-    return () => {
-      ['ld-blog-reels-guide', 'ld-breadcrumb-reels-guide'].forEach((id) => document.getElementById(id)?.remove());
-    };
-  }, []);
-
   return (
     <>
       <SEO
@@ -90,6 +41,18 @@ function BlogPostFacebookReelsCompleteGuide() {
         type="article"
         articlePublishedTime={`${PUBLISHED}T08:00:00+00:00`}
         articleModifiedTime={`${PUBLISHED}T08:00:00+00:00`}
+        jsonLd={buildBlogArticleJsonLd({
+          idPrefix: 'reels-guide',
+          postUrl: POST_URL,
+          headline: 'Facebook Reels: Complete Download Guide (HD, Mobile & Desktop)',
+          description:
+            'Learn how to download Facebook Reels in HD on mobile and desktop. Follow this complete guide with easy steps, tips, and safe methods using a browser-based tool.',
+          images: [`${SITE_ORIGIN}${FEATURED_IMAGE}`],
+          published: PUBLISHED,
+          keywords:
+            'facebook reels complete download guide, download facebook reels hd, facebook reels mobile desktop, Facebook Video Downloader reels downloader',
+          breadcrumbTitle: 'Facebook Reels: Complete Download Guide (HD, Mobile & Desktop)',
+        })}
       />
 
       <div className="th-section blog-article-page" style={{ paddingTop: '120px' }}>

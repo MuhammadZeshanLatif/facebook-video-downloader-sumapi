@@ -1,7 +1,8 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
 import { BLOG_POSTS, SITE_ORIGIN } from '../data/blogPostsList';
+import { buildBlogArticleJsonLd } from '../data/pageSchemas';
 
 const SLUG = 'is-it-legal-to-download-facebook-videos-complete-guide';
 const POST_PATH = `/blog/${SLUG}`;
@@ -28,56 +29,6 @@ function BlogPostIsItLegalFacebookVideos() {
   const latest = [...BLOG_POSTS].sort((a, b) => new Date(b.date) - new Date(a.date)).slice(0, 5);
   const related = BLOG_POSTS.filter((p) => p.slug !== SLUG).slice(0, 4);
 
-  useEffect(() => {
-    const blogPosting = {
-      '@context': 'https://schema.org',
-      '@type': 'BlogPosting',
-      headline: 'Is It Legal to Download Facebook Videos? (Complete Guide)',
-      image: [`${SITE_ORIGIN}${FEATURED_IMAGE}`],
-      datePublished: `${PUBLISHED}T08:00:00+00:00`,
-      dateModified: `${PUBLISHED}T08:00:00+00:00`,
-      author: { '@type': 'Organization', name: 'FBSave HD' },
-      publisher: {
-        '@type': 'Organization',
-        name: 'FBSave HD',
-        logo: { '@type': 'ImageObject', url: `${SITE_ORIGIN}/images/logo.webp` },
-      },
-      description:
-        'Is it legal to download Facebook videos? This complete guide explains personal use, copyright, fair use, and what is safe or risky.',
-      mainEntityOfPage: { '@type': 'WebPage', '@id': POST_URL },
-      keywords:
-        'is it legal to download facebook videos, facebook video download legality, facebook copyright, fair use facebook videos, personal use video downloading',
-    };
-
-    const breadcrumb = {
-      '@context': 'https://schema.org',
-      '@type': 'BreadcrumbList',
-      itemListElement: [
-        { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE_ORIGIN}/` },
-        { '@type': 'ListItem', position: 2, name: 'Blog', item: `${SITE_ORIGIN}/blog` },
-        { '@type': 'ListItem', position: 3, name: 'Is It Legal to Download Facebook Videos? (Complete Guide)', item: POST_URL },
-      ],
-    };
-
-    const inject = (id, data) => {
-      let el = document.getElementById(id);
-      if (!el) {
-        el = document.createElement('script');
-        el.id = id;
-        el.type = 'application/ld+json';
-        document.head.appendChild(el);
-      }
-      el.textContent = JSON.stringify(data);
-    };
-
-    inject('ld-blog-legal-guide', blogPosting);
-    inject('ld-breadcrumb-legal-guide', breadcrumb);
-
-    return () => {
-      ['ld-blog-legal-guide', 'ld-breadcrumb-legal-guide'].forEach((id) => document.getElementById(id)?.remove());
-    };
-  }, []);
-
   return (
     <>
       <SEO
@@ -89,6 +40,18 @@ function BlogPostIsItLegalFacebookVideos() {
         type="article"
         articlePublishedTime={`${PUBLISHED}T08:00:00+00:00`}
         articleModifiedTime={`${PUBLISHED}T08:00:00+00:00`}
+        jsonLd={buildBlogArticleJsonLd({
+          idPrefix: 'legal-guide',
+          postUrl: POST_URL,
+          headline: 'Is It Legal to Download Facebook Videos? (Complete Guide)',
+          description:
+            'Is it legal to download Facebook videos? This complete guide explains personal use, copyright, fair use, and what is safe or risky.',
+          images: [`${SITE_ORIGIN}${FEATURED_IMAGE}`],
+          published: PUBLISHED,
+          keywords:
+            'is it legal to download facebook videos, facebook video download legality, facebook copyright, fair use facebook videos, personal use video downloading',
+          breadcrumbTitle: 'Is It Legal to Download Facebook Videos? (Complete Guide)',
+        })}
       />
 
       <div className="th-section blog-article-page" style={{ paddingTop: '120px' }}>
