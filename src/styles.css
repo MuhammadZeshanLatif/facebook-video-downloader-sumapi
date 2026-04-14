@@ -3357,6 +3357,52 @@ a { text-decoration: none; color: inherit; }
   color: var(--th-muted);
 }
 
+/* Latest articles with thumbnail images */
+.blog-sidebar-posts--img .blog-sidebar-post-item {
+  margin-bottom: 0.85rem;
+  padding-bottom: 0.85rem;
+}
+
+.blog-sidebar-post-row {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  text-decoration: none;
+  color: inherit;
+}
+
+.blog-sidebar-post-row:hover .blog-sidebar-post-title {
+  color: var(--th-primary);
+}
+
+.blog-sidebar-post-thumb {
+  width: 68px;
+  height: 48px;
+  object-fit: cover;
+  border-radius: 6px;
+  flex-shrink: 0;
+  border: 1px solid var(--th-border-light);
+}
+
+.blog-sidebar-post-info {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  flex: 1;
+  min-width: 0;
+}
+
+.blog-sidebar-post-title {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--th-dark);
+  line-height: 1.35;
+}
+
 @media (max-width: 991px) {
   .blog-sidebar-sticky {
     position: static;

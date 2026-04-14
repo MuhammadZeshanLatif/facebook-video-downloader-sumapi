@@ -1641,7 +1641,6 @@ function HomePage() {
 
 function FloatingSocials() {
   const socials = [
-    { href: 'https://wa.me/',             icon: 'fab fa-whatsapp',   label: 'WhatsApp',  cls: 'th-float-social--wa' },
     { href: 'https://www.youtube.com/@FacebookVideoDownloader-n8h', icon: 'fab fa-youtube', label: 'YouTube', cls: 'th-float-social--yt' },
     { href: 'https://www.instagram.com/fbvideodownloaders2026', icon: 'fab fa-instagram',  label: 'Instagram', cls: 'th-float-social--ig' },
     { href: 'https://x.com/',             icon: 'fab fa-x-twitter',  label: 'X / Twitter', cls: 'th-float-social--tw' },

@@ -702,21 +702,52 @@ function BlogPostTroubleshootingCommonDownloadIssues() {
                     <i className="fas fa-clock-rotate-left me-2" aria-hidden="true" />
                     Latest articles
                   </h2>
-                  <ul className="blog-sidebar-posts">
+                  <ul className="blog-sidebar-posts blog-sidebar-posts--img">
                     {latest.map((post) => (
-                      <li key={post.title}>
+                      <li key={post.title} className="blog-sidebar-post-item">
                         {post.slug ? (
-                          <Link to={`/blog/${post.slug}`}>{post.title}</Link>
+                          <Link to={`/blog/${post.slug}`} className="blog-sidebar-post-row">
+                            {post.image && (
+                              <img
+                                src={post.image}
+                                alt={post.imageAlt || post.title}
+                                className="blog-sidebar-post-thumb"
+                                loading="lazy"
+                              />
+                            )}
+                            <span className="blog-sidebar-post-info">
+                              <span className="blog-sidebar-post-title">{post.title}</span>
+                              <span className="blog-sidebar-date">
+                                {new Date(post.date).toLocaleDateString('en-US', {
+                                  year: 'numeric',
+                                  month: 'short',
+                                  day: 'numeric',
+                                })}
+                              </span>
+                            </span>
+                          </Link>
                         ) : (
-                          <span className="blog-sidebar-soon">{post.title}</span>
+                          <div className="blog-sidebar-post-row">
+                            {post.image && (
+                              <img
+                                src={post.image}
+                                alt={post.imageAlt || post.title}
+                                className="blog-sidebar-post-thumb"
+                                loading="lazy"
+                              />
+                            )}
+                            <span className="blog-sidebar-post-info">
+                              <span className="blog-sidebar-soon">{post.title}</span>
+                              <span className="blog-sidebar-date">
+                                {new Date(post.date).toLocaleDateString('en-US', {
+                                  year: 'numeric',
+                                  month: 'short',
+                                  day: 'numeric',
+                                })}
+                              </span>
+                            </span>
+                          </div>
                         )}
-                        <span className="blog-sidebar-date">
-                          {new Date(post.date).toLocaleDateString('en-US', {
-                            year: 'numeric',
-                            month: 'short',
-                            day: 'numeric',
-                          })}
-                        </span>
                       </li>
                     ))}
                   </ul>
@@ -727,15 +758,40 @@ function BlogPostTroubleshootingCommonDownloadIssues() {
                     <i className="fas fa-link me-2" aria-hidden="true" />
                     Related articles
                   </h2>
-                  <ul className="blog-sidebar-posts">
+                  <ul className="blog-sidebar-posts blog-sidebar-posts--img">
                     {related.map((post) => (
-                      <li key={post.title}>
+                      <li key={post.title} className="blog-sidebar-post-item">
                         {post.slug ? (
-                          <Link to={`/blog/${post.slug}`}>{post.title}</Link>
+                          <Link to={`/blog/${post.slug}`} className="blog-sidebar-post-row">
+                            {post.image && (
+                              <img
+                                src={post.image}
+                                alt={post.imageAlt || post.title}
+                                className="blog-sidebar-post-thumb"
+                                loading="lazy"
+                              />
+                            )}
+                            <span className="blog-sidebar-post-info">
+                              <span className="blog-sidebar-post-title">{post.title}</span>
+                              <span className="blog-sidebar-date">{post.category}</span>
+                            </span>
+                          </Link>
                         ) : (
-                          <span className="blog-sidebar-soon">{post.title}</span>
+                          <div className="blog-sidebar-post-row">
+                            {post.image && (
+                              <img
+                                src={post.image}
+                                alt={post.imageAlt || post.title}
+                                className="blog-sidebar-post-thumb"
+                                loading="lazy"
+                              />
+                            )}
+                            <span className="blog-sidebar-post-info">
+                              <span className="blog-sidebar-soon">{post.title}</span>
+                              <span className="blog-sidebar-date">{post.category}</span>
+                            </span>
+                          </div>
                         )}
-                        <span className="blog-sidebar-date">{post.category}</span>
                       </li>
                     ))}
                     <li>
