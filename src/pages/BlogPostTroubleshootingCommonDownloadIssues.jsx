@@ -697,7 +697,7 @@ function BlogPostTroubleshootingCommonDownloadIssues() {
                   </nav>
                 </div>
 
-                <div className="fb-tool-card blog-sidebar-card">
+                <div className="fb-tool-card blog-sidebar-card blog-sidebar-latest">
                   <h2 className="blog-sidebar-title">
                     <i className="fas fa-clock-rotate-left me-2" aria-hidden="true" />
                     Latest articles
@@ -722,7 +722,7 @@ function BlogPostTroubleshootingCommonDownloadIssues() {
                   </ul>
                 </div>
 
-                <div className="fb-tool-card blog-sidebar-card">
+                <div className="fb-tool-card blog-sidebar-card blog-sidebar-related">
                   <h2 className="blog-sidebar-title">
                     <i className="fas fa-link me-2" aria-hidden="true" />
                     Related articles
@@ -746,6 +746,42 @@ function BlogPostTroubleshootingCommonDownloadIssues() {
               </div>
             </aside>
           </div>
+
+          {/* ── Latest articles horizontal carousel — mobile/tablet only ── */}
+          <div className="blog-latest-carousel-wrap">
+            <h2 className="blog-latest-carousel-title">
+              <i className="fas fa-clock-rotate-left me-2" aria-hidden="true" />
+              Latest articles
+            </h2>
+            <div className="blog-latest-carousel">
+              {latest.filter((p) => p.image).map((post) => (
+                <div className="blog-latest-carousel-item" key={post.slug || post.title}>
+                  {post.slug ? (
+                    <Link to={`/blog/${post.slug}`} className="blog-latest-carousel-link">
+                      <img
+                        src={post.image}
+                        alt={post.imageAlt || post.title}
+                        className="blog-latest-carousel-img"
+                        loading="lazy"
+                      />
+                      <span className="blog-latest-carousel-label">{post.title}</span>
+                    </Link>
+                  ) : (
+                    <div className="blog-latest-carousel-link">
+                      <img
+                        src={post.image}
+                        alt={post.imageAlt || post.title}
+                        className="blog-latest-carousel-img"
+                        loading="lazy"
+                      />
+                      <span className="blog-latest-carousel-label">{post.title}</span>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+
         </div>
       </div>
     </>

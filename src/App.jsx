@@ -1037,7 +1037,7 @@ function Features() {
       tags: ['Responsive', 'Mobile'],
     },
     {
-      icon: 'fas fa-high-definition',
+      icon: 'fas fa-sliders',
       color: 'purple',
       title: 'HD and SD Quality Options',
       desc: 'The downloader allows users to choose between HD and SD video quality depending on the source video. HD is suitable for larger screens, while SD creates smaller files that download faster.',
@@ -1423,7 +1423,7 @@ function Contact() {
               </div>
             </div>
             <div className="th-contact-info-card">
-              <div className="th-contact-icon th-icon-purple"><i className="fas fa-high-definition"></i></div>
+              <div className="th-contact-icon th-icon-purple"><i className="fas fa-sliders"></i></div>
               <div>
                 <h5 className="th-contact-info-title">Quality Guidance</h5>
                 <p className="th-contact-info-line">Understand when HD or SD download options are available depending on the original Facebook video quality.</p>
@@ -1511,6 +1511,7 @@ function Footer() {
                 <a href="https://www.instagram.com/fbvideodownloaders2026" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="th-social-link"><i className="fab fa-instagram"></i></a>
                 <a href="https://www.youtube.com/@FacebookVideoDownloader-n8h" target="_blank" rel="noopener noreferrer" aria-label="YouTube" className="th-social-link"><i className="fab fa-youtube"></i></a>
                 <a href="https://www.pinterest.com/facebookvideod/" target="_blank" rel="noopener noreferrer" aria-label="Pinterest" className="th-social-link"><i className="fab fa-pinterest-p"></i></a>
+                <a href="https://www.facebook.com/profile.php?id=61573277168900" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="th-social-link"><i className="fab fa-facebook-f"></i></a>
               </div>
             </div>
 
@@ -1645,6 +1646,7 @@ function FloatingSocials() {
     { href: 'https://www.instagram.com/fbvideodownloaders2026', icon: 'fab fa-instagram',  label: 'Instagram', cls: 'th-float-social--ig' },
     { href: 'https://x.com/',             icon: 'fab fa-x-twitter',  label: 'X / Twitter', cls: 'th-float-social--tw' },
     { href: 'https://www.pinterest.com/facebookvideod/', icon: 'fab fa-pinterest-p', label: 'Pinterest', cls: 'th-float-social--pt' },
+    { href: 'https://www.facebook.com/profile.php?id=61573277168900', icon: 'fab fa-facebook-f', label: 'Facebook', cls: 'th-float-social--fb' },
   ];
 
   return (

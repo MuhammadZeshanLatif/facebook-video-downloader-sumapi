@@ -261,7 +261,7 @@ function UserGuide() {
                 </div>
               </div>
               <div className="th-contact-info-card">
-                <div className="th-contact-icon th-icon-purple"><i className="fas fa-high-definition"></i></div>
+                <div className="th-contact-icon th-icon-purple"><i className="fas fa-sliders"></i></div>
                 <div>
                   <h5 className="th-contact-info-title">Quality Guidance</h5>
                   <p className="th-contact-info-line">Understand when HD or SD download options are available depending on the original Facebook video quality.</p>
