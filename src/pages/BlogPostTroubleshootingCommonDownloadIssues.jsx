@@ -140,6 +140,32 @@ function BlogPostTroubleshootingCommonDownloadIssues() {
                     matter what device you’re using. We’ll cover everything you need to know, from checking your
                     internet connection to handling error messages.
                   </p>
+                  <p>
+                    If you also want the complete download workflow, read{' '}
+                    <Link to="/user-guide">this step-by-step user guide</Link>.
+                  </p>
+                  <div className="fb-youtube-embed" style={{ marginBottom: '1.75rem' }}>
+                    <h2
+                      className="th-section-title"
+                      style={{
+                        fontSize: 'clamp(1.2rem, 2.6vw, 1.55rem)',
+                        marginBottom: '1rem',
+                        textAlign: 'center',
+                      }}
+                    >
+                      Troubleshooting walkthrough: <span className="th-gradient-text">watch the video</span>
+                    </h2>
+                    <div className="fb-youtube-embed-inner">
+                      <iframe
+                        src="https://www.youtube.com/embed/c_wYt_D0974"
+                        title="Troubleshooting Common Download Issues video guide"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowFullScreen
+                        loading="lazy"
+                        referrerPolicy="strict-origin-when-cross-origin"
+                      />
+                    </div>
+                  </div>
 
                   <h2 id="basic-troubleshooting-steps">1. Basic Troubleshooting Steps</h2>
                   <p>
@@ -615,6 +641,17 @@ function BlogPostTroubleshootingCommonDownloadIssues() {
                     you face a download error, you’ll know exactly what to do, saving you time and stress. Remember,
                     technology doesn’t have to be intimidating. With the right steps and a little knowledge, you can
                     stay on top of your downloads and get back to focusing on what really matters.
+                  </p>
+                  <p>
+                    For more help, you can also read{' '}
+                    <Link to="/blog/how-to-download-facebook-videos-in-hd-quality-complete-guide">
+                      How to Download Facebook Videos in HD Quality (Complete Guide)
+                    </Link>{' '}
+                    and{' '}
+                    <Link to="/blog/top-10-tips-facebook-video-downloading">
+                      Top 10 Tips for Facebook Video Downloading
+                    </Link>
+                    .
                   </p>
 
                   <h2>SEO Best Practices Applied</h2>
