@@ -700,9 +700,6 @@ export default function Home() {
                 Not Just Another Bail Bonds Agent – A Mother Who Cares. Providing compassionate, professional bail bond services in Newark, Delaware 24/7.
               </p>
               <div className="footer-social">
-                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-                  <i className="fab fa-facebook-f"></i>
-                </a>
                 <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
                   <i className="fab fa-twitter"></i>
                 </a>
@@ -769,9 +766,6 @@ export default function Home() {
 
       {/* Vertical Social Media */}
       <div className="vertical-social">
-        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-          <i className="fab fa-facebook-f"></i>
-        </a>
         <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
           <i className="fab fa-twitter"></i>
         </a>

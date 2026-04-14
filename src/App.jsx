@@ -241,7 +241,7 @@ function Hero() {
             <h1 className="fb-mobile-title-hero-top">FBSave HD</h1>
             <form className="fb-mobile-search-form" onSubmit={submitHandler}>
               <div className="fb-mobile-input-full">
-                <i className="fab fa-facebook-f"></i>
+                <i className="fas fa-link" aria-hidden="true"></i>
                 <input
                   type="url"
                   placeholder="Paste Facebook video URL here"
@@ -286,7 +286,7 @@ function Hero() {
             <h1 className="fb-tablet-title-full">FBSave HD</h1>
             <form className="fb-preview-form" onSubmit={submitHandler}>
               <div className="fb-preview-input-wrap">
-                <i className="fab fa-facebook-f"></i>
+                <i className="fas fa-link" aria-hidden="true"></i>
                 <input
                   id="video-url-tablet"
                   type="url"
@@ -423,7 +423,7 @@ function Hero() {
                 <form className="fb-preview-form" onSubmit={submitHandler}>
                   <label htmlFor="video-url" className="fb-preview-label fb-desktop-only">Paste Facebook video URL</label>
                   <div className="fb-preview-input-wrap">
-                    <i className="fab fa-facebook-f"></i>
+                    <i className="fas fa-link" aria-hidden="true"></i>
                     <input
                       id="video-url"
                       type="url"
@@ -562,7 +562,7 @@ function TrustedBy() {
         <div className="th-marquee">
           {[...items, ...items].map((item, index) => (
             <div key={index} className="th-marquee-item">
-              <i className="fab fa-facebook th-marquee-icon"></i>
+              <i className="fas fa-link th-marquee-icon" aria-hidden="true"></i>
               <span>{item}</span>
             </div>
           ))}
@@ -765,7 +765,7 @@ function DownloaderSection() {
                 </p>
                 <form onSubmit={handleSubmit}>
                   <div className="fb-large-input-wrap">
-                    <i className="fab fa-facebook-f"></i>
+                    <i className="fas fa-link" aria-hidden="true"></i>
                     <input
                       type="url"
                       placeholder="Paste Facebook video, post or Reel URL here"
@@ -1506,10 +1506,10 @@ function Footer() {
                 FBSave HD helps you save public Facebook videos and Reels for offline viewing with a simple interface, quick link processing, and support for common phones and browsers.
               </p>
               <div className="th-footer-socials">
-                <a href="#" aria-label="Facebook" className="th-social-link"><i className="fab fa-facebook-f"></i></a>
                 <a href="#" aria-label="Twitter" className="th-social-link"><i className="fab fa-x-twitter"></i></a>
-                <a href="https://www.instagram.com/fbvideodownloaders/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="th-social-link"><i className="fab fa-instagram"></i></a>
+                <a href="https://www.instagram.com/fbvideodownloaders2026" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="th-social-link"><i className="fab fa-instagram"></i></a>
                 <a href="https://www.youtube.com/@FacebookVideoDownloader-n8h" target="_blank" rel="noopener noreferrer" aria-label="YouTube" className="th-social-link"><i className="fab fa-youtube"></i></a>
+                <a href="https://www.pinterest.com/fincalculat/" target="_blank" rel="noopener noreferrer" aria-label="Pinterest" className="th-social-link"><i className="fab fa-pinterest-p"></i></a>
               </div>
             </div>
 
@@ -1639,12 +1639,11 @@ function HomePage() {
 
 function FloatingSocials() {
   const socials = [
-    { href: 'https://www.facebook.com/',  icon: 'fab fa-facebook-f', label: 'Facebook',  cls: 'th-float-social--fb' },
     { href: 'https://wa.me/',             icon: 'fab fa-whatsapp',   label: 'WhatsApp',  cls: 'th-float-social--wa' },
     { href: 'https://www.youtube.com/@FacebookVideoDownloader-n8h', icon: 'fab fa-youtube', label: 'YouTube', cls: 'th-float-social--yt' },
-    { href: 'https://www.instagram.com/fbvideodownloaders/', icon: 'fab fa-instagram',  label: 'Instagram', cls: 'th-float-social--ig' },
+    { href: 'https://www.instagram.com/fbvideodownloaders2026', icon: 'fab fa-instagram',  label: 'Instagram', cls: 'th-float-social--ig' },
     { href: 'https://x.com/',             icon: 'fab fa-x-twitter',  label: 'X / Twitter', cls: 'th-float-social--tw' },
-    { href: 'https://www.pinterest.com/', icon: 'fab fa-pinterest-p',label: 'Pinterest', cls: 'th-float-social--pt' },
+    { href: 'https://www.pinterest.com/fincalculat/', icon: 'fab fa-pinterest-p', label: 'Pinterest', cls: 'th-float-social--pt' },
   ];
 
   return (

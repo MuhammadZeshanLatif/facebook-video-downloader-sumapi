@@ -68,51 +68,6 @@ export const BLOG_POSTS = [
   },
   {
     slug: null,
-    title: 'How to Download Facebook Videos in HD Quality',
-    excerpt:
-      'Learn the step-by-step process of downloading Facebook videos in high definition quality using our free downloader tool.',
-    date: '2024-01-15',
-    category: 'Tutorial',
-    readTime: '5 min read',
-  },
-  {
-    slug: null,
-    title: 'Facebook Reels: Complete Download Guide',
-    excerpt:
-      'Everything you need to know about downloading Facebook Reels, including tips for best quality and format options.',
-    date: '2024-01-10',
-    category: 'Guide',
-    readTime: '7 min read',
-  },
-  {
-    slug: null,
-    title: 'Understanding Facebook Video Formats and Quality',
-    excerpt:
-      'A comprehensive guide to Facebook video formats, resolutions, and how to choose the best quality for your downloads.',
-    date: '2024-01-05',
-    category: 'Technical',
-    readTime: '6 min read',
-  },
-  {
-    slug: null,
-    title: 'Is It Legal to Download Facebook Videos?',
-    excerpt:
-      'Understanding the legal aspects of downloading Facebook videos, copyright considerations, and best practices.',
-    date: '2024-01-01',
-    category: 'Legal',
-    readTime: '8 min read',
-  },
-  {
-    slug: null,
-    title: 'Facebook Video Downloader: Mobile vs Desktop',
-    excerpt:
-      'Compare the experience of downloading Facebook videos on mobile devices versus desktop computers.',
-    date: '2023-12-25',
-    category: 'Comparison',
-    readTime: '5 min read',
-  },
-  {
-    slug: null,
     title: 'Troubleshooting Common Download Issues',
     excerpt:
       'Solutions to common problems users face when downloading Facebook videos, including error fixes and workarounds.',
