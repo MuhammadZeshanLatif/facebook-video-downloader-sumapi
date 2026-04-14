@@ -1,6 +1,17 @@
 /** Shared blog listing metadata (order: newest first for "latest") */
 export const BLOG_POSTS = [
   {
+    slug: 'troubleshooting-common-download-issues-step-by-step-guide',
+    title: 'Troubleshooting Common Download Issues: A Step-by-Step Guide',
+    excerpt:
+      'Downloading files can sometimes be tricky, and you may face various issues like slow downloads or files that won’t open.',
+    date: '2026-04-14',
+    category: 'Support',
+    readTime: '18 min read',
+    image: '/images/troubleshooting-common-download-issues.png',
+    imageAlt: 'Image showing a computer screen with a download error message',
+  },
+  {
     slug: 'understanding-facebook-video-formats-and-quality',
     title: 'Understanding Facebook Video Formats and Quality',
     excerpt:
@@ -65,15 +76,6 @@ export const BLOG_POSTS = [
     readTime: '14 min read',
     image: '/images/top-10-tips-for-facebook-video-downloading.webp',
     imageAlt: 'Top 10 tips for downloading Facebook videos — illustrated guide showing video download steps and quality options',
-  },
-  {
-    slug: null,
-    title: 'Troubleshooting Common Download Issues',
-    excerpt:
-      'Solutions to common problems users face when downloading Facebook videos, including error fixes and workarounds.',
-    date: '2023-12-20',
-    category: 'Support',
-    readTime: '6 min read',
   },
   {
     slug: null,

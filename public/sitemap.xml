@@ -27,9 +27,22 @@
   <!-- Blog Listing -->
   <url>
     <loc>https://fbvideodownloaders.com/blog</loc>
-    <lastmod>2026-04-08</lastmod>
+    <lastmod>2026-04-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+  </url>
+
+  <!-- Blog: Troubleshooting Common Download Issues: A Step-by-Step Guide -->
+  <url>
+    <loc>https://fbvideodownloaders.com/blog/troubleshooting-common-download-issues-step-by-step-guide</loc>
+    <lastmod>2026-04-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.86</priority>
+    <image:image>
+      <image:loc>https://fbvideodownloaders.com/images/troubleshooting-common-download-issues.png</image:loc>
+      <image:title>Troubleshooting Common Download Issues: A Step-by-Step Guide</image:title>
+      <image:caption>Image showing a computer screen with a download error message</image:caption>
+    </image:image>
   </url>
 
   <!-- Blog: Understanding Facebook Video Formats and Quality -->

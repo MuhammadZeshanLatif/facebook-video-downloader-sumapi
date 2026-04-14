@@ -11,6 +11,7 @@ import BlogPostIsItLegalFacebookVideos from './pages/BlogPostIsItLegalFacebookVi
 import BlogPostMobileVsDesktop from './pages/BlogPostMobileVsDesktop';
 import BlogPostFacebookReelsCompleteGuide from './pages/BlogPostFacebookReelsCompleteGuide';
 import BlogPostUnderstandingFormatsQuality from './pages/BlogPostUnderstandingFormatsQuality';
+import BlogPostTroubleshootingCommonDownloadIssues from './pages/BlogPostTroubleshootingCommonDownloadIssues';
 import UserGuide from './pages/UserGuide';
 import SEO from './components/SEO';
 import { buildHomeJsonLd } from './data/pageSchemas';
@@ -1701,6 +1702,7 @@ export default function App() {
           <Route path="/blog/understanding-facebook-video-formats-and-quality" element={<BlogPostUnderstandingFormatsQuality />} />
           <Route path="/blog/how-to-download-facebook-videos-in-hd-quality-complete-guide" element={<BlogPostHowToDownloadHDQuality />} />
           <Route path="/blog/top-10-tips-facebook-video-downloading" element={<BlogPostTop10Tips />} />
+          <Route path="/blog/troubleshooting-common-download-issues-step-by-step-guide" element={<BlogPostTroubleshootingCommonDownloadIssues />} />
           <Route path="/user-guide" element={<UserGuide />} />
         </Routes>
       </Layout>
