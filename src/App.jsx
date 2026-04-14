@@ -1509,7 +1509,7 @@ function Footer() {
                 <a href="#" aria-label="Twitter" className="th-social-link"><i className="fab fa-x-twitter"></i></a>
                 <a href="https://www.instagram.com/fbvideodownloaders2026" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="th-social-link"><i className="fab fa-instagram"></i></a>
                 <a href="https://www.youtube.com/@FacebookVideoDownloader-n8h" target="_blank" rel="noopener noreferrer" aria-label="YouTube" className="th-social-link"><i className="fab fa-youtube"></i></a>
-                <a href="https://www.pinterest.com/fincalculat/" target="_blank" rel="noopener noreferrer" aria-label="Pinterest" className="th-social-link"><i className="fab fa-pinterest-p"></i></a>
+                <a href="https://www.pinterest.com/facebookvideod/" target="_blank" rel="noopener noreferrer" aria-label="Pinterest" className="th-social-link"><i className="fab fa-pinterest-p"></i></a>
               </div>
             </div>
 
@@ -1643,7 +1643,7 @@ function FloatingSocials() {
     { href: 'https://www.youtube.com/@FacebookVideoDownloader-n8h', icon: 'fab fa-youtube', label: 'YouTube', cls: 'th-float-social--yt' },
     { href: 'https://www.instagram.com/fbvideodownloaders2026', icon: 'fab fa-instagram',  label: 'Instagram', cls: 'th-float-social--ig' },
     { href: 'https://x.com/',             icon: 'fab fa-x-twitter',  label: 'X / Twitter', cls: 'th-float-social--tw' },
-    { href: 'https://www.pinterest.com/fincalculat/', icon: 'fab fa-pinterest-p', label: 'Pinterest', cls: 'th-float-social--pt' },
+    { href: 'https://www.pinterest.com/facebookvideod/', icon: 'fab fa-pinterest-p', label: 'Pinterest', cls: 'th-float-social--pt' },
   ];
 
   return (
