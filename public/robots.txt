@@ -18,6 +18,8 @@ Allow: /blog/facebook-video-downloader-mobile-vs-desktop-which-is-better
 Allow: /blog/is-it-legal-to-download-facebook-videos-complete-guide
 Allow: /blog/how-to-download-facebook-videos-in-hd-quality-complete-guide
 Allow: /blog/top-10-tips-facebook-video-downloading
+Allow: /blog/troubleshooting-common-download-issues-step-by-step-guide
+Allow: /blog/facebook-video-downloader-privacy-and-security-safe-or-risky
 Allow: /about
 Allow: /contact
 Allow: /privacy-policy

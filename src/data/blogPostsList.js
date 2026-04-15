@@ -1,6 +1,17 @@
 /** Shared blog listing metadata (order: newest first for "latest") */
 export const BLOG_POSTS = [
   {
+    slug: 'facebook-video-downloader-privacy-and-security-safe-or-risky',
+    title: 'Facebook Video Downloader: Privacy and Security (Safe or Risky?)',
+    excerpt:
+      'Is a Facebook video downloader safe? Learn privacy risks, security threats, and safe ways to download Facebook videos without risking your data.',
+    date: '2026-04-16',
+    category: 'Security',
+    readTime: '10 min read',
+    image: '/images/facebook-video-downloader-privacy-and-security.png',
+    imageAlt: 'Facebook Video Downloader: Privacy and Security',
+  },
+  {
     slug: 'troubleshooting-common-download-issues-step-by-step-guide',
     title: 'Troubleshooting Common Download Issues: A Step-by-Step Guide',
     excerpt:
@@ -76,15 +87,6 @@ export const BLOG_POSTS = [
     readTime: '14 min read',
     image: '/images/top-10-tips-for-facebook-video-downloading.webp',
     imageAlt: 'Top 10 tips for downloading Facebook videos — illustrated guide showing video download steps and quality options',
-  },
-  {
-    slug: null,
-    title: 'Facebook Video Downloader: Privacy and Security',
-    excerpt:
-      'Learn how we protect your privacy and ensure secure downloads when using our Facebook video downloader service.',
-    date: '2023-12-15',
-    category: 'Security',
-    readTime: '5 min read',
   },
   {
     slug: null,

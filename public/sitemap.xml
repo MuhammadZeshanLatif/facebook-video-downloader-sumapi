@@ -27,9 +27,22 @@
   <!-- Blog Listing -->
   <url>
     <loc>https://fbvideodownloaders.com/blog</loc>
-    <lastmod>2026-04-14</lastmod>
+    <lastmod>2026-04-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+  </url>
+
+  <!-- Blog: Facebook Video Downloader: Privacy and Security (Safe or Risky?) -->
+  <url>
+    <loc>https://fbvideodownloaders.com/blog/facebook-video-downloader-privacy-and-security-safe-or-risky</loc>
+    <lastmod>2026-04-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.86</priority>
+    <image:image>
+      <image:loc>https://fbvideodownloaders.com/images/facebook-video-downloader-privacy-and-security.png</image:loc>
+      <image:title>Facebook Video Downloader: Privacy and Security (Safe or Risky?)</image:title>
+      <image:caption>Facebook Video Downloader: Privacy and Security</image:caption>
+    </image:image>
   </url>
 
   <!-- Blog: Troubleshooting Common Download Issues: A Step-by-Step Guide -->
