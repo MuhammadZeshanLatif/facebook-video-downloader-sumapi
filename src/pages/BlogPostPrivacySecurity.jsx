@@ -143,6 +143,18 @@ function BlogPostPrivacySecurity() {
                     but others can track your activity or show risky ads. That&apos;s why this guide focuses on privacy
                     and security, not just downloading.
                   </p>
+                  <div className="fb-youtube-embed" style={{ marginBottom: '1.75rem' }}>
+                    <div className="fb-youtube-embed-inner">
+                      <iframe
+                        src="https://www.youtube.com/embed/By_65IN0fwQ"
+                        title="Facebook Video Downloader Privacy and Security video"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowFullScreen
+                        loading="lazy"
+                        referrerPolicy="strict-origin-when-cross-origin"
+                      />
+                    </div>
+                  </div>
 
                   <h2 id="how-facebook-video-downloaders-work">How Facebook Video Downloaders Work</h2>
                   <p>Most tools follow a simple process.</p>
