@@ -1,6 +1,30 @@
 /** Shared blog listing metadata (order: newest first for "latest") */
 export const BLOG_POSTS = [
   {
+    slug: 'how-to-download-private-facebook-videos-step-by-step-guide',
+    title: 'How to Download Private Facebook Videos (Step-by-Step Guide)',
+    excerpt:
+      'Learn how to download private Facebook videos with step-by-step methods that actually work. Fix errors, avoid common mistakes, and save videos safely.',
+    date: '2026-04-19',
+    category: 'Guide',
+    readTime: '14 min read',
+    image: '/images/how-to-download-private-facebook-videos.webp',
+    imageAlt:
+      'How to Download Private Facebook Videos step-by-step guide featured image with download icon',
+  },
+  {
+    slug: 'best-practices-for-saving-facebook-videos',
+    title: 'Best Practices for Saving Facebook Videos',
+    excerpt:
+      'Learn the best practices for saving Facebook videos safely. Avoid risks, protect your data, and download videos in HD without login or apps.',
+    date: '2026-04-18',
+    category: 'Tips',
+    readTime: '12 min read',
+    image: '/images/best-practices-saving-facebook-videos.webp',
+    imageAlt:
+      'Best practices for saving Facebook videos — banner with download icon for safe HD Facebook video saving',
+  },
+  {
     slug: 'facebook-video-downloader-privacy-and-security-safe-or-risky',
     title: 'Facebook Video Downloader: Privacy and Security (Safe or Risky?)',
     excerpt:
@@ -87,15 +111,6 @@ export const BLOG_POSTS = [
     readTime: '14 min read',
     image: '/images/top-10-tips-for-facebook-video-downloading.webp',
     imageAlt: 'Top 10 tips for downloading Facebook videos — illustrated guide showing video download steps and quality options',
-  },
-  {
-    slug: null,
-    title: 'Best Practices for Saving Facebook Videos',
-    excerpt:
-      'Discover best practices for organizing, storing, and managing your downloaded Facebook videos effectively.',
-    date: '2023-12-10',
-    category: 'Tips',
-    readTime: '4 min read',
   },
 ];
 

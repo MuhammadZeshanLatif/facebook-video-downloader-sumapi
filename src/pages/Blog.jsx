@@ -1,8 +1,10 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useMemo, useRef } from 'react';
+import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import SEO from '../components/SEO';
 import { BLOG_POSTS } from '../data/blogPostsList';
 import { buildBlogIndexJsonLd } from '../data/pageSchemas';
+
+const POSTS_PER_PAGE = 9;
 
 const CATEGORY_ICONS = {
   Tips:       'fa-lightbulb',
@@ -16,6 +18,42 @@ const CATEGORY_ICONS = {
 };
 
 function Blog() {
+  const [searchParams] = useSearchParams();
+  const navigate = useNavigate();
+  const pageRaw = searchParams.get('page');
+  const skipScrollRef = useRef(true);
+
+  const { totalPages, currentPage, postsOnPage } = useMemo(() => {
+    const total = BLOG_POSTS.length;
+    const pages = Math.max(1, Math.ceil(total / POSTS_PER_PAGE));
+    const parsed = pageRaw ? parseInt(pageRaw, 10) : NaN;
+    const requested = Number.isFinite(parsed) && parsed >= 1 ? parsed : 1;
+    const page = Math.min(requested, pages);
+    const start = (page - 1) * POSTS_PER_PAGE;
+    return {
+      totalPages: pages,
+      currentPage: page,
+      postsOnPage: BLOG_POSTS.slice(start, start + POSTS_PER_PAGE),
+    };
+  }, [pageRaw]);
+
+  useEffect(() => {
+    if (!pageRaw) return;
+    const parsed = parseInt(pageRaw, 10);
+    const invalid = !Number.isFinite(parsed) || parsed < 1 || parsed > totalPages;
+    if (invalid) {
+      navigate(currentPage === 1 ? '/blog' : `/blog?page=${currentPage}`, { replace: true });
+    }
+  }, [pageRaw, currentPage, totalPages, navigate]);
+
+  useEffect(() => {
+    if (skipScrollRef.current) {
+      skipScrollRef.current = false;
+      return;
+    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [currentPage]);
+
   return (
     <>
       <SEO
@@ -43,12 +81,12 @@ function Blog() {
 
           {/* Cards Grid */}
           <div className="row g-4">
-            {BLOG_POSTS.map((post) => {
+            {postsOnPage.map((post) => {
               const icon = CATEGORY_ICONS[post.category] || 'fa-newspaper';
               const hasSlugg = Boolean(post.slug);
 
               return (
-                <div key={post.title} className="col-lg-4 col-md-6">
+                <div key={post.slug || post.title} className="col-lg-4 col-md-6">
                   <div className={`th-blog-card${hasSlugg ? '' : ' th-blog-card--soon'}`}>
 
                     {/* Thumbnail */}
@@ -108,6 +146,59 @@ function Blog() {
               );
             })}
           </div>
+
+          {totalPages > 1 && (
+            <nav className="th-blog-pagination" aria-label="Blog list pagination">
+              <span className="th-blog-pagination-info">
+                Page {currentPage} of {totalPages}
+              </span>
+              <div className="th-blog-pagination-pages">
+                {currentPage > 1 ? (
+                  <Link
+                    to={currentPage === 2 ? '/blog' : `/blog?page=${currentPage - 1}`}
+                    className="th-btn th-btn-outline th-btn-outline-sm"
+                    rel="prev"
+                  >
+                    <i className="fas fa-chevron-left me-1" aria-hidden="true" />
+                    Previous
+                  </Link>
+                ) : (
+                  <span className="th-btn th-btn-outline th-btn-outline-sm th-blog-pagination-disabled" aria-disabled="true">
+                    <i className="fas fa-chevron-left me-1" aria-hidden="true" />
+                    Previous
+                  </span>
+                )}
+                {Array.from({ length: totalPages }, (_, i) => i + 1).map((p) => {
+                  const isActive = p === currentPage;
+                  const to = p === 1 ? '/blog' : `/blog?page=${p}`;
+                  return isActive ? (
+                    <span key={p} className="th-blog-pagination-num th-blog-pagination-num--active" aria-current="page">
+                      {p}
+                    </span>
+                  ) : (
+                    <Link key={p} to={to} className="th-blog-pagination-num">
+                      {p}
+                    </Link>
+                  );
+                })}
+                {currentPage < totalPages ? (
+                  <Link
+                    to={`/blog?page=${currentPage + 1}`}
+                    className="th-btn th-btn-outline th-btn-outline-sm"
+                    rel="next"
+                  >
+                    Next
+                    <i className="fas fa-chevron-right ms-1" aria-hidden="true" />
+                  </Link>
+                ) : (
+                  <span className="th-btn th-btn-outline th-btn-outline-sm th-blog-pagination-disabled" aria-disabled="true">
+                    Next
+                    <i className="fas fa-chevron-right ms-1" aria-hidden="true" />
+                  </span>
+                )}
+              </div>
+            </nav>
+          )}
 
         </div>
       </div>

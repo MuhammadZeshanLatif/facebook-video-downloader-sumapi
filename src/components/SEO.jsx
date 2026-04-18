@@ -16,6 +16,8 @@ const SEO = ({
   description,
   keywords,
   ogImage,
+  /** When set, used for og:image:alt and twitter:image:alt instead of title-based default */
+  ogImageAlt,
   ogUrl,
   type = 'website',
   articlePublishedTime,
@@ -30,6 +32,7 @@ const SEO = ({
   const resolvedImg   = ogImage || DEFAULT_IMG;
   const resolvedUrl   = ogUrl || `${DOMAIN}${location.pathname}`;
   const canonical     = `${DOMAIN}${location.pathname}`;
+  const resolvedOgImageAlt = ogImageAlt || `${SITE_NAME} - ${resolvedTitle}`;
 
   useEffect(() => {
     // ── Title ──────────────────────────────────────────────
@@ -64,7 +67,7 @@ const SEO = ({
     setMeta('property', 'og:image',       resolvedImg);
     setMeta('property', 'og:image:width', '1200');
     setMeta('property', 'og:image:height','630');
-    setMeta('property', 'og:image:alt',   `${SITE_NAME} - ${resolvedTitle}`);
+    setMeta('property', 'og:image:alt',   resolvedOgImageAlt);
     setMeta('property', 'og:url',         resolvedUrl);
 
     // ── Twitter ────────────────────────────────────────────
@@ -74,7 +77,7 @@ const SEO = ({
     setMeta('name', 'twitter:title',       resolvedTitle);
     setMeta('name', 'twitter:description', resolvedDesc);
     setMeta('name', 'twitter:image',       resolvedImg);
-    setMeta('name', 'twitter:image:alt',   `${SITE_NAME} - ${resolvedTitle}`);
+    setMeta('name', 'twitter:image:alt',   resolvedOgImageAlt);
 
     // ── Article tags ───────────────────────────────────────
     if (type === 'article' && articlePublishedTime) {
@@ -104,6 +107,7 @@ const SEO = ({
     resolvedImg,
     resolvedUrl,
     canonical,
+    resolvedOgImageAlt,
     keywords,
     type,
     articlePublishedTime,

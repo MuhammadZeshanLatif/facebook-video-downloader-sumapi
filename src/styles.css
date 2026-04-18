@@ -1552,6 +1552,58 @@ a { text-decoration: none; color: inherit; }
   cursor: default;
 }
 
+/* Blog listing pagination */
+.th-blog-pagination {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2.5rem;
+  padding-top: 1.75rem;
+  border-top: 1px solid var(--th-border);
+}
+.th-blog-pagination-info {
+  color: var(--th-muted);
+  font-size: 0.9rem;
+}
+.th-blog-pagination-pages {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+.th-blog-pagination-num {
+  min-width: 2.35rem;
+  height: 2.35rem;
+  padding: 0 0.35rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--th-radius-md, 8px);
+  border: 1px solid var(--th-border);
+  background: var(--th-white);
+  color: var(--th-text);
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
+}
+.th-blog-pagination-num:hover {
+  border-color: var(--th-primary);
+  color: var(--th-primary);
+}
+.th-blog-pagination-num--active {
+  background: var(--th-primary);
+  border-color: var(--th-primary);
+  color: #fff;
+  cursor: default;
+}
+.th-blog-pagination-disabled {
+  opacity: 0.45;
+  pointer-events: none;
+}
+
 /* ============================================================
    CONTACT
    ============================================================ */

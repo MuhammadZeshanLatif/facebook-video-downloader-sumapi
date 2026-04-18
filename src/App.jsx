@@ -13,6 +13,8 @@ import BlogPostFacebookReelsCompleteGuide from './pages/BlogPostFacebookReelsCom
 import BlogPostUnderstandingFormatsQuality from './pages/BlogPostUnderstandingFormatsQuality';
 import BlogPostTroubleshootingCommonDownloadIssues from './pages/BlogPostTroubleshootingCommonDownloadIssues';
 import BlogPostPrivacySecurity from './pages/BlogPostPrivacySecurity';
+import BlogPostBestPracticesSavingFacebookVideos from './pages/BlogPostBestPracticesSavingFacebookVideos';
+import BlogPostHowToDownloadPrivateFacebookVideos from './pages/BlogPostHowToDownloadPrivateFacebookVideos';
 import UserGuide from './pages/UserGuide';
 import SEO from './components/SEO';
 import { buildHomeJsonLd } from './data/pageSchemas';
@@ -1706,6 +1708,8 @@ export default function App() {
           <Route path="/blog/top-10-tips-facebook-video-downloading" element={<BlogPostTop10Tips />} />
           <Route path="/blog/troubleshooting-common-download-issues-step-by-step-guide" element={<BlogPostTroubleshootingCommonDownloadIssues />} />
           <Route path="/blog/facebook-video-downloader-privacy-and-security-safe-or-risky" element={<BlogPostPrivacySecurity />} />
+          <Route path="/blog/best-practices-for-saving-facebook-videos" element={<BlogPostBestPracticesSavingFacebookVideos />} />
+          <Route path="/blog/how-to-download-private-facebook-videos-step-by-step-guide" element={<BlogPostHowToDownloadPrivateFacebookVideos />} />
           <Route path="/user-guide" element={<UserGuide />} />
         </Routes>
       </Layout>
