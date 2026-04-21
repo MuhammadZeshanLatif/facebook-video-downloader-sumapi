@@ -1,6 +1,18 @@
 /** Shared blog listing metadata (order: newest first for "latest") */
 export const BLOG_POSTS = [
   {
+    slug: 'why-some-videos-download-slower-than-others',
+    title: 'Why Some Videos Download Slower Than Others',
+    excerpt:
+      'Learn why some videos download slower than others and how file size, server speed, platform limits, and device issues affect download time.',
+    date: '2026-04-20',
+    category: 'Technical',
+    readTime: '10 min read',
+    image: '/images/why-some-videos-download-slower-than-others.png',
+    imageAlt:
+      'Why some videos download slower than others featured image with video download icon and text',
+  },
+  {
     slug: 'how-to-download-private-facebook-videos-step-by-step-guide',
     title: 'How to Download Private Facebook Videos (Step-by-Step Guide)',
     excerpt:
