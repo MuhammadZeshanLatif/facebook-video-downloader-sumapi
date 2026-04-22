@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link, useLocation, useNavigate } from 'react-router-dom';
 import About from './pages/About';
 import ContactPage from './pages/Contact';
 import PrivacyPolicy from './pages/PrivacyPolicy';
@@ -17,6 +17,7 @@ import BlogPostBestPracticesSavingFacebookVideos from './pages/BlogPostBestPract
 import BlogPostHowToDownloadPrivateFacebookVideos from './pages/BlogPostHowToDownloadPrivateFacebookVideos';
 import BlogPostWhySomeVideosDownloadSlower from './pages/BlogPostWhySomeVideosDownloadSlower';
 import UserGuide from './pages/UserGuide';
+import HomeSpanish from './pages/HomeSpanish';
 import SEO from './components/SEO';
 import { buildHomeJsonLd } from './data/pageSchemas';
 
@@ -40,7 +41,10 @@ function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
   const isHomePage = location.pathname === '/';
+  const isSpanishPage = location.pathname.startsWith('/es/');
+  const languageValue = isSpanishPage ? 'es' : 'en';
 
   useEffect(() => {
     const onScroll = () => {
@@ -78,12 +82,22 @@ function Navbar() {
   };
 
   const navLinks = [
-    { path: '/', label: 'Home', id: 'home' },
-    { path: '/user-guide', label: 'User Guide', id: null },
+    { path: '/', label: isSpanishPage ? 'Inicio' : 'Home', id: 'home' },
+    { path: '/user-guide', label: isSpanishPage ? 'Guia' : 'User Guide', id: null },
     { path: '/blog', label: 'Blog', id: null },
-    { path: '/about', label: 'About', id: null },
-    { path: '/contact', label: 'Contact', id: 'contact' },
+    { path: '/about', label: isSpanishPage ? 'Acerca de' : 'About', id: null },
+    { path: '/contact', label: isSpanishPage ? 'Contacto' : 'Contact', id: 'contact' },
   ];
+
+  const onLanguageChange = (e) => {
+    const nextLanguage = e.target.value;
+    if (nextLanguage === 'es') {
+      navigate('/es/descargar-video-de-facebook');
+    } else {
+      navigate('/');
+    }
+    setMenuOpen(false);
+  };
 
   return (
     <nav className={`th-navbar${scrolled ? ' scrolled' : ''}`}>
@@ -117,22 +131,34 @@ function Navbar() {
           </ul>
 
           <div className="th-nav-cta">
+            <div className="th-lang-switch-wrap">
+              <select
+                id="site-language"
+                className="th-lang-switch"
+                value={languageValue}
+                onChange={onLanguageChange}
+                aria-label="Switch language"
+              >
+                <option value="en">English</option>
+                <option value="es">Spanish</option>
+              </select>
+            </div>
             {isHomePage ? (
               <>
                 <Link to="/user-guide" className="th-btn th-btn-outline-sm">
-                  User Guide
+                  {isSpanishPage ? 'Guia' : 'User Guide'}
                 </Link>
                 <button className="th-btn th-btn-primary-sm" onClick={() => scrollToSection('downloader')}>
-                  Download Now
+                  {isSpanishPage ? 'Descargar ahora' : 'Download Now'}
                 </button>
               </>
             ) : (
               <>
                 <Link to="/user-guide" className="th-btn th-btn-outline-sm">
-                  User Guide
+                  {isSpanishPage ? 'Guia' : 'User Guide'}
                 </Link>
                 <Link to="/" className="th-btn th-btn-primary-sm">
-                  Download Now
+                  {isSpanishPage ? 'Descargar ahora' : 'Download Now'}
                 </Link>
               </>
             )}
@@ -150,6 +176,18 @@ function Navbar() {
         </div>
 
         <div className={`th-mobile-menu${menuOpen ? ' open' : ''}`}>
+          <div className="th-mobile-lang-wrap">
+            <select
+              id="site-language-mobile"
+              className="th-lang-switch th-lang-switch--mobile"
+              value={languageValue}
+              onChange={onLanguageChange}
+              aria-label="Switch language"
+            >
+              <option value="en">English</option>
+              <option value="es">Spanish</option>
+            </select>
+          </div>
           {navLinks.map((link) => (
             <div key={link.path}>
               {link.id && isHomePage ? (
@@ -178,11 +216,11 @@ function Navbar() {
               scrollToSection('downloader');
               setMenuOpen(false);
             }}>
-              Start Download
+              {isSpanishPage ? 'Iniciar descarga' : 'Start Download'}
             </button>
           ) : (
             <Link to="/" className="th-btn th-btn-primary-sm w-100 mt-3" onClick={() => setMenuOpen(false)}>
-              Start Download
+              {isSpanishPage ? 'Iniciar descarga' : 'Start Download'}
             </Link>
           )}
         </div>
@@ -1490,6 +1528,9 @@ function Contact() {
 }
 
 function Footer() {
+  const location = useLocation();
+  const isSpanishPage = location.pathname.startsWith('/es/');
+
   const scrollToSection = (id) => {
     const el = document.getElementById(id);
     if (el) {
@@ -1508,7 +1549,9 @@ function Footer() {
                 <BrandLogo footer />
               </Link>
               <p className="th-footer-desc">
-                FBSave HD helps you save public Facebook videos and Reels for offline viewing with a simple interface, quick link processing, and support for common phones and browsers.
+                {isSpanishPage
+                  ? 'Esta herramienta te ayuda a guardar videos publicos y Reels de Facebook para ver offline con una interfaz simple y rapida.'
+                  : 'FBSave HD helps you save public Facebook videos and Reels for offline viewing with a simple interface, quick link processing, and support for common phones and browsers.'}
               </p>
               <div className="th-footer-socials">
                 <a href="#" aria-label="Twitter" className="th-social-link"><i className="fab fa-x-twitter"></i></a>
@@ -1520,13 +1563,13 @@ function Footer() {
             </div>
 
             <div className="th-footer-links-col">
-              <h5>Main Sections</h5>
+              <h5>{isSpanishPage ? 'Secciones principales' : 'Main Sections'}</h5>
               <ul>
                 {[
-                  ['Home', 'home'],
-                  ['Downloader', 'downloader'],
-                  ['Features', 'features'],
-                  ['Guides', 'guides'],
+                  [isSpanishPage ? 'Inicio' : 'Home', 'home'],
+                  [isSpanishPage ? 'Downloader' : 'Downloader', 'downloader'],
+                  [isSpanishPage ? 'Funciones' : 'Features', 'features'],
+                  [isSpanishPage ? 'Guia' : 'Guides', 'guides'],
                   ['FAQ', 'faq'],
                 ].map(([label, id]) => (
                   <li key={id}>
@@ -1539,14 +1582,14 @@ function Footer() {
             </div>
 
             <div className="th-footer-links-col">
-              <h5>Popular Topics</h5>
+              <h5>{isSpanishPage ? 'Temas populares' : 'Popular Topics'}</h5>
               <ul>
                 {[
-                  'Facebook Reels Downloader',
-                  'Download Facebook Video HD',
-                  'Save Facebook Video on iPhone',
-                  'Facebook Video on Android',
-                  'Copy Facebook Post URL',
+                  isSpanishPage ? 'Downloader de Reels de Facebook' : 'Facebook Reels Downloader',
+                  isSpanishPage ? 'Descargar video de Facebook HD' : 'Download Facebook Video HD',
+                  isSpanishPage ? 'Guardar video de Facebook en iPhone' : 'Save Facebook Video on iPhone',
+                  isSpanishPage ? 'Video de Facebook en Android' : 'Facebook Video on Android',
+                  isSpanishPage ? 'Copiar URL de publicacion de Facebook' : 'Copy Facebook Post URL',
                 ].map((item, index) => (
                   <li key={index}>
                     <button onClick={() => scrollToSection('guides')}>
@@ -1558,22 +1601,24 @@ function Footer() {
             </div>
 
             <div className="th-footer-contact-col">
-              <h5>Quick Notes</h5>
+              <h5>{isSpanishPage ? 'Notas rapidas' : 'Quick Notes'}</h5>
               <p className="th-footer-newsletter-text">
-                FBSave HD is independent and not affiliated with Facebook or Meta. Use it for personal, rights-respecting downloads only.
+                {isSpanishPage
+                  ? 'Este sitio es independiente y no esta afiliado a Facebook o Meta. Usalo para descargas personales y responsables.'
+                  : 'FBSave HD is independent and not affiliated with Facebook or Meta. Use it for personal, rights-respecting downloads only.'}
               </p>
               <div className="th-footer-contact-items">
                 <div className="th-footer-contact-item">
                   <i className="fas fa-download"></i>
-                  <span>Free to use, no registration</span>
+                  <span>{isSpanishPage ? 'Gratis y sin registro' : 'Free to use, no registration'}</span>
                 </div>
                 <div className="th-footer-contact-item">
                   <i className="fas fa-mobile-screen-button"></i>
-                  <span>Android &amp; iPhone Friendly</span>
+                  <span>{isSpanishPage ? 'Compatible con Android e iPhone' : 'Android &amp; iPhone Friendly'}</span>
                 </div>
                 <div className="th-footer-contact-item">
                   <i className="fas fa-shield-halved"></i>
-                  <span>Safe &amp; Secure</span>
+                  <span>{isSpanishPage ? 'Seguro y confiable' : 'Safe &amp; Secure'}</span>
                 </div>
               </div>
             </div>
@@ -1584,12 +1629,16 @@ function Footer() {
       <div className="th-footer-bottom">
         <div className="th-container">
           <div className="th-footer-bottom-inner">
-            <p>© {new Date().getFullYear()} FBSave HD. An independent tool with no connection to Facebook or the Meta group.</p>
+            <p>
+              © {new Date().getFullYear()} fbvideodownloaders. {isSpanishPage
+                ? 'Herramienta independiente sin conexion con Facebook o el grupo Meta.'
+                : 'An independent tool with no connection to Facebook or the Meta group.'}
+            </p>
             <div className="th-footer-bottom-links">
-              <Link to="/user-guide">User Guide</Link>
-              <Link to="/privacy-policy">Privacy</Link>
-              <Link to="/terms-conditions">Terms</Link>
-              <Link to="/about">About</Link>
+              <Link to="/user-guide">{isSpanishPage ? 'Guia' : 'User Guide'}</Link>
+              <Link to="/privacy-policy">{isSpanishPage ? 'Privacidad' : 'Privacy'}</Link>
+              <Link to="/terms-conditions">{isSpanishPage ? 'Terminos' : 'Terms'}</Link>
+              <Link to="/about">{isSpanishPage ? 'Acerca de' : 'About'}</Link>
             </div>
           </div>
         </div>
@@ -1624,8 +1673,8 @@ function HomePage() {
   return (
     <>
       <SEO
-        title="Download Facebook Videos & Reels HD Free - FB Video Downloader"
-        description="Download any public Facebook video or Reel in HD quality online for free. No login, no app needed. Paste the FB video link and save it instantly on Android, iPhone, or PC."
+        title="Download Facebook Videos & Reels in HD - FB Video Downloader"
+        description="Download public Facebook videos and Reels in HD or SD online for free. Paste the link, choose quality, and save on Android, iPhone, or PC instantly."
         keywords="facebook video downloader, download facebook videos, fb video downloader, facebook reels downloader, save facebook video online, download fb video hd, free facebook downloader, download fb reels, facebook video saver, fb video download"
         ogUrl="https://fbvideodownloaders.com/"
         jsonLd={buildHomeJsonLd()}
@@ -1713,6 +1762,7 @@ export default function App() {
           <Route path="/blog/how-to-download-private-facebook-videos-step-by-step-guide" element={<BlogPostHowToDownloadPrivateFacebookVideos />} />
           <Route path="/blog/why-some-videos-download-slower-than-others" element={<BlogPostWhySomeVideosDownloadSlower />} />
           <Route path="/user-guide" element={<UserGuide />} />
+          <Route path="/es/descargar-video-de-facebook" element={<HomeSpanish />} />
         </Routes>
       </Layout>
     </Router>

@@ -5,6 +5,10 @@ const SITE_NAME   = 'FBSave HD';
 const DOMAIN      = 'https://fbvideodownloaders.com';
 // Use current origin so the image URL always matches the deployed domain
 const ORIGIN      = typeof window !== 'undefined' ? window.location.origin : DOMAIN;
+const IS_LOCALHOST =
+  typeof window !== 'undefined' &&
+  (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
+const CANONICAL_BASE = IS_LOCALHOST ? ORIGIN : DOMAIN;
 const DEFAULT_IMG = `${ORIGIN}/images/og-image.png`;
 const DEFAULT_TITLE =
   'Download Facebook Videos & Reels HD Free - FB Video Downloader';
@@ -23,6 +27,7 @@ const SEO = ({
   articlePublishedTime,
   articleModifiedTime,
   articleAuthor,
+  ogLocale = 'en_US',
   /** @type {{ id: string, data: Record<string, unknown> }[] | null | undefined} */
   jsonLd,
 }) => {
@@ -30,8 +35,8 @@ const SEO = ({
   const resolvedTitle = title || DEFAULT_TITLE;
   const resolvedDesc  = description || DEFAULT_DESC;
   const resolvedImg   = ogImage || DEFAULT_IMG;
-  const resolvedUrl   = ogUrl || `${DOMAIN}${location.pathname}`;
-  const canonical     = `${DOMAIN}${location.pathname}`;
+  const resolvedUrl   = ogUrl || `${CANONICAL_BASE}${location.pathname}`;
+  const canonical     = `${CANONICAL_BASE}${location.pathname}`;
   const resolvedOgImageAlt = ogImageAlt || `${SITE_NAME} - ${resolvedTitle}`;
 
   useEffect(() => {
@@ -61,7 +66,7 @@ const SEO = ({
     // ── Open Graph ─────────────────────────────────────────
     setMeta('property', 'og:type',        type);
     setMeta('property', 'og:site_name',   SITE_NAME);
-    setMeta('property', 'og:locale',      'en_US');
+    setMeta('property', 'og:locale',      ogLocale);
     setMeta('property', 'og:title',       resolvedTitle);
     setMeta('property', 'og:description', resolvedDesc);
     setMeta('property', 'og:image',       resolvedImg);
@@ -113,6 +118,7 @@ const SEO = ({
     articlePublishedTime,
     articleModifiedTime,
     articleAuthor,
+    ogLocale,
   ]);
 
   const jsonLdKey =

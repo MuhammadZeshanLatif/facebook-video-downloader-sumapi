@@ -16,6 +16,14 @@
     </image:image>
   </url>
 
+  <!-- Spanish Home Page -->
+  <url>
+    <loc>https://fbvideodownloaders.com/es/descargar-video-de-facebook</loc>
+    <lastmod>2026-04-22</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.95</priority>
+  </url>
+
   <!-- User Guide -->
   <url>
     <loc>https://fbvideodownloaders.com/user-guide</loc>

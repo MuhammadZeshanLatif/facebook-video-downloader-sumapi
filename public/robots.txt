@@ -10,6 +10,7 @@ Disallow: /src/
 
 # Allow all important pages explicitly
 Allow: /
+Allow: /es/descargar-video-de-facebook
 Allow: /user-guide
 Allow: /blog
 Allow: /blog/understanding-facebook-video-formats-and-quality

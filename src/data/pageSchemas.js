@@ -109,6 +109,58 @@ export function buildHomeJsonLd() {
   ];
 }
 
+export function buildHomeEsJsonLd() {
+  const pageUrl = `${SITE_ORIGIN}/es/descargar-video-de-facebook`;
+  return [
+    {
+      id: 'home-es-webpage',
+      data: ctx({
+        '@type': 'WebPage',
+        '@id': `${pageUrl}#webpage`,
+        url: pageUrl,
+        name: 'Descargar video de Facebook en espanol',
+        description:
+          'Guia en espanol para descargar video de Facebook y Reels publicos con un flujo simple en navegador.',
+        isPartOf: webSitePartOf(),
+        publisher: orgPublisher(),
+        inLanguage: 'es',
+      }),
+    },
+    {
+      id: 'home-es-faq',
+      data: ctx({
+        '@type': 'FAQPage',
+        mainEntity: [
+          {
+            '@type': 'Question',
+            name: 'Como funciona para descargar video de Facebook?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'Copia la URL publica del video, pegala en el formulario, selecciona calidad y guarda el archivo en tu dispositivo.',
+            },
+          },
+          {
+            '@type': 'Question',
+            name: 'Funciona en Android, iPhone y PC?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'Si, funciona en navegadores modernos de movil y escritorio, sin instalar aplicacion.',
+            },
+          },
+          {
+            '@type': 'Question',
+            name: 'Se pueden bajar videos privados?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'No, solo se admiten enlaces publicos de Facebook.',
+            },
+          },
+        ],
+      }),
+    },
+  ];
+}
+
 export function buildAboutJsonLd() {
   const url = `${SITE_ORIGIN}/about`;
   return [

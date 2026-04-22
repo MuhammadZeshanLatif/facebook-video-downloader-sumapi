@@ -361,6 +361,36 @@ a { text-decoration: none; color: inherit; }
   flex-shrink: 0;
 }
 
+.th-lang-switch-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.th-lang-label {
+  font-size: 0.8rem;
+  color: var(--th-muted);
+  font-weight: 600;
+}
+
+.th-lang-switch {
+  border: 1px solid var(--th-border);
+  border-radius: var(--th-radius-sm);
+  background: var(--th-white);
+  color: var(--th-dark2);
+  font-size: 0.86rem;
+  font-weight: 600;
+  padding: 8px 10px;
+  min-width: 112px;
+  outline: none;
+  transition: var(--th-transition-fast);
+}
+
+.th-lang-switch:focus {
+  border-color: var(--th-primary);
+  box-shadow: var(--th-shadow-glow);
+}
+
 /* Hamburger */
 .th-hamburger {
   display: none;
@@ -398,6 +428,17 @@ a { text-decoration: none; color: inherit; }
 .th-mobile-menu.open {
   display: flex;
   max-height: 600px;
+}
+
+.th-mobile-lang-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 8px 0 12px;
+}
+
+.th-lang-switch--mobile {
+  width: 100%;
 }
 .th-mobile-link {
   background: none;
