@@ -35,9 +35,22 @@
   <!-- Blog Listing -->
   <url>
     <loc>https://fbvideodownloaders.com/blog</loc>
-    <lastmod>2026-04-19</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+  </url>
+
+  <!-- Blog: Facebook Copyright Rules Explained (Simple Guide 2026) -->
+  <url>
+    <loc>https://fbvideodownloaders.com/blog/facebook-copyright-rules-explained-simple-guide-2026</loc>
+    <lastmod>2026-04-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.86</priority>
+    <image:image>
+      <image:loc>https://fbvideodownloaders.com/images/facebook-copyright-rules-explained.webp</image:loc>
+      <image:title>Facebook Copyright Rules Explained (Simple Guide 2026)</image:title>
+      <image:caption>Facebook Copyright Rules Explained (Simple Guide 2026) header image featuring a video download icon and social media graphics.</image:caption>
+    </image:image>
   </url>
 
   <!-- Blog: How to Download Private Facebook Videos (Step-by-Step Guide) -->

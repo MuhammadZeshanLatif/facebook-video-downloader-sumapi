@@ -1,6 +1,18 @@
 /** Shared blog listing metadata (order: newest first for "latest") */
 export const BLOG_POSTS = [
   {
+    slug: 'facebook-copyright-rules-explained-simple-guide-2026',
+    title: 'Facebook Copyright Rules Explained (Simple Guide 2026)',
+    excerpt:
+      'Learn Facebook copyright rules in simple words. See what is allowed, what is not, and how to avoid strikes or bans on videos, reels, and music.',
+    date: '2026-04-24',
+    category: 'Legal',
+    readTime: '12 min read',
+    image: '/images/facebook-copyright-rules-explained.webp',
+    imageAlt:
+      'Facebook Copyright Rules Explained (Simple Guide 2026) header image featuring a video download icon and social media graphics.',
+  },
+  {
     slug: 'why-some-videos-download-slower-than-others',
     title: 'Why Some Videos Download Slower Than Others',
     excerpt:
