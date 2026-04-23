@@ -20,6 +20,8 @@ import UserGuide from './pages/UserGuide';
 import HomeSpanish from './pages/HomeSpanish';
 import SEO from './components/SEO';
 import { buildHomeJsonLd } from './data/pageSchemas';
+import { normalizeFacebookPageUrl } from './utils/facebookEmbed';
+import { triggerVideoDownload } from './utils/downloadVideo';
 
 const LOGO_SRC = '/images/logo.webp';
 
@@ -617,6 +619,7 @@ function TrustedBy() {
 
 function DownloaderSection() {
   const [link, setLink] = useState('');
+  const [fetchedPageUrl, setFetchedPageUrl] = useState('');
   const [loading, setLoading] = useState(false);
   const [videoData, setVideoData] = useState(null);
   const [error, setError] = useState(null);
@@ -624,6 +627,7 @@ function DownloaderSection() {
   const [isPlaying, setIsPlaying] = useState(false);
   const [showPlayPauseIcon, setShowPlayPauseIcon] = useState(true);
   const [isMobileView, setIsMobileView] = useState(false);
+  const [downloadKey, setDownloadKey] = useState(null);
   const videoRef = React.useRef(null);
 
   // Convert h2 to h1 on mobile/tablet (<= 991px)
@@ -651,11 +655,18 @@ function DownloaderSection() {
     return () => window.removeEventListener('fb-download', handler);
   }, []);
 
+  useEffect(() => {
+    if (!activeVideoUrl || !videoRef.current) return;
+    videoRef.current.load();
+  }, [activeVideoUrl]);
+
   const fetchVideoData = async (url) => {
     setLoading(true);
     setError(null);
     setVideoData(null);
     setActiveVideoUrl(null);
+    setFetchedPageUrl('');
+    setDownloadKey(null);
 
     try {
       const encodedUrl = encodeURIComponent(url);
@@ -683,12 +694,13 @@ function DownloaderSection() {
 
       if (videoItems && videoItems.length > 0) {
         const firstItem = videoItems[0];
+        setFetchedPageUrl(url.trim());
         setVideoData({
           items: videoItems,
           thumbnail: firstItem?.thumbnail,
           title: firstItem?.title || null,
         });
-        // set active video URL (first item) for player
+        // set active video URL (first item) for downloads / fallback player
         if (firstItem?.url) {
           setActiveVideoUrl(firstItem.url);
         }
@@ -719,68 +731,22 @@ function DownloaderSection() {
     fetchVideoData(link);
   };
 
-  const handleDownload = async (downloadUrl, quality = '') => {
-    if (!downloadUrl) return;
-
+  const handleDownload = async (downloadUrl, quality = '', buttonKey = 'main') => {
+    if (!downloadUrl || downloadKey !== null) return;
+    const stem = `facebook-video-${quality || 'download'}`;
+    setDownloadKey(buttonKey);
+    const started = Date.now();
     try {
-      // Ensure URL has download parameter
-      let urlWithDownload = downloadUrl;
-      if (!urlWithDownload.includes('&dl=1') && !urlWithDownload.includes('?dl=1')) {
-        urlWithDownload = urlWithDownload + (urlWithDownload.includes('?') ? '&dl=1' : '?dl=1');
-      }
-
-      // Try fetching as blob first (works if CORS allows)
-      try {
-        const response = await fetch(urlWithDownload, {
-          method: 'GET',
-          mode: 'cors',
-          credentials: 'omit',
-        });
-
-        if (response.ok) {
-          const blob = await response.blob();
-          const blobUrl = window.URL.createObjectURL(blob);
-          const link = document.createElement('a');
-          link.style.display = 'none';
-          link.href = blobUrl;
-          link.download = `facebook-video-${quality || 'download'}.mp4`;
-          document.body.appendChild(link);
-          link.click();
-          
-          // Clean up
-          setTimeout(() => {
-            document.body.removeChild(link);
-            window.URL.revokeObjectURL(blobUrl);
-          }, 100);
-          return;
-        }
-      } catch (fetchError) {
-        console.log('Fetch failed, trying alternative method:', fetchError);
-      }
-
-      // Alternative: Use iframe for download (works better with cross-origin)
-      const iframe = document.createElement('iframe');
-      iframe.style.display = 'none';
-      iframe.src = urlWithDownload;
-      document.body.appendChild(iframe);
-      
-      // Clean up iframe after a delay
-      setTimeout(() => {
-        document.body.removeChild(iframe);
-      }, 5000);
-
+      await triggerVideoDownload(downloadUrl, stem);
     } catch (error) {
       console.error('Download error:', error);
-      // Final fallback: direct link
-      const link = document.createElement('a');
-      link.href = downloadUrl;
-      link.download = `facebook-video-${quality || 'download'}.mp4`;
-      link.style.display = 'none';
-      document.body.appendChild(link);
-      link.click();
-      setTimeout(() => {
-        document.body.removeChild(link);
-      }, 100);
+    } finally {
+      const minMs = 900;
+      const elapsed = Date.now() - started;
+      if (elapsed < minMs) {
+        await new Promise((r) => setTimeout(r, minMs - elapsed));
+      }
+      setDownloadKey(null);
     }
   };
 
@@ -817,6 +783,9 @@ function DownloaderSection() {
                         setLink(e.target.value);
                         setError(null);
                         setVideoData(null);
+                        setFetchedPageUrl('');
+                        setActiveVideoUrl(null);
+                        setDownloadKey(null);
                       }}
                       disabled={loading}
                     />
@@ -838,6 +807,9 @@ function DownloaderSection() {
                       setLink('');
                       setError(null);
                       setVideoData(null);
+                      setFetchedPageUrl('');
+                      setActiveVideoUrl(null);
+                      setDownloadKey(null);
                     }} disabled={loading}>
                       <i className="fas fa-eraser me-2"></i>Clear Field
                     </button>
@@ -876,14 +848,18 @@ function DownloaderSection() {
                           {activeVideoUrl ? (
                             <>
                               <video
+                                key={activeVideoUrl}
                                 ref={videoRef}
                                 src={activeVideoUrl}
+                                poster={videoData.thumbnail || videoData.items[0]?.thumbnail || undefined}
                                 controls
                                 muted
-                                style={{ width: '100%', maxHeight: '420px', background: 'black', display: 'block' }}
+                                playsInline
+                                preload="metadata"
+                                referrerPolicy="no-referrer"
+                                style={{ width: '100%', maxHeight: '420px', background: '#0f172a', display: 'block' }}
                                 onPlay={() => {
                                   setIsPlaying(true);
-                                  // Hide icon after 1 second when playing
                                   setTimeout(() => {
                                     if (videoRef.current && !videoRef.current.paused) {
                                       setShowPlayPauseIcon(false);
@@ -895,13 +871,11 @@ function DownloaderSection() {
                                   setShowPlayPauseIcon(true);
                                 }}
                                 onMouseEnter={() => {
-                                  // Show icon on hover when playing
                                   if (isPlaying) {
                                     setShowPlayPauseIcon(true);
                                   }
                                 }}
                                 onMouseLeave={() => {
-                                  // Hide icon after hover when playing
                                   if (isPlaying && videoRef.current && !videoRef.current.paused) {
                                     setTimeout(() => {
                                       if (videoRef.current && !videoRef.current.paused) {
@@ -932,9 +906,9 @@ function DownloaderSection() {
                             </>
                           ) : (
                             <>
-                              <img 
-                                src={videoData.thumbnail || videoData.items[0]?.thumbnail} 
-                                alt="Video thumbnail" 
+                              <img
+                                src={videoData.thumbnail || videoData.items[0]?.thumbnail}
+                                alt="Video thumbnail"
                                 style={{ width: '100%', height: 'auto', display: 'block', maxHeight: '400px', objectFit: 'contain' }}
                                 onError={(e) => { e.target.style.display = 'none'; }}
                               />
@@ -956,6 +930,20 @@ function DownloaderSection() {
                           )}
                         </div>
                       )}
+                      {normalizeFacebookPageUrl(fetchedPageUrl) ? (
+                        <div className="fb-watch-on-fb-row">
+                          <a
+                            className="th-btn th-btn-outline fb-watch-on-fb-link"
+                            href={normalizeFacebookPageUrl(fetchedPageUrl)}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            title="Opens this video on Facebook in a new tab"
+                          >
+                            <i className="fas fa-up-right-from-square me-2" aria-hidden="true"></i>
+                            Watch on Facebook
+                          </a>
+                        </div>
+                      ) : null}
                     </div>
 
                     {(() => {
@@ -965,10 +953,22 @@ function DownloaderSection() {
                         <div className="fb-main-actions">
                           <button
                             type="button"
-                            className="th-btn th-btn-primary"
-                            onClick={() => handleDownload(mainUrl, 'Video')}
+                            className="th-btn th-btn-primary fb-download-btn"
+                            disabled={downloadKey !== null}
+                            aria-busy={downloadKey === 'main'}
+                            onClick={() => handleDownload(mainUrl, 'Video', 'main')}
                           >
-                            <i className="fas fa-download me-2"></i>Download Video
+                            {downloadKey === 'main' ? (
+                              <>
+                                <i className="fas fa-spinner fa-spin me-2" aria-hidden="true"></i>
+                                Downloading video…
+                              </>
+                            ) : (
+                              <>
+                                <i className="fas fa-download me-2" aria-hidden="true"></i>
+                                Download Video
+                              </>
+                            )}
                           </button>
                         </div>
                       );
@@ -1003,13 +1003,25 @@ function DownloaderSection() {
                               >
                                 <i className="fas fa-play me-2"></i>Play {qualityLabel}
                               </button>
-                              <button 
-                                type="button" 
-                                className="th-btn th-btn-primary"
-                                onClick={() => handleDownload(item.url, qualityLabel)}
+                              <button
+                                type="button"
+                                className="th-btn th-btn-primary fb-download-btn"
+                                disabled={downloadKey !== null}
+                                aria-busy={downloadKey === `opt-${index}`}
+                                onClick={() => handleDownload(item.url, qualityLabel, `opt-${index}`)}
                                 style={{ padding: '8px 16px', fontSize: '0.85rem' }}
                               >
-                                <i className="fas fa-download me-2"></i>Download {qualityLabel}
+                                {downloadKey === `opt-${index}` ? (
+                                  <>
+                                    <i className="fas fa-spinner fa-spin me-2" aria-hidden="true"></i>
+                                    Downloading…
+                                  </>
+                                ) : (
+                                  <>
+                                    <i className="fas fa-download me-2" aria-hidden="true"></i>
+                                    Download {qualityLabel}
+                                  </>
+                                )}
                               </button>
                             </div>
                           </div>

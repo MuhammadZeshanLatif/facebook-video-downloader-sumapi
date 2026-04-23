@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import SEO from '../components/SEO';
 import { buildHomeEsJsonLd } from '../data/pageSchemas';
+import { normalizeFacebookPageUrl } from '../utils/facebookEmbed';
+import { triggerVideoDownload } from '../utils/downloadVideo';
 
 function HeroEs() {
   const [url, setUrl] = useState('');
@@ -261,6 +263,7 @@ function TrustedByEs() {
 
 function DownloaderSectionEs() {
   const [link, setLink] = useState('');
+  const [fetchedPageUrl, setFetchedPageUrl] = useState('');
   const [loading, setLoading] = useState(false);
   const [videoData, setVideoData] = useState(null);
   const [error, setError] = useState(null);
@@ -268,6 +271,7 @@ function DownloaderSectionEs() {
   const [isPlaying, setIsPlaying] = useState(false);
   const [showPlayPauseIcon, setShowPlayPauseIcon] = useState(true);
   const [isMobileView, setIsMobileView] = useState(false);
+  const [downloadKey, setDownloadKey] = useState(null);
   const videoRef = React.useRef(null);
 
   useEffect(() => {
@@ -291,11 +295,18 @@ function DownloaderSectionEs() {
     return () => window.removeEventListener('fb-download', handler);
   }, []);
 
+  useEffect(() => {
+    if (!activeVideoUrl || !videoRef.current) return;
+    videoRef.current.load();
+  }, [activeVideoUrl]);
+
   const fetchVideoData = async (url) => {
     setLoading(true);
     setError(null);
     setVideoData(null);
     setActiveVideoUrl(null);
+    setFetchedPageUrl('');
+    setDownloadKey(null);
     try {
       const encodedUrl = encodeURIComponent(url);
       const apiUrl = `https://facebookvideo-downloader-backend.vercel.app/api/meta/download?url=${encodedUrl}`;
@@ -309,6 +320,7 @@ function DownloaderSectionEs() {
       }
       if (videoItems && videoItems.length > 0) {
         const firstItem = videoItems[0];
+        setFetchedPageUrl(url.trim());
         setVideoData({
           items: videoItems,
           thumbnail: firstItem?.thumbnail,
@@ -343,57 +355,22 @@ function DownloaderSectionEs() {
     fetchVideoData(link);
   };
 
-  const handleDownload = async (downloadUrl, quality = '') => {
-    if (!downloadUrl) return;
+  const handleDownload = async (downloadUrl, quality = '', buttonKey = 'main') => {
+    if (!downloadUrl || downloadKey !== null) return;
+    const stem = `facebook-video-${quality || 'descarga'}`;
+    setDownloadKey(buttonKey);
+    const started = Date.now();
     try {
-      let urlWithDownload = downloadUrl;
-      if (!urlWithDownload.includes('&dl=1') && !urlWithDownload.includes('?dl=1')) {
-        urlWithDownload = urlWithDownload + (urlWithDownload.includes('?') ? '&dl=1' : '?dl=1');
-      }
-
-      try {
-        const response = await fetch(urlWithDownload, {
-          method: 'GET',
-          mode: 'cors',
-          credentials: 'omit',
-        });
-        if (response.ok) {
-          const blob = await response.blob();
-          const blobUrl = window.URL.createObjectURL(blob);
-          const a = document.createElement('a');
-          a.style.display = 'none';
-          a.href = blobUrl;
-          a.download = `facebook-video-${quality || 'descarga'}.mp4`;
-          document.body.appendChild(a);
-          a.click();
-          setTimeout(() => {
-            document.body.removeChild(a);
-            window.URL.revokeObjectURL(blobUrl);
-          }, 100);
-          return;
-        }
-      } catch (fetchError) {
-        console.log('Fetch fallo, intentando metodo alternativo:', fetchError);
-      }
-
-      const iframe = document.createElement('iframe');
-      iframe.style.display = 'none';
-      iframe.src = urlWithDownload;
-      document.body.appendChild(iframe);
-      setTimeout(() => {
-        document.body.removeChild(iframe);
-      }, 5000);
+      await triggerVideoDownload(downloadUrl, stem);
     } catch (downloadError) {
       console.error('Download error:', downloadError);
-      const a = document.createElement('a');
-      a.href = downloadUrl;
-      a.download = `facebook-video-${quality || 'descarga'}.mp4`;
-      a.style.display = 'none';
-      document.body.appendChild(a);
-      a.click();
-      setTimeout(() => {
-        document.body.removeChild(a);
-      }, 100);
+    } finally {
+      const minMs = 900;
+      const elapsed = Date.now() - started;
+      if (elapsed < minMs) {
+        await new Promise((r) => setTimeout(r, minMs - elapsed));
+      }
+      setDownloadKey(null);
     }
   };
 
@@ -426,6 +403,9 @@ function DownloaderSectionEs() {
                         setLink(e.target.value);
                         setError(null);
                         setVideoData(null);
+                        setFetchedPageUrl('');
+                        setActiveVideoUrl(null);
+                        setDownloadKey(null);
                       }}
                       disabled={loading}
                     />
@@ -442,6 +422,9 @@ function DownloaderSectionEs() {
                         setLink('');
                         setError(null);
                         setVideoData(null);
+                        setFetchedPageUrl('');
+                        setActiveVideoUrl(null);
+                        setDownloadKey(null);
                       }}
                       disabled={loading}
                     >
@@ -474,11 +457,16 @@ function DownloaderSectionEs() {
                           {activeVideoUrl ? (
                             <>
                               <video
+                                key={activeVideoUrl}
                                 ref={videoRef}
                                 src={activeVideoUrl}
+                                poster={videoData.thumbnail || videoData.items[0]?.thumbnail || undefined}
                                 controls
                                 muted
-                                style={{ width: '100%', maxHeight: '420px', background: 'black', display: 'block' }}
+                                playsInline
+                                preload="metadata"
+                                referrerPolicy="no-referrer"
+                                style={{ width: '100%', maxHeight: '420px', background: '#0f172a', display: 'block' }}
                                 onPlay={() => {
                                   setIsPlaying(true);
                                   setTimeout(() => {
@@ -544,6 +532,20 @@ function DownloaderSectionEs() {
                           )}
                         </div>
                       )}
+                      {normalizeFacebookPageUrl(fetchedPageUrl) ? (
+                        <div className="fb-watch-on-fb-row">
+                          <a
+                            className="th-btn th-btn-outline fb-watch-on-fb-link"
+                            href={normalizeFacebookPageUrl(fetchedPageUrl)}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            title="Abre este video en Facebook en una pestana nueva"
+                          >
+                            <i className="fas fa-up-right-from-square me-2" aria-hidden="true"></i>
+                            Ver en Facebook
+                          </a>
+                        </div>
+                      ) : null}
                     </div>
 
                     {(() => {
@@ -553,10 +555,22 @@ function DownloaderSectionEs() {
                         <div className="fb-main-actions">
                           <button
                             type="button"
-                            className="th-btn th-btn-primary"
-                            onClick={() => handleDownload(mainUrl, 'Video')}
+                            className="th-btn th-btn-primary fb-download-btn"
+                            disabled={downloadKey !== null}
+                            aria-busy={downloadKey === 'main'}
+                            onClick={() => handleDownload(mainUrl, 'Video', 'main')}
                           >
-                            <i className="fas fa-download me-2"></i>Descargar video
+                            {downloadKey === 'main' ? (
+                              <>
+                                <i className="fas fa-spinner fa-spin me-2" aria-hidden="true"></i>
+                                Descargando video…
+                              </>
+                            ) : (
+                              <>
+                                <i className="fas fa-download me-2" aria-hidden="true"></i>
+                                Descargar video
+                              </>
+                            )}
                           </button>
                         </div>
                       );
@@ -591,11 +605,23 @@ function DownloaderSectionEs() {
                               </button>
                               <button
                                 type="button"
-                                className="th-btn th-btn-primary"
-                                onClick={() => handleDownload(item.url, qualityLabel)}
+                                className="th-btn th-btn-primary fb-download-btn"
+                                disabled={downloadKey !== null}
+                                aria-busy={downloadKey === `opt-${index}`}
+                                onClick={() => handleDownload(item.url, qualityLabel, `opt-${index}`)}
                                 style={{ padding: '8px 16px', fontSize: '0.85rem' }}
                               >
-                                <i className="fas fa-download me-2"></i>Descargar {qualityLabel}
+                                {downloadKey === `opt-${index}` ? (
+                                  <>
+                                    <i className="fas fa-spinner fa-spin me-2" aria-hidden="true"></i>
+                                    Descargando…
+                                  </>
+                                ) : (
+                                  <>
+                                    <i className="fas fa-download me-2" aria-hidden="true"></i>
+                                    Descargar {qualityLabel}
+                                  </>
+                                )}
                               </button>
                             </div>
                           </div>

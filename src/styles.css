@@ -3036,6 +3036,29 @@ a { text-decoration: none; color: inherit; }
   opacity: 0.9;
 }
 
+.fb-download-btn:disabled {
+  cursor: wait;
+  opacity: 0.92;
+}
+
+.fb-download-btn[aria-busy='true'] {
+  cursor: wait;
+}
+
+.fb-watch-on-fb-row {
+  padding: 12px 16px 16px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  background: var(--th-bg-alt, #0f172a);
+  border-top: 1px solid var(--th-border);
+}
+
+.fb-watch-on-fb-link {
+  text-decoration: none;
+}
+
 .fb-video-play-btn {
   position: absolute;
   top: 50%;
