@@ -149,6 +149,25 @@ function BlogPostFacebookCopyrightRules() {
                     safe.
                   </p>
 
+                  <div className="fb-youtube-embed" style={{ marginBottom: '1.75rem' }}>
+                    <div className="fb-youtube-embed-inner">
+                      <iframe
+                        src="https://www.youtube.com/embed/TIOQAx-vJjM"
+                        title="Facebook Copyright Rules Explained — video walkthrough"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowFullScreen
+                        loading="lazy"
+                        referrerPolicy="strict-origin-when-cross-origin"
+                      />
+                    </div>
+                    <p className="fb-youtube-embed-caption">
+                      Watch on YouTube:{' '}
+                      <a href="https://youtu.be/TIOQAx-vJjM" target="_blank" rel="noopener noreferrer">
+                        youtu.be/TIOQAx-vJjM
+                      </a>
+                    </p>
+                  </div>
+
                   <h2 id="what-is-copyright-on-facebook">What Is Copyright on Facebook?</h2>
                   <p>
                     To start, copyright means the creator owns the content. Therefore, using someone else’s work without permission can cause problems.
