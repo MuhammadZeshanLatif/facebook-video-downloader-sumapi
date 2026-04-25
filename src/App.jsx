@@ -1713,6 +1713,7 @@ function Footer() {
               <Link to="/privacy-policy">{isSpanishPage ? 'Privacidad' : 'Privacy'}</Link>
               <Link to="/terms-conditions">{isSpanishPage ? 'Terminos' : 'Terms'}</Link>
               <Link to="/about">{isSpanishPage ? 'Acerca de' : 'About'}</Link>
+              <Link to="/es/descargar-video-de-facebook">ES</Link>
             </div>
           </div>
         </div>

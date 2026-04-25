@@ -38,6 +38,8 @@ const SEO = ({
   const resolvedUrl   = ogUrl || `${CANONICAL_BASE}${location.pathname}`;
   const canonical     = `${CANONICAL_BASE}${location.pathname}`;
   const resolvedOgImageAlt = ogImageAlt || `${SITE_NAME} - ${resolvedTitle}`;
+  const isEnglishHome = location.pathname === '/';
+  const isSpanishHome = location.pathname === '/es/descargar-video-de-facebook';
 
   useEffect(() => {
     // ── Title ──────────────────────────────────────────────
@@ -106,6 +108,27 @@ const SEO = ({
     }
     link.setAttribute('href', canonical);
 
+    // ── Hreflang alternates for EN/ES home routes ───────────
+    const removeHreflangLinks = () => {
+      document.querySelectorAll('link[data-seo-hreflang]').forEach((el) => el.remove());
+    };
+    removeHreflangLinks();
+    if (isEnglishHome || isSpanishHome) {
+      const alternates = [
+        { hreflang: 'en', href: `${CANONICAL_BASE}/` },
+        { hreflang: 'es', href: `${CANONICAL_BASE}/es/descargar-video-de-facebook` },
+        { hreflang: 'x-default', href: `${CANONICAL_BASE}/` },
+      ];
+      alternates.forEach(({ hreflang, href }) => {
+        const alt = document.createElement('link');
+        alt.setAttribute('rel', 'alternate');
+        alt.setAttribute('hreflang', hreflang);
+        alt.setAttribute('href', href);
+        alt.setAttribute('data-seo-hreflang', 'true');
+        document.head.appendChild(alt);
+      });
+    }
+
   }, [
     resolvedTitle,
     resolvedDesc,
@@ -119,6 +142,8 @@ const SEO = ({
     articleModifiedTime,
     articleAuthor,
     ogLocale,
+    isEnglishHome,
+    isSpanishHome,
   ]);
 
   const jsonLdKey =

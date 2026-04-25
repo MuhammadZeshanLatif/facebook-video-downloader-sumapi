@@ -6,6 +6,9 @@
   <!-- Home Page -->
   <url>
     <loc>https://fbvideodownloaders.com/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fbvideodownloaders.com/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://fbvideodownloaders.com/es/descargar-video-de-facebook" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://fbvideodownloaders.com/" />
     <lastmod>2026-04-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
@@ -19,6 +22,9 @@
   <!-- Spanish Home Page -->
   <url>
     <loc>https://fbvideodownloaders.com/es/descargar-video-de-facebook</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fbvideodownloaders.com/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://fbvideodownloaders.com/es/descargar-video-de-facebook" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://fbvideodownloaders.com/" />
     <lastmod>2026-04-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.95</priority>
