@@ -273,6 +273,7 @@ function DownloaderSectionEs() {
   const [isMobileView, setIsMobileView] = useState(false);
   const [downloadKey, setDownloadKey] = useState(null);
   const videoRef = React.useRef(null);
+  const playRetryRef = React.useRef(false);
 
   useEffect(() => {
     const checkScreenSize = () => {
@@ -297,6 +298,7 @@ function DownloaderSectionEs() {
 
   useEffect(() => {
     if (!activeVideoUrl || !videoRef.current) return;
+    playRetryRef.current = false;
     videoRef.current.load();
   }, [activeVideoUrl]);
 
@@ -355,13 +357,63 @@ function DownloaderSectionEs() {
     fetchVideoData(link);
   };
 
+  const getFreshVideoUrl = async (currentUrl, quality = '') => {
+    if (!fetchedPageUrl) return currentUrl;
+    try {
+      const encodedUrl = encodeURIComponent(fetchedPageUrl);
+      const apiUrl = `https://facebookvideo-downloader-backend.vercel.app/api/meta/download?url=${encodedUrl}`;
+      const response = await fetch(apiUrl);
+      const data = await response.json();
+
+      let videoItems = null;
+      if (data.success && data.data) {
+        if (data.data.data && Array.isArray(data.data.data) && data.data.data.length > 0) {
+          videoItems = data.data.data;
+        } else if (Array.isArray(data.data) && data.data.length > 0) {
+          videoItems = data.data;
+        } else if (data.data.url || data.data.thumbnail || data.data.hd || data.data.sd) {
+          videoItems = [data.data];
+        }
+      }
+
+      if (!videoItems?.length) return currentUrl;
+
+      const q = String(quality || '').toLowerCase();
+      const byQuality =
+        q && q !== 'video'
+          ? videoItems.find((item) => String(item?.resolution || '').toLowerCase().includes(q))
+          : null;
+      const byUrl = currentUrl ? videoItems.find((item) => item?.url && item.url === currentUrl) : null;
+      return byQuality?.url || byUrl?.url || videoItems[0]?.url || currentUrl;
+    } catch {
+      return currentUrl;
+    }
+  };
+
+  const handlePlaySelection = async (targetUrl, quality = '') => {
+    if (!targetUrl || !fetchedPageUrl) {
+      setActiveVideoUrl(targetUrl || null);
+      return;
+    }
+    const freshUrl = await getFreshVideoUrl(targetUrl, quality);
+    setActiveVideoUrl(freshUrl || targetUrl);
+    setIsPlaying(false);
+    setShowPlayPauseIcon(true);
+    setTimeout(() => {
+      if (videoRef.current) {
+        videoRef.current.play().catch(() => {});
+      }
+    }, 120);
+  };
+
   const handleDownload = async (downloadUrl, quality = '', buttonKey = 'main') => {
     if (!downloadUrl || downloadKey !== null) return;
     const stem = `facebook-video-${quality || 'descarga'}`;
     setDownloadKey(buttonKey);
     const started = Date.now();
     try {
-      await triggerVideoDownload(downloadUrl, stem);
+      const freshUrl = await getFreshVideoUrl(downloadUrl, quality);
+      await triggerVideoDownload(freshUrl || downloadUrl, stem);
     } catch (downloadError) {
       console.error('Download error:', downloadError);
     } finally {
@@ -479,6 +531,22 @@ function DownloaderSectionEs() {
                                   setIsPlaying(false);
                                   setShowPlayPauseIcon(true);
                                 }}
+                                onClick={() => {
+                                  if (!videoRef.current) return;
+                                  if (videoRef.current.paused) {
+                                    videoRef.current.play().catch(() => {});
+                                  } else {
+                                    videoRef.current.pause();
+                                  }
+                                }}
+                                onError={async () => {
+                                  if (playRetryRef.current || !activeVideoUrl) return;
+                                  playRetryRef.current = true;
+                                  const refreshed = await getFreshVideoUrl(activeVideoUrl, 'Video');
+                                  if (refreshed && refreshed !== activeVideoUrl) {
+                                    setActiveVideoUrl(refreshed);
+                                  }
+                                }}
                                 onMouseEnter={() => {
                                   if (isPlaying) setShowPlayPauseIcon(true);
                                 }}
@@ -517,14 +585,7 @@ function DownloaderSectionEs() {
                               <button
                                 type="button"
                                 className="fb-video-play-btn"
-                                onClick={() => {
-                                  const firstUrl = videoData.items[0]?.url;
-                                  if (firstUrl) {
-                                    setActiveVideoUrl(firstUrl);
-                                    setIsPlaying(false);
-                                    setShowPlayPauseIcon(true);
-                                  }
-                                }}
+                                onClick={() => handlePlaySelection(videoData.items[0]?.url, 'Video')}
                               >
                                 <i className="fas fa-play"></i>
                               </button>
@@ -598,7 +659,7 @@ function DownloaderSectionEs() {
                               <button
                                 type="button"
                                 className="th-btn th-btn-outline"
-                                onClick={() => setActiveVideoUrl(item.url)}
+                                onClick={() => handlePlaySelection(item.url, qualityLabel)}
                                 style={{ padding: '8px 16px', fontSize: '0.85rem' }}
                               >
                                 <i className="fas fa-play me-2"></i>Reproducir {qualityLabel}

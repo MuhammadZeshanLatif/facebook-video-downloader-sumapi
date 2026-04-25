@@ -630,6 +630,7 @@ function DownloaderSection() {
   const [isMobileView, setIsMobileView] = useState(false);
   const [downloadKey, setDownloadKey] = useState(null);
   const videoRef = React.useRef(null);
+  const playRetryRef = React.useRef(false);
 
   // Convert h2 to h1 on mobile/tablet (<= 991px)
   useEffect(() => {
@@ -658,6 +659,7 @@ function DownloaderSection() {
 
   useEffect(() => {
     if (!activeVideoUrl || !videoRef.current) return;
+    playRetryRef.current = false;
     videoRef.current.load();
   }, [activeVideoUrl]);
 
@@ -732,7 +734,7 @@ function DownloaderSection() {
     fetchVideoData(link);
   };
 
-  const getFreshDownloadUrl = async (currentUrl, quality = '') => {
+  const getFreshVideoUrl = async (currentUrl, quality = '') => {
     if (!fetchedPageUrl) return currentUrl;
     try {
       const encodedUrl = encodeURIComponent(fetchedPageUrl);
@@ -765,13 +767,29 @@ function DownloaderSection() {
     }
   };
 
+  const handlePlaySelection = async (targetUrl, quality = '') => {
+    if (!targetUrl || !fetchedPageUrl) {
+      setActiveVideoUrl(targetUrl || null);
+      return;
+    }
+    const freshUrl = await getFreshVideoUrl(targetUrl, quality);
+    setActiveVideoUrl(freshUrl || targetUrl);
+    setIsPlaying(false);
+    setShowPlayPauseIcon(true);
+    setTimeout(() => {
+      if (videoRef.current) {
+        videoRef.current.play().catch(() => {});
+      }
+    }, 120);
+  };
+
   const handleDownload = async (downloadUrl, quality = '', buttonKey = 'main') => {
     if (!downloadUrl || downloadKey !== null) return;
     const stem = `facebook-video-${quality || 'download'}`;
     setDownloadKey(buttonKey);
     const started = Date.now();
     try {
-      const freshUrl = await getFreshDownloadUrl(downloadUrl, quality);
+      const freshUrl = await getFreshVideoUrl(downloadUrl, quality);
       await triggerVideoDownload(freshUrl || downloadUrl, stem);
     } catch (error) {
       console.error('Download error:', error);
@@ -905,6 +923,22 @@ function DownloaderSection() {
                                   setIsPlaying(false);
                                   setShowPlayPauseIcon(true);
                                 }}
+                                onClick={() => {
+                                  if (!videoRef.current) return;
+                                  if (videoRef.current.paused) {
+                                    videoRef.current.play().catch(() => {});
+                                  } else {
+                                    videoRef.current.pause();
+                                  }
+                                }}
+                                onError={async () => {
+                                  if (playRetryRef.current || !activeVideoUrl) return;
+                                  playRetryRef.current = true;
+                                  const refreshed = await getFreshVideoUrl(activeVideoUrl, 'Video');
+                                  if (refreshed && refreshed !== activeVideoUrl) {
+                                    setActiveVideoUrl(refreshed);
+                                  }
+                                }}
                                 onMouseEnter={() => {
                                   if (isPlaying) {
                                     setShowPlayPauseIcon(true);
@@ -950,14 +984,7 @@ function DownloaderSection() {
                               <button
                                 type="button"
                                 className="fb-video-play-btn"
-                                onClick={() => {
-                                  const firstUrl = videoData.items[0]?.url;
-                                  if (firstUrl) {
-                                    setActiveVideoUrl(firstUrl);
-                                    setIsPlaying(false);
-                                    setShowPlayPauseIcon(true);
-                                  }
-                                }}
+                                onClick={() => handlePlaySelection(videoData.items[0]?.url, 'Video')}
                               >
                                 <i className="fas fa-play"></i>
                               </button>
@@ -1033,7 +1060,7 @@ function DownloaderSection() {
                               <button 
                                 type="button" 
                                 className="th-btn th-btn-outline"
-                                onClick={() => setActiveVideoUrl(item.url)}
+                                onClick={() => handlePlaySelection(item.url, qualityLabel)}
                                 style={{ padding: '8px 16px', fontSize: '0.85rem' }}
                               >
                                 <i className="fas fa-play me-2"></i>Play {qualityLabel}
