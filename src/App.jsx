@@ -732,13 +732,47 @@ function DownloaderSection() {
     fetchVideoData(link);
   };
 
+  const getFreshDownloadUrl = async (currentUrl, quality = '') => {
+    if (!fetchedPageUrl) return currentUrl;
+    try {
+      const encodedUrl = encodeURIComponent(fetchedPageUrl);
+      const apiUrl = `https://facebookvideo-downloader-backend.vercel.app/api/meta/download?url=${encodedUrl}`;
+      const response = await fetch(apiUrl);
+      const data = await response.json();
+
+      let videoItems = null;
+      if (data.success && data.data) {
+        if (data.data.data && Array.isArray(data.data.data) && data.data.data.length > 0) {
+          videoItems = data.data.data;
+        } else if (Array.isArray(data.data) && data.data.length > 0) {
+          videoItems = data.data;
+        } else if (data.data.url || data.data.thumbnail || data.data.hd || data.data.sd) {
+          videoItems = [data.data];
+        }
+      }
+
+      if (!videoItems?.length) return currentUrl;
+
+      const q = String(quality || '').toLowerCase();
+      const byQuality =
+        q && q !== 'video'
+          ? videoItems.find((item) => String(item?.resolution || '').toLowerCase().includes(q))
+          : null;
+      const byUrl = currentUrl ? videoItems.find((item) => item?.url && item.url === currentUrl) : null;
+      return byQuality?.url || byUrl?.url || videoItems[0]?.url || currentUrl;
+    } catch {
+      return currentUrl;
+    }
+  };
+
   const handleDownload = async (downloadUrl, quality = '', buttonKey = 'main') => {
     if (!downloadUrl || downloadKey !== null) return;
     const stem = `facebook-video-${quality || 'download'}`;
     setDownloadKey(buttonKey);
     const started = Date.now();
     try {
-      await triggerVideoDownload(downloadUrl, stem);
+      const freshUrl = await getFreshDownloadUrl(downloadUrl, quality);
+      await triggerVideoDownload(freshUrl || downloadUrl, stem);
     } catch (error) {
       console.error('Download error:', error);
     } finally {

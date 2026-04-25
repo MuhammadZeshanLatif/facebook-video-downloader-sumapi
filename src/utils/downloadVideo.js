@@ -1,7 +1,7 @@
 /**
- * Download or open a remote video URL. Facebook CDN URLs are signed; extra query
- * params (e.g. dl=1) often invalidate them. Cross-origin fetch usually fails; opening
- * the URL in a new tab lets the browser stream it and the user can Save as / download.
+ * Open a remote video URL in a user-gesture-safe way.
+ * Facebook CDN links are heavily restricted for CORS and often fail with blob downloads.
+ * Opening immediately from the click event is more reliable on mobile production browsers.
  */
 export async function triggerVideoDownload(downloadUrl, suggestedFileName) {
   if (!downloadUrl || typeof downloadUrl !== 'string') return;
@@ -12,35 +12,15 @@ export async function triggerVideoDownload(downloadUrl, suggestedFileName) {
     .replace(/\s+/g, '-') || 'download';
   const fileName = base.endsWith('.mp4') ? base : `${base}.mp4`;
 
-  try {
-    const response = await fetch(downloadUrl, {
-      method: 'GET',
-      mode: 'cors',
-      credentials: 'omit',
-    });
-    if (response.ok) {
-      const blob = await response.blob();
-      const blobUrl = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.style.display = 'none';
-      a.href = blobUrl;
-      a.download = fileName;
-      document.body.appendChild(a);
-      a.click();
-      setTimeout(() => {
-        document.body.removeChild(a);
-        URL.revokeObjectURL(blobUrl);
-      }, 250);
-      return;
-    }
-  } catch {
-    /* use fallback */
-  }
+  const opened = window.open(downloadUrl, '_blank', 'noopener,noreferrer');
+  if (opened) return;
 
+  // Fallback for browsers that block window.open but allow anchor navigation.
   const a = document.createElement('a');
   a.href = downloadUrl;
   a.target = '_blank';
   a.rel = 'noopener noreferrer';
+  a.download = fileName;
   a.style.display = 'none';
   document.body.appendChild(a);
   a.click();
