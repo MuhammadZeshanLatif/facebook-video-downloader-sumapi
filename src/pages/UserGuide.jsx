@@ -60,8 +60,8 @@ function UserGuide() {
       a: 'Yes, as long as you use a trusted tool that does not ask for login details.',
     },
     {
-      q: 'Can I download private Facebook videos?',
-      a: 'Most tools only support public videos. Private videos are restricted.',
+      q: 'What links are supported in this guide?',
+      a: 'This guide covers publicly accessible Facebook video and Reel links only.',
     },
   ];
 

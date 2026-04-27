@@ -81,10 +81,10 @@ export function buildHomeJsonLd() {
           },
           {
             '@type': 'Question',
-            name: 'Can I download private Facebook videos?',
+            name: 'What links are supported by FBSave HD?',
             acceptedAnswer: {
               '@type': 'Answer',
-              text: 'No. FBSave HD only supports publicly shared Facebook videos and Reels. Downloading private videos is not supported to respect user privacy and platform policies.',
+              text: 'FBSave HD supports publicly accessible Facebook video and Reel links only.',
             },
           },
           {
@@ -313,8 +313,8 @@ export function buildUserGuideJsonLd() {
       a: 'Yes, as long as you use a trusted tool that does not ask for login details.',
     },
     {
-      q: 'Can I download private Facebook videos?',
-      a: 'Most tools only support public videos. Private videos are restricted.',
+      q: 'What links are supported in this user guide?',
+      a: 'This guide covers publicly accessible Facebook video and Reel links only.',
     },
   ].map((item) => ({
     '@type': 'Question',

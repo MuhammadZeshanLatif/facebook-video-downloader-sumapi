@@ -1097,8 +1097,8 @@ function ContactEs() {
           <div className="th-contact-form-wrap">
             <div className="th-contact-form">
               <h3>Enviar mensaje de soporte</h3>
-              <p className="th-contact-form-sub">Formulario front-end para demostracion de interfaz.</p>
-              {sent && <div className="th-success-msg"><i className="fas fa-check-circle me-2"></i>Tu mensaje fue registrado en la interfaz de demo.</div>}
+              <p className="th-contact-form-sub">Usa este formulario para consultas de soporte, comentarios o temas de politicas.</p>
+              {sent && <div className="th-success-msg"><i className="fas fa-check-circle me-2"></i>Gracias. Tu mensaje fue enviado correctamente.</div>}
               <form onSubmit={handleSubmit}>
                 <div className="th-form-row">
                   <div className="th-form-group"><label htmlFor="name-es">Nombre *</label><input id="name-es" name="name" value={form.name} onChange={handleChange} placeholder="Tu nombre" required /></div>
