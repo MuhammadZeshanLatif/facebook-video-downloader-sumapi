@@ -87,7 +87,6 @@ function Navbar() {
 
   const navLinks = [
     { path: '/', label: isSpanishPage ? 'Inicio' : 'Home', id: 'home' },
-    { path: '/user-guide', label: isSpanishPage ? 'Guia' : 'User Guide', id: null },
     { path: '/blog', label: 'Blog', id: null },
     { path: '/privacy-policy', label: isSpanishPage ? 'Privacidad' : 'Privacy', id: null },
     { path: '/terms-conditions', label: isSpanishPage ? 'Terminos' : 'Terms', id: null },
