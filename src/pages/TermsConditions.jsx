@@ -3,6 +3,8 @@ import SEO from '../components/SEO';
 import { buildTermsJsonLd } from '../data/pageSchemas';
 
 function TermsConditions() {
+  const effectiveDate = 'April 27, 2026';
+
   return (
     <>
       <SEO
@@ -17,7 +19,7 @@ function TermsConditions() {
         <div className="th-section-header">
           <h1 className="th-section-title">Terms and Conditions</h1>
           <p className="th-section-desc">
-            Last Updated: {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+            Effective Date: {effectiveDate}
           </p>
         </div>
 
@@ -26,99 +28,89 @@ function TermsConditions() {
             <div className="fb-tool-card">
               <h2>1. Acceptance of Terms</h2>
               <p>
-                By accessing and using Facebook Video Downloader, you accept and agree to be bound by the terms and 
-                provision of this agreement. If you do not agree to abide by the above, please do not use this service.
+                By accessing or using FBSave HD, you agree to these Terms and all applicable laws. If you do not
+                agree, do not use this website.
               </p>
 
-              <h3 className="mt-4">2. Description of Service</h3>
+              <h3 className="mt-4">2. Service Description</h3>
               <p>
-                Facebook Video Downloader is a free online tool that allows users to download publicly available videos 
-                from Facebook. The service processes video URLs and provides download links in various quality formats.
+                FBSave HD is an informational, browser-based tool for publicly accessible social video links. We are
+                not affiliated with Facebook or Meta.
               </p>
 
-              <h3 className="mt-4">3. User Responsibilities</h3>
-              <h4>3.1 Legal Use</h4>
-              <p>You agree to use our service only for lawful purposes and in accordance with these Terms. You agree not to:</p>
+              <h3 className="mt-4">3. Acceptable Use</h3>
+              <p>You agree to use this website lawfully and responsibly. You must not:</p>
               <ul>
-                <li>Download copyrighted content without proper authorization</li>
-                <li>Use the service to violate any laws or regulations</li>
-                <li>Infringe upon the intellectual property rights of others</li>
-                <li>Download private or restricted Facebook content</li>
-                <li>Use the service for commercial purposes without permission</li>
-                <li>Attempt to reverse engineer or hack our service</li>
+                <li>Use this site to violate copyright, privacy, or other rights</li>
+                <li>Attempt to access private, restricted, or unauthorized content</li>
+                <li>Bypass security, scrape aggressively, or disrupt the service</li>
+                <li>Upload malware, abusive content, or malicious code</li>
+                <li>Use automated abuse methods that harm site performance</li>
               </ul>
 
-              <h4 className="mt-3">3.2 Facebook Terms of Service</h4>
+              <h4 className="mt-3">3.1 Third-Party Platform Rules</h4>
               <p>
-                By using our service, you acknowledge that you are also bound by Facebook's Terms of Service. We are 
-                not affiliated with, endorsed by, or sponsored by Facebook, Inc. Our service is an independent tool 
-                that processes publicly available Facebook content.
+                You are responsible for complying with the terms and policies of any third-party platform related to
+                links you submit.
               </p>
 
               <h3 className="mt-4">4. Intellectual Property</h3>
               <p>
-                The content downloaded through our service remains the property of its original creators and Facebook. 
-                We do not claim ownership of any videos downloaded through our service. Users are responsible for 
-                obtaining proper permissions before downloading and using any content.
+                All trademarks, logos, and third-party content remain the property of their respective owners. You are
+                responsible for ensuring you have rights or permission before reusing any content.
               </p>
 
               <h3 className="mt-4">5. Service Availability</h3>
               <p>
-                We strive to provide a reliable service, but we do not guarantee that the service will be available at 
-                all times. The service may be temporarily unavailable due to maintenance, updates, or unforeseen 
-                circumstances. We are not liable for any loss or inconvenience caused by service unavailability.
+                We may modify, suspend, or discontinue any part of the site at any time. We do not guarantee
+                uninterrupted availability.
               </p>
 
               <h3 className="mt-4">6. Disclaimer of Warranties</h3>
               <p>
-                THE SERVICE IS PROVIDED "AS IS" AND "AS AVAILABLE" WITHOUT WARRANTIES OF ANY KIND, EITHER EXPRESS OR 
-                IMPLIED, INCLUDING BUT NOT LIMITED TO IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR 
-                PURPOSE, OR NON-INFRINGEMENT.
+                The website is provided on an "as is" and "as available" basis without warranties of any kind, express
+                or implied.
               </p>
 
               <h3 className="mt-4">7. Limitation of Liability</h3>
               <p>
-                TO THE MAXIMUM EXTENT PERMITTED BY LAW, WE SHALL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, 
-                CONSEQUENTIAL, OR PUNITIVE DAMAGES, OR ANY LOSS OF PROFITS OR REVENUES, WHETHER INCURRED DIRECTLY OR 
-                INDIRECTLY, OR ANY LOSS OF DATA, USE, GOODWILL, OR OTHER INTANGIBLE LOSSES RESULTING FROM YOUR USE OF 
-                THE SERVICE.
+                To the maximum extent permitted by law, FBSave HD is not liable for indirect, incidental, special, or
+                consequential damages related to use of this site.
               </p>
 
-              <h3 className="mt-4">8. Prohibited Content</h3>
-              <p>You may not use our service to download content that:</p>
+              <h3 className="mt-4">8. Content and Copyright Complaints</h3>
+              <p>
+                If you believe content linked or referenced through this site infringes your rights, contact us with
+                sufficient details. We review valid complaints and take reasonable action.
+              </p>
+
+              <h3 className="mt-4">9. Prohibited Content</h3>
+              <p>You may not use this website for content that:</p>
               <ul>
-                <li>Is illegal, harmful, or violates any laws</li>
-                <li>Infringes on copyright or intellectual property rights</li>
-                <li>Contains hate speech, harassment, or discriminatory content</li>
-                <li>Is pornographic, obscene, or sexually explicit</li>
-                <li>Violates privacy rights of others</li>
-                <li>Is private or restricted content</li>
+                <li>Is unlawful, harmful, or violates regulations</li>
+                <li>Infringes copyrights, trademarks, or privacy rights</li>
+                <li>Includes malware, hate content, or explicit illegal material</li>
               </ul>
 
-              <h3 className="mt-4">9. Account Termination</h3>
+              <h3 className="mt-4">10. Termination</h3>
               <p>
-                We reserve the right to terminate or suspend access to our service immediately, without prior notice or 
-                liability, for any reason, including if you breach the Terms. Upon termination, your right to use the 
-                service will immediately cease.
+                We may restrict or terminate access if we detect abuse, legal violations, or breaches of these Terms.
               </p>
 
-              <h3 className="mt-4">10. Changes to Terms</h3>
+              <h3 className="mt-4">11. Changes to Terms</h3>
               <p>
-                We reserve the right to modify or replace these Terms at any time. If a revision is material, we will 
-                try to provide at least 30 days notice prior to any new terms taking effect. What constitutes a 
-                material change will be determined at our sole discretion.
+                We may update these Terms from time to time. Continued use after updates means you accept the revised
+                Terms.
               </p>
 
-              <h3 className="mt-4">11. Governing Law</h3>
+              <h3 className="mt-4">12. Governing Law</h3>
               <p>
-                These Terms shall be interpreted and governed by the laws of the jurisdiction in which we operate, 
-                without regard to its conflict of law provisions.
+                These Terms are governed by applicable laws of the jurisdiction in which the site operator is based.
               </p>
 
-              <h3 className="mt-4">12. Contact Information</h3>
+              <h3 className="mt-4">13. Contact Information</h3>
               <p>
-                If you have any questions about these Terms and Conditions, please contact us through our 
-                <a href="/contact"> contact page</a>.
+                For legal or policy questions, contact us through the <a href="/contact">contact page</a>.
               </p>
             </div>
           </div>

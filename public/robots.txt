@@ -10,9 +10,9 @@ Disallow: /src/
 
 # Allow all important pages explicitly
 Allow: /
-Allow: /es/descargar-video-de-facebook
 Allow: /user-guide
 Allow: /blog
+Allow: /blog/how-to-reuse-facebook-videos-for-content-creation-easy-guide
 Allow: /blog/facebook-copyright-rules-explained-simple-guide-2026
 Allow: /blog/understanding-facebook-video-formats-and-quality
 Allow: /blog/facebook-reels-complete-download-guide-hd-mobile-desktop
@@ -26,6 +26,7 @@ Allow: /about
 Allow: /contact
 Allow: /privacy-policy
 Allow: /terms-conditions
+Allow: /disclaimer
 
 # Sitemap
 Sitemap: https://fbvideodownloaders.com/sitemap.xml

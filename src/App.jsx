@@ -4,6 +4,7 @@ import About from './pages/About';
 import ContactPage from './pages/Contact';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsConditions from './pages/TermsConditions';
+import Disclaimer from './pages/Disclaimer';
 import Blog from './pages/Blog';
 import BlogPostTop10Tips from './pages/BlogPostTop10Tips';
 import BlogPostHowToDownloadHDQuality from './pages/BlogPostHowToDownloadHDQuality';
@@ -14,9 +15,9 @@ import BlogPostUnderstandingFormatsQuality from './pages/BlogPostUnderstandingFo
 import BlogPostTroubleshootingCommonDownloadIssues from './pages/BlogPostTroubleshootingCommonDownloadIssues';
 import BlogPostPrivacySecurity from './pages/BlogPostPrivacySecurity';
 import BlogPostBestPracticesSavingFacebookVideos from './pages/BlogPostBestPracticesSavingFacebookVideos';
-import BlogPostHowToDownloadPrivateFacebookVideos from './pages/BlogPostHowToDownloadPrivateFacebookVideos';
 import BlogPostWhySomeVideosDownloadSlower from './pages/BlogPostWhySomeVideosDownloadSlower';
 import BlogPostFacebookCopyrightRules from './pages/BlogPostFacebookCopyrightRules';
+import BlogPostReuseFacebookVideos from './pages/BlogPostReuseFacebookVideos';
 import UserGuide from './pages/UserGuide';
 import HomeSpanish from './pages/HomeSpanish';
 import SEO from './components/SEO';
@@ -88,6 +89,9 @@ function Navbar() {
     { path: '/', label: isSpanishPage ? 'Inicio' : 'Home', id: 'home' },
     { path: '/user-guide', label: isSpanishPage ? 'Guia' : 'User Guide', id: null },
     { path: '/blog', label: 'Blog', id: null },
+    { path: '/privacy-policy', label: isSpanishPage ? 'Privacidad' : 'Privacy', id: null },
+    { path: '/terms-conditions', label: isSpanishPage ? 'Terminos' : 'Terms', id: null },
+    { path: '/disclaimer', label: isSpanishPage ? 'Aviso legal' : 'Disclaimer', id: null },
     { path: '/about', label: isSpanishPage ? 'Acerca de' : 'About', id: null },
     { path: '/contact', label: isSpanishPage ? 'Contacto' : 'Contact', id: 'contact' },
   ];
@@ -1452,8 +1456,8 @@ function FAQ() {
       a: 'No. We do not keep copies of your videos—files go straight to your device downloads folder.',
     },
     {
-      q: 'Can I download private Facebook videos?',
-      a: 'The tool only works with publicly accessible videos. Private or restricted posts cannot be processed.',
+      q: 'What links are supported by this tool?',
+      a: 'FBSave HD supports publicly accessible Facebook video and Reel links only.',
     },
   ];
 
@@ -1564,10 +1568,10 @@ function Contact() {
           <div className="th-contact-form-wrap">
             <div className="th-contact-form">
               <h3>Send a Support Message</h3>
-              <p className="th-contact-form-sub">Front-end form for demo and UI presentation.</p>
+              <p className="th-contact-form-sub">Use this form for support questions, feedback, or policy-related requests.</p>
               {sent && (
                 <div className="th-success-msg">
-                  <i className="fas fa-check-circle me-2"></i>Your message has been recorded in the demo interface.
+                  <i className="fas fa-check-circle me-2"></i>Thanks. Your message has been submitted successfully.
                 </div>
               )}
               <form onSubmit={handleSubmit}>
@@ -1712,6 +1716,7 @@ function Footer() {
               <Link to="/user-guide">{isSpanishPage ? 'Guia' : 'User Guide'}</Link>
               <Link to="/privacy-policy">{isSpanishPage ? 'Privacidad' : 'Privacy'}</Link>
               <Link to="/terms-conditions">{isSpanishPage ? 'Terminos' : 'Terms'}</Link>
+              <Link to="/disclaimer">{isSpanishPage ? 'Aviso legal' : 'Disclaimer'}</Link>
               <Link to="/about">{isSpanishPage ? 'Acerca de' : 'About'}</Link>
               <Link to="/es/descargar-video-de-facebook">ES</Link>
             </div>
@@ -1824,6 +1829,7 @@ export default function App() {
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/terms-conditions" element={<TermsConditions />} />
+          <Route path="/disclaimer" element={<Disclaimer />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/is-it-legal-to-download-facebook-videos-complete-guide" element={<BlogPostIsItLegalFacebookVideos />} />
           <Route path="/blog/facebook-video-downloader-mobile-vs-desktop-which-is-better" element={<BlogPostMobileVsDesktop />} />
@@ -1834,9 +1840,9 @@ export default function App() {
           <Route path="/blog/troubleshooting-common-download-issues-step-by-step-guide" element={<BlogPostTroubleshootingCommonDownloadIssues />} />
           <Route path="/blog/facebook-video-downloader-privacy-and-security-safe-or-risky" element={<BlogPostPrivacySecurity />} />
           <Route path="/blog/best-practices-for-saving-facebook-videos" element={<BlogPostBestPracticesSavingFacebookVideos />} />
-          <Route path="/blog/how-to-download-private-facebook-videos-step-by-step-guide" element={<BlogPostHowToDownloadPrivateFacebookVideos />} />
           <Route path="/blog/why-some-videos-download-slower-than-others" element={<BlogPostWhySomeVideosDownloadSlower />} />
           <Route path="/blog/facebook-copyright-rules-explained-simple-guide-2026" element={<BlogPostFacebookCopyrightRules />} />
+          <Route path="/blog/how-to-reuse-facebook-videos-for-content-creation-easy-guide" element={<BlogPostReuseFacebookVideos />} />
           <Route path="/user-guide" element={<UserGuide />} />
           <Route path="/es/descargar-video-de-facebook" element={<HomeSpanish />} />
         </Routes>

@@ -26,7 +26,7 @@ function ContactPage() {
     <>
       <SEO
         title="Contact Us - FBSave HD Facebook Video Downloader Support"
-        description="Have questions about downloading Facebook videos or Reels? Contact the FBSave HD support team for help, feedback, or inquiries. We respond within 24 hours."
+        description="Contact FBSave HD for support, policy questions, business inquiries, or copyright/privacy requests."
         keywords="contact facebook video downloader, fbsave hd support, facebook downloader help, fb video downloader contact, support"
         ogUrl="https://fbvideodownloaders.com/contact"
         jsonLd={buildContactJsonLd()}
@@ -36,7 +36,7 @@ function ContactPage() {
         <div className="th-section-header">
           <h1 className="th-section-title">Contact Us</h1>
           <p className="th-section-desc">
-            Have questions or feedback? We'd love to hear from you. Reach out to us using the form below.
+            Reach us for support, policy, or legal requests. We review all messages sent through this form.
           </p>
         </div>
 
@@ -49,7 +49,7 @@ function ContactPage() {
                     <i className="fas fa-circle-check" style={{ fontSize: '4rem', color: 'var(--th-primary)' }}></i>
                   </div>
                   <h3>Message Sent Successfully!</h3>
-                  <p className="text-muted">We'll get back to you as soon as possible.</p>
+                  <p className="text-muted">Thank you. Our team will review your message and reply when possible.</p>
                   <button className="th-btn th-btn-primary mt-3" onClick={() => setSent(false)}>
                     Send Another Message
                   </button>
@@ -127,7 +127,7 @@ function ContactPage() {
               )}
 
               <div className="mt-5 pt-4 border-top">
-                <h4 className="mb-4">Other Ways to Reach Us</h4>
+                <h4 className="mb-4">Contact Information</h4>
                 <div className="row g-3">
                   <div className="col-md-4">
                     <div className="text-center p-3" style={{ background: 'var(--th-bg-alt)', borderRadius: '12px' }}>
@@ -139,15 +139,15 @@ function ContactPage() {
                   <div className="col-md-4">
                     <div className="text-center p-3" style={{ background: 'var(--th-bg-alt)', borderRadius: '12px' }}>
                       <i className="fas fa-clock mb-2" style={{ fontSize: '1.5rem', color: 'var(--th-primary)' }}></i>
-                      <h6>Response Time</h6>
-                      <p className="small text-muted mb-0">Within 24-48 hours</p>
+                      <h6>Typical Response Time</h6>
+                      <p className="small text-muted mb-0">2-5 business days</p>
                     </div>
                   </div>
                   <div className="col-md-4">
                     <div className="text-center p-3" style={{ background: 'var(--th-bg-alt)', borderRadius: '12px' }}>
                       <i className="fas fa-globe mb-2" style={{ fontSize: '1.5rem', color: 'var(--th-primary)' }}></i>
-                      <h6>Available</h6>
-                      <p className="small text-muted mb-0">24/7 Support</p>
+                      <h6>Inquiry Types</h6>
+                      <p className="small text-muted mb-0">General, policy, legal, and technical</p>
                     </div>
                   </div>
                 </div>

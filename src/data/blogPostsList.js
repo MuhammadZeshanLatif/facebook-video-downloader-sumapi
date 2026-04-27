@@ -1,6 +1,18 @@
 /** Shared blog listing metadata (order: newest first for "latest") */
 export const BLOG_POSTS = [
   {
+    slug: 'how-to-reuse-facebook-videos-for-content-creation-easy-guide',
+    title: 'How to Reuse Facebook Videos for Content Creation (Easy Guide)',
+    excerpt:
+      'Learn how to reuse Facebook videos for content creation with simple steps. Turn one video into multiple posts, grow faster, and save time.',
+    date: '2026-04-27',
+    category: 'Content Strategy',
+    readTime: '12 min read',
+    image: '/images/how-to-reuse-facebook-videos-for-content-creation.png',
+    imageAlt:
+      'How to Reuse Facebook Videos for Content Creation (Easy Guide) featured image with a download icon and title text.',
+  },
+  {
     slug: 'facebook-copyright-rules-explained-simple-guide-2026',
     title: 'Facebook Copyright Rules Explained (Simple Guide 2026)',
     excerpt:
@@ -23,18 +35,6 @@ export const BLOG_POSTS = [
     image: '/images/why-some-videos-download-slower-than-others.png',
     imageAlt:
       'Why some videos download slower than others featured image with video download icon and text',
-  },
-  {
-    slug: 'how-to-download-private-facebook-videos-step-by-step-guide',
-    title: 'How to Download Private Facebook Videos (Step-by-Step Guide)',
-    excerpt:
-      'Learn how to download private Facebook videos with step-by-step methods that actually work. Fix errors, avoid common mistakes, and save videos safely.',
-    date: '2026-04-19',
-    category: 'Guide',
-    readTime: '14 min read',
-    image: '/images/how-to-download-private-facebook-videos.webp',
-    imageAlt:
-      'How to Download Private Facebook Videos step-by-step guide featured image with download icon',
   },
   {
     slug: 'best-practices-for-saving-facebook-videos',

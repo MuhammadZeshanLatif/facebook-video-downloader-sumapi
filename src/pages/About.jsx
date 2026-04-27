@@ -7,7 +7,7 @@ function About() {
     <>
       <SEO
         title="About FBSave HD - Free Facebook Video Downloader | Our Mission"
-        description="FBSave HD is a free online Facebook video downloader. Learn how our tool helps you download any public Facebook video or Reel in HD quality without login or app installation."
+        description="Learn about FBSave HD, our editorial goals, and how we provide educational guides for downloading publicly available Facebook videos responsibly."
         keywords="about facebook video downloader, fbsave hd, free facebook downloader, about us, facebook video tool, fb video saver"
         ogUrl="https://fbvideodownloaders.com/about"
         jsonLd={buildAboutJsonLd()}
@@ -15,81 +15,61 @@ function About() {
       <div className="th-section" style={{ paddingTop: '120px' }}>
       <div className="th-container">
         <div className="th-section-header">
-          <h1 className="th-section-title">About Facebook Video Downloader</h1>
+          <h1 className="th-section-title">About FBSave HD</h1>
           <p className="th-section-desc">
-            Your trusted platform for downloading Facebook videos, Reels, and public content in high quality.
+            We publish practical guides and tool information for saving publicly accessible Facebook videos and Reels.
           </p>
         </div>
 
         <div className="row g-4 mt-4">
           <div className="col-lg-8 mx-auto">
             <div className="fb-tool-card">
-              <h2>What is Facebook Video Downloader?</h2>
+              <h2>Who We Are</h2>
               <p>
-                Facebook Video Downloader is a free, fast, and reliable online tool that allows you to download videos 
-                from Facebook. Whether you want to save a Facebook Reel, a video post, or any public Facebook video, 
-                our tool makes it easy to download them in various quality options including HD (720p, 1080p) and SD formats.
+                FBSave HD is an independent website that provides educational content and a browser-based interface for
+                publicly available Facebook video links. Our focus is clarity, safety, and compliance.
               </p>
 
-              <h3 className="mt-4">About Facebook</h3>
+              <h3 className="mt-4">What We Publish</h3>
               <p>
-                Facebook, founded by Mark Zuckerberg in 2004, is one of the world's largest social media platforms 
-                with over 3 billion monthly active users. The platform allows users to share photos, videos, stories, 
-                and connect with friends and family worldwide. Facebook has evolved to include various features:
+                We publish:
               </p>
               <ul>
-                <li><strong>Facebook Reels:</strong> Short-form video content similar to TikTok, allowing users to create and share 15-90 second videos</li>
-                <li><strong>Video Posts:</strong> Users can upload and share videos directly on their timeline or in groups</li>
-                <li><strong>Live Videos:</strong> Real-time streaming feature for broadcasting live content</li>
-                <li><strong>Watch:</strong> Facebook's video-on-demand platform featuring original content and user-generated videos</li>
+                <li>Step-by-step user guides</li>
+                <li>Troubleshooting articles for common video-link issues</li>
+                <li>Educational posts about privacy, copyright, and safe usage</li>
+                <li>Best practices for content quality and responsible reuse</li>
               </ul>
 
               <h3 className="mt-4">Our Mission</h3>
               <p>
-                Our mission is to provide users with a simple, fast, and secure way to download their favorite Facebook 
-                videos. We understand that sometimes you want to save videos for offline viewing, sharing, or personal 
-                use. Our tool respects Facebook's terms of service and only allows downloading of publicly available content.
+                Our mission is to make social video guidance easier to understand for everyday users. We aim to provide
+                useful, original, and regularly maintained content.
               </p>
 
-              <h3 className="mt-4">Key Features</h3>
+              <h3 className="mt-4">Editorial Standards</h3>
               <ul>
-                <li>✅ Download Facebook videos in HD quality (720p, 1080p)</li>
-                <li>✅ Support for Facebook Reels</li>
-                <li>✅ Multiple quality options (HD, SD)</li>
-                <li>✅ Fast and secure downloads</li>
-                <li>✅ No registration required</li>
-                <li>✅ Free to use</li>
-                <li>✅ Works on all devices (Desktop, Tablet, Mobile)</li>
-                <li>✅ Direct download without opening new tabs</li>
+                <li>We prioritize practical and easy-to-follow information</li>
+                <li>We update outdated details when platform behavior changes</li>
+                <li>We avoid misleading claims and unsupported guarantees</li>
+                <li>We encourage lawful and rights-respecting use</li>
               </ul>
 
-              <h3 className="mt-4">How It Works</h3>
-              <ol>
-                <li>Copy the URL of the Facebook video you want to download</li>
-                <li>Paste the URL into our downloader tool</li>
-                <li>Click "Download Video" or "Analyze Link"</li>
-                <li>Select your preferred video quality (HD or SD)</li>
-                <li>Download the video directly to your device</li>
-              </ol>
-
-              <h3 className="mt-4">Privacy & Security</h3>
+              <h3 className="mt-4">Independence and Trademark Notice</h3>
               <p>
-                We take your privacy seriously. Our tool processes video URLs server-side and does not store any 
-                personal information or downloaded videos. All downloads are processed securely, and we do not 
-                track or monitor your usage beyond basic analytics for service improvement.
+                FBSave HD is not affiliated with, endorsed by, or sponsored by Facebook or Meta. Any third-party brand
+                names are used only for descriptive and informational purposes.
               </p>
 
-              <h3 className="mt-4">Legal Notice</h3>
+              <h3 className="mt-4">Compliance Commitment</h3>
               <p>
-                This tool is designed for downloading publicly available Facebook content only. Users are responsible 
-                for ensuring they have the right to download and use the content. We do not condone downloading copyrighted 
-                material without permission. Please respect content creators' rights and Facebook's Terms of Service.
+                We support legal, ethical, and policy-compliant use. Users are responsible for ensuring they have
+                permission to download or reuse content and for following applicable laws and platform terms.
               </p>
 
               <h3 className="mt-4">Contact Us</h3>
               <p>
-                If you have any questions, suggestions, or concerns, please feel free to <a href="/contact">contact us</a>. 
-                We're always looking to improve our service and appreciate your feedback.
+                If you have questions, corrections, or policy concerns, please use our <a href="/contact">contact page</a>.
               </p>
             </div>
           </div>
