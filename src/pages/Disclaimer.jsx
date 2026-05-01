@@ -1,5 +1,6 @@
 import React from 'react';
 import SEO from '../components/SEO';
+import { buildDisclaimerJsonLd } from '../data/pageSchemas';
 
 function Disclaimer() {
   const effectiveDate = 'April 27, 2026';
@@ -7,10 +8,12 @@ function Disclaimer() {
   return (
     <>
       <SEO
-        title="Disclaimer - FBSave HD"
-        description="Read the FBSave HD disclaimer, including third-party trademark notice, content responsibility, and limitation of liability."
-        keywords="fbsave hd disclaimer, legal disclaimer, trademark notice, limitation of liability"
+        title="Disclaimer - FB Video Downloaders"
+        description="Read the FB Video Downloaders disclaimer, including third-party trademark notice, content responsibility, and limitation of liability."
+        keywords="fb video downloaders disclaimer, legal disclaimer, trademark notice, limitation of liability"
+        robots="noindex, follow"
         ogUrl="https://fbvideodownloaders.com/disclaimer"
+        jsonLd={buildDisclaimerJsonLd()}
       />
       <div className="th-section" style={{ paddingTop: '120px' }}>
         <div className="th-container">
@@ -24,14 +27,14 @@ function Disclaimer() {
               <div className="fb-tool-card">
                 <h2>1. General Information</h2>
                 <p>
-                  The content on FBSave HD is provided for general informational purposes only. While we try to keep
+                  The content on FB Video Downloaders is provided for general informational purposes only. While we try to keep
                   information accurate and up to date, we make no warranties about completeness, reliability, or
                   accuracy.
                 </p>
 
                 <h3 className="mt-4">2. No Affiliation</h3>
                 <p>
-                  FBSave HD is an independent website and is not affiliated with, endorsed by, or sponsored by
+                  FB Video Downloaders is an independent website and is not affiliated with, endorsed by, or sponsored by
                   Facebook or Meta. All third-party names, logos, and trademarks are property of their respective
                   owners.
                 </p>
@@ -56,7 +59,7 @@ function Disclaimer() {
 
                 <h3 className="mt-4">6. Limitation of Liability</h3>
                 <p>
-                  To the fullest extent permitted by law, FBSave HD will not be liable for any losses or damages
+                  To the fullest extent permitted by law, FB Video Downloaders will not be liable for any losses or damages
                   arising from use of this website, including direct or indirect damages.
                 </p>
 

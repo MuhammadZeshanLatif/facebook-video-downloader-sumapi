@@ -8,9 +8,10 @@ function TermsConditions() {
   return (
     <>
       <SEO
-        title="Terms of Service - FBSave HD Facebook Video Downloader"
-        description="Read the terms of service for FBSave HD. Understand the rules and guidelines for using our free tool to download public Facebook videos and Reels responsibly."
-        keywords="facebook video downloader terms of service, fbsave hd terms, terms and conditions, usage policy, facebook downloader legal"
+        title="Terms of Service - FB Video Downloaders"
+        description="Read the terms of service for FB Video Downloaders. Understand the rules for using our free tool to download public Facebook videos and Reels responsibly."
+        keywords="facebook video downloader terms of service, fb video downloaders terms, terms and conditions, usage policy, facebook downloader legal"
+        robots="noindex, follow"
         ogUrl="https://fbvideodownloaders.com/terms-conditions"
         jsonLd={buildTermsJsonLd()}
       />
@@ -28,13 +29,13 @@ function TermsConditions() {
             <div className="fb-tool-card">
               <h2>1. Acceptance of Terms</h2>
               <p>
-                By accessing or using FBSave HD, you agree to these Terms and all applicable laws. If you do not
+                By accessing or using FB Video Downloaders, you agree to these Terms and all applicable laws. If you do not
                 agree, do not use this website.
               </p>
 
               <h3 className="mt-4">2. Service Description</h3>
               <p>
-                FBSave HD is an informational, browser-based tool for publicly accessible social video links. We are
+                FB Video Downloaders is an informational, browser-based tool for publicly accessible social video links. We are
                 not affiliated with Facebook or Meta.
               </p>
 
@@ -74,7 +75,7 @@ function TermsConditions() {
 
               <h3 className="mt-4">7. Limitation of Liability</h3>
               <p>
-                To the maximum extent permitted by law, FBSave HD is not liable for indirect, incidental, special, or
+                To the maximum extent permitted by law, FB Video Downloaders is not liable for indirect, incidental, special, or
                 consequential damages related to use of this site.
               </p>
 

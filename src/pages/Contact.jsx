@@ -25,9 +25,9 @@ function ContactPage() {
   return (
     <>
       <SEO
-        title="Contact Us - FBSave HD Facebook Video Downloader Support"
-        description="Contact FBSave HD for support, policy questions, business inquiries, or copyright/privacy requests."
-        keywords="contact facebook video downloader, fbsave hd support, facebook downloader help, fb video downloader contact, support"
+        title="Contact Us - FB Video Downloaders Support"
+        description="Contact FB Video Downloaders for support, policy questions, business inquiries, or copyright/privacy requests."
+        keywords="contact facebook video downloader, fb video downloaders support, facebook downloader help, fb video downloader contact, support"
         ogUrl="https://fbvideodownloaders.com/contact"
         jsonLd={buildContactJsonLd()}
       />

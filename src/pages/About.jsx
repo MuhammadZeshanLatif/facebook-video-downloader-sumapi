@@ -6,16 +6,16 @@ function About() {
   return (
     <>
       <SEO
-        title="About FBSave HD - Free Facebook Video Downloader | Our Mission"
-        description="Learn about FBSave HD, our editorial goals, and how we provide educational guides for downloading publicly available Facebook videos responsibly."
-        keywords="about facebook video downloader, fbsave hd, free facebook downloader, about us, facebook video tool, fb video saver"
+        title="About FB Video Downloaders - Free Facebook Video Downloader"
+        description="Learn about FB Video Downloaders, our editorial goals, and how we provide educational guides for downloading publicly available Facebook videos responsibly."
+        keywords="about facebook video downloader, fb video downloaders, free facebook downloader, about us, facebook video tool, fb video saver"
         ogUrl="https://fbvideodownloaders.com/about"
         jsonLd={buildAboutJsonLd()}
       />
       <div className="th-section" style={{ paddingTop: '120px' }}>
       <div className="th-container">
         <div className="th-section-header">
-          <h1 className="th-section-title">About FBSave HD</h1>
+          <h1 className="th-section-title">About FB Video Downloaders</h1>
           <p className="th-section-desc">
             We publish practical guides and tool information for saving publicly accessible Facebook videos and Reels.
           </p>
@@ -26,7 +26,7 @@ function About() {
             <div className="fb-tool-card">
               <h2>Who We Are</h2>
               <p>
-                FBSave HD is an independent website that provides educational content and a browser-based interface for
+                FB Video Downloaders is an independent website that provides educational content and a browser-based interface for
                 publicly available Facebook video links. Our focus is clarity, safety, and compliance.
               </p>
 
@@ -57,7 +57,7 @@ function About() {
 
               <h3 className="mt-4">Independence and Trademark Notice</h3>
               <p>
-                FBSave HD is not affiliated with, endorsed by, or sponsored by Facebook or Meta. Any third-party brand
+                FB Video Downloaders is not affiliated with, endorsed by, or sponsored by Facebook or Meta. Any third-party brand
                 names are used only for descriptive and informational purposes.
               </p>
 

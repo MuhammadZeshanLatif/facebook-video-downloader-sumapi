@@ -8,9 +8,10 @@ function PrivacyPolicy() {
   return (
     <>
       <SEO
-        title="Privacy Policy - FBSave HD Facebook Video Downloader"
-        description="Read FBSave HD's privacy policy to understand how we handle your data. We do not store your videos or require your Facebook login. Your privacy is our priority."
-        keywords="facebook video downloader privacy policy, fbsave hd privacy, data protection, no login required, facebook downloader safe"
+        title="Privacy Policy - FB Video Downloaders"
+        description="Read FB Video Downloaders' privacy policy. We do not store your videos or require your Facebook login. Your privacy is our priority."
+        keywords="facebook video downloader privacy policy, fb video downloaders privacy, data protection, no login required, facebook downloader safe"
+        robots="noindex, follow"
         ogUrl="https://fbvideodownloaders.com/privacy-policy"
         jsonLd={buildPrivacyJsonLd()}
       />
@@ -28,7 +29,7 @@ function PrivacyPolicy() {
             <div className="fb-tool-card">
               <h2>1. Overview</h2>
               <p>
-                This Privacy Policy explains how FBSave HD collects, uses, and protects information when you visit
+                This Privacy Policy explains how FB Video Downloaders collects, uses, and protects information when you visit
                 fbvideodownloaders.com. By using this website, you agree to this policy.
               </p>
 

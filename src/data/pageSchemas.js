@@ -1,6 +1,6 @@
 import { BLOG_POSTS, SITE_ORIGIN } from './blogPostsList';
 
-const SITE_NAME = 'FBSave HD';
+const SITE_NAME = 'FB Video Downloaders';
 
 function ctx(node) {
   return { '@context': 'https://schema.org', ...node };
@@ -50,9 +50,9 @@ export function buildHomeJsonLd() {
         '@type': 'WebPage',
         '@id': `${SITE_ORIGIN}/#webpage`,
         url: `${SITE_ORIGIN}/`,
-        name: 'Download Facebook Videos & Reels HD Free - FB Video Downloader',
+        name: 'Facebook Video Downloader HD Free | FB Video Downloaders',
         description:
-          'Download any public Facebook video or Reel in HD quality online for free. No login, no app needed. Paste the FB video link and save it instantly on Android, iPhone, or PC.',
+          'Download Facebook videos, reels, and clips in HD or SD for free. Paste your link, download fast, no login needed.',
         isPartOf: webSitePartOf(),
         publisher: orgPublisher(),
         inLanguage: 'en-US',
@@ -68,7 +68,7 @@ export function buildHomeJsonLd() {
             name: 'How do I download a Facebook video for free?',
             acceptedAnswer: {
               '@type': 'Answer',
-              text: 'Copy the public Facebook video URL, paste it into the FBSave HD downloader field, and click Download. Choose HD or SD quality and save the video to your device instantly — no login or app needed.',
+              text: 'Copy the public Facebook video URL, paste it into the FB Video Downloaders field, and click Download. Choose HD or SD quality and save the video to your device instantly — no login or app needed.',
             },
           },
           {
@@ -81,10 +81,10 @@ export function buildHomeJsonLd() {
           },
           {
             '@type': 'Question',
-            name: 'What links are supported by FBSave HD?',
+            name: 'What links are supported by FB Video Downloaders?',
             acceptedAnswer: {
               '@type': 'Answer',
-              text: 'FBSave HD supports publicly accessible Facebook video and Reel links only.',
+              text: 'FB Video Downloaders supports publicly accessible Facebook video and Reel links only.',
             },
           },
           {
@@ -92,15 +92,15 @@ export function buildHomeJsonLd() {
             name: 'What video formats and quality are available?',
             acceptedAnswer: {
               '@type': 'Answer',
-              text: 'FBSave HD provides both HD (720p or 1080p) and SD quality download options in MP4 format, depending on what quality the original video was uploaded in.',
+              text: 'FB Video Downloaders provides both HD (720p or 1080p) and SD quality download options in MP4 format, depending on what quality the original video was uploaded in.',
             },
           },
           {
             '@type': 'Question',
-            name: 'Is FBSave HD safe to use?',
+            name: 'Is FB Video Downloaders safe to use?',
             acceptedAnswer: {
               '@type': 'Answer',
-              text: 'Yes. FBSave HD does not require your Facebook login or any personal information. We do not store your downloaded videos. Just paste the video link and download.',
+              text: 'Yes. FB Video Downloaders does not require your Facebook login or any personal information. We do not store your downloaded videos. Just paste the video link and download.',
             },
           },
         ],
@@ -170,9 +170,9 @@ export function buildAboutJsonLd() {
         '@type': 'AboutPage',
         '@id': `${url}#webpage`,
         url,
-        name: 'About FBSave HD - Free Facebook Video Downloader',
+        name: 'About FB Video Downloaders - Free Facebook Video Downloader',
         description:
-          'FBSave HD is a free online Facebook video downloader. Learn how our tool helps you download any public Facebook video or Reel in HD quality without login or app installation.',
+          'FB Video Downloaders is a free online Facebook video downloader. Learn how our tool helps you download any public Facebook video or Reel in HD quality without login or app installation.',
         isPartOf: webSitePartOf(),
         publisher: orgPublisher(),
         inLanguage: 'en-US',
@@ -197,9 +197,9 @@ export function buildContactJsonLd() {
         '@type': 'ContactPage',
         '@id': `${url}#webpage`,
         url,
-        name: 'Contact Us - FBSave HD Facebook Video Downloader Support',
+        name: 'Contact Us - FB Video Downloaders Support',
         description:
-          'Have questions about downloading Facebook videos or Reels? Contact the FBSave HD support team for help, feedback, or inquiries.',
+          'Have questions about downloading Facebook videos or Reels? Contact the FB Video Downloaders support team for help, feedback, or inquiries.',
         isPartOf: webSitePartOf(),
         publisher: orgPublisher(),
         inLanguage: 'en-US',
@@ -224,9 +224,9 @@ export function buildPrivacyJsonLd() {
         '@type': 'WebPage',
         '@id': `${url}#webpage`,
         url,
-        name: 'Privacy Policy - FBSave HD Facebook Video Downloader',
+        name: 'Privacy Policy - FB Video Downloaders',
         description:
-          "Read FBSave HD's privacy policy to understand how we handle your data. We do not store your videos or require your Facebook login.",
+          "Read FB Video Downloaders' privacy policy to understand how we handle your data. We do not store your videos or require your Facebook login.",
         isPartOf: webSitePartOf(),
         publisher: orgPublisher(),
         inLanguage: 'en-US',
@@ -251,9 +251,9 @@ export function buildTermsJsonLd() {
         '@type': 'WebPage',
         '@id': `${url}#webpage`,
         url,
-        name: 'Terms of Service - FBSave HD Facebook Video Downloader',
+        name: 'Terms of Service - FB Video Downloaders',
         description:
-          'Read the terms of service for FBSave HD. Understand the rules and guidelines for using our free tool to download public Facebook videos and Reels responsibly.',
+          'Read the terms of service for FB Video Downloaders. Understand the rules and guidelines for using our free tool to download public Facebook videos and Reels responsibly.',
         isPartOf: webSitePartOf(),
         publisher: orgPublisher(),
         inLanguage: 'en-US',
@@ -269,13 +269,40 @@ export function buildTermsJsonLd() {
   ];
 }
 
+export function buildDisclaimerJsonLd() {
+  const url = `${SITE_ORIGIN}/disclaimer`;
+  return [
+    {
+      id: 'disclaimer-page',
+      data: ctx({
+        '@type': 'WebPage',
+        '@id': `${url}#webpage`,
+        url,
+        name: 'Disclaimer - FB Video Downloaders',
+        description:
+          'Read the FB Video Downloaders disclaimer, including third-party trademark notice, content responsibility, and limitation of liability.',
+        isPartOf: webSitePartOf(),
+        publisher: orgPublisher(),
+        inLanguage: 'en-US',
+      }),
+    },
+    {
+      id: 'disclaimer-breadcrumb',
+      data: breadcrumbTrail([
+        { name: 'Home', url: `${SITE_ORIGIN}/` },
+        { name: 'Disclaimer', url },
+      ]),
+    },
+  ];
+}
+
 const USER_GUIDE_URL = `${SITE_ORIGIN}/user-guide`;
 
 export function buildUserGuideJsonLd() {
   const howToVideo = {
     '@type': 'VideoObject',
-    name: 'How to download Facebook videos — FBSave HD guide',
-    description: 'Step-by-step video tutorial for downloading public Facebook videos and Reels in HD using FBSave HD.',
+    name: 'How to download Facebook videos — FB Video Downloaders guide',
+    description: 'Step-by-step video tutorial for downloading public Facebook videos and Reels in HD using FB Video Downloaders.',
     embedUrl: 'https://www.youtube.com/embed/MrANb2fytwU',
     contentUrl: 'https://www.youtube.com/watch?v=MrANb2fytwU',
     thumbnailUrl: 'https://i.ytimg.com/vi/MrANb2fytwU/hqdefault.jpg',
@@ -329,9 +356,9 @@ export function buildUserGuideJsonLd() {
         '@type': 'WebPage',
         '@id': `${USER_GUIDE_URL}#webpage`,
         url: USER_GUIDE_URL,
-        name: 'How to Download Facebook Videos - Step-by-Step User Guide | FBSave HD',
+        name: 'How to Use Facebook Video Downloader | FB Video Downloaders',
         description:
-          'Step-by-step guide to download Facebook videos and Reels in HD for free. Works on Android, iPhone, PC, and Mac without any app or Facebook login required.',
+          'Learn how to download Facebook videos and reels step by step using FB Video Downloaders. Simple guide for mobile and desktop users.',
         isPartOf: webSitePartOf(),
         publisher: orgPublisher(),
         inLanguage: 'en-US',
@@ -341,9 +368,9 @@ export function buildUserGuideJsonLd() {
       id: 'userguide-howto',
       data: ctx({
         '@type': 'HowTo',
-        name: 'How to download Facebook videos with FBSave HD',
+        name: 'How to download Facebook videos with FB Video Downloaders',
         description:
-          'Copy a public Facebook video or Reel link, paste it into FBSave HD, pick HD or SD, and save the MP4 to your device.',
+          'Copy a public Facebook video or Reel link, paste it into FB Video Downloaders, pick HD or SD, and save the MP4 to your device.',
         totalTime: 'PT2M',
         video: howToVideo,
         step: [
@@ -365,7 +392,7 @@ export function buildUserGuideJsonLd() {
             '@type': 'HowToStep',
             position: 3,
             name: 'Paste in the Downloader',
-            text: 'Paste the link into the downloader field on FBSave HD. The tool will load the video and show available download options.',
+            text: 'Paste the link into the downloader field on FB Video Downloaders. The tool will load the video and show available download options.',
             url: `${SITE_ORIGIN}/`,
           },
           {
@@ -412,9 +439,9 @@ export function buildBlogIndexJsonLd() {
         '@type': 'CollectionPage',
         '@id': `${url}#webpage`,
         url,
-        name: 'Facebook Video Downloader Blog - Guides, Tips & Tutorials | FBSave HD',
+        name: 'Facebook Video Downloader Guides & Tips | FB Video Downloaders',
         description:
-          'Read expert guides and tutorials on how to download Facebook videos and Reels in HD quality. Tips, tricks, and best practices for saving Facebook content easily and safely.',
+          'Read simple Facebook video downloading guides, privacy tips, HD quality help, mobile advice, and safe usage tips.',
         isPartOf: webSitePartOf(),
         publisher: orgPublisher(),
         inLanguage: 'en-US',

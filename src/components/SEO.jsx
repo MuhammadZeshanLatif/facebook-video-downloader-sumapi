@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
-const SITE_NAME   = 'FBSave HD';
+const SITE_NAME   = 'FB Video Downloaders';
 const DOMAIN      = 'https://fbvideodownloaders.com';
 // Use current origin so the image URL always matches the deployed domain
 const ORIGIN      = typeof window !== 'undefined' ? window.location.origin : DOMAIN;
@@ -11,9 +11,9 @@ const IS_LOCALHOST =
 const CANONICAL_BASE = IS_LOCALHOST ? ORIGIN : DOMAIN;
 const DEFAULT_IMG = `${ORIGIN}/images/og-image.png`;
 const DEFAULT_TITLE =
-  'Download Facebook Videos & Reels HD Free - FB Video Downloader';
+  'Facebook Video Downloader HD Free | FB Video Downloaders';
 const DEFAULT_DESC =
-  'Download any public Facebook video or Reel in HD quality online for free. No login, no app needed. Paste the FB video link and save it instantly on Android, iPhone, or PC.';
+  'Download Facebook videos, reels, and clips in HD or SD for free. Paste your link, download fast, no login needed.';
 
 const SEO = ({
   title,
@@ -28,6 +28,8 @@ const SEO = ({
   articleModifiedTime,
   articleAuthor,
   ogLocale = 'en_US',
+  /** Override robots directive — use 'noindex, follow' for legal/utility pages */
+  robots,
   /** @type {{ id: string, data: Record<string, unknown> }[] | null | undefined} */
   jsonLd,
 }) => {
@@ -62,7 +64,7 @@ const SEO = ({
     // ── Basic ──────────────────────────────────────────────
     setMeta('name', 'description',  resolvedDesc);
     setMeta('name', 'author',       SITE_NAME);
-    setMeta('name', 'robots',       'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1');
+    setMeta('name', 'robots', robots || 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1');
     if (keywords) setMeta('name', 'keywords', keywords);
 
     // ── Open Graph ─────────────────────────────────────────
@@ -138,6 +140,7 @@ const SEO = ({
     resolvedOgImageAlt,
     keywords,
     type,
+    robots,
     articlePublishedTime,
     articleModifiedTime,
     articleAuthor,

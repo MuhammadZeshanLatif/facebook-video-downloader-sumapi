@@ -1,7 +1,7 @@
-# LLM.txt — FBSave HD (Facebook Video Downloader)
+# LLM.txt — FB Video Downloaders
 
 ## Site Information
-Site Name: FBSave HD — Facebook Video Downloader
+Site Name: FB Video Downloaders
 Alternate Name: Facebook Video Downloader HD
 Description: Free online tool to download public Facebook videos and Reels in HD quality without login or app installation.
 URL: https://fbvideodownloaders.com
@@ -18,7 +18,7 @@ Primary Purpose: Video Download Tool
 - /blog/is-it-legal-to-download-facebook-videos-complete-guide — Full article: Is It Legal to Download Facebook Videos? (Complete Guide)
 - /blog/top-10-tips-facebook-video-downloading — Full article: Top 10 Tips for Facebook Video Downloading
 - /blog/how-to-download-facebook-videos-in-hd-quality-complete-guide — Full article: How to Download Facebook Videos in HD Quality (Complete Guide)
-- /about — About FBSave HD: mission, features, and service information
+- /about — About FB Video Downloaders: mission, features, and service information
 - /contact — Contact form and support information
 - /privacy-policy — Privacy policy and data handling (no data stored, no login required)
 - /terms-conditions — Terms of service and usage guidelines

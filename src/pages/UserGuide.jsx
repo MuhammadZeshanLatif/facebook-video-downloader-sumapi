@@ -81,8 +81,8 @@ function UserGuide() {
   return (
     <>
       <SEO
-        title="How to Download Facebook Videos - Step-by-Step User Guide | FBSave HD"
-        description="Step-by-step guide to download Facebook videos and Reels in HD for free. Works on Android, iPhone, PC, and Mac without any app or Facebook login required."
+        title="How to Use Facebook Video Downloader | FB Video Downloaders"
+        description="Learn how to download Facebook videos and reels step by step using FB Video Downloaders. Simple guide for mobile and desktop users."
         keywords="how to download facebook videos, fb video downloader guide, download facebook reels step by step, save facebook video without app, facebook video downloader tutorial, download fb video mobile"
         ogUrl="https://fbvideodownloaders.com/user-guide"
         jsonLd={buildUserGuideJsonLd()}
@@ -106,7 +106,7 @@ function UserGuide() {
             <div className="fb-youtube-embed-inner">
               <iframe
                 src="https://www.youtube.com/embed/MrANb2fytwU"
-                title="How to download Facebook videos — FBSave HD guide"
+                title="How to download Facebook videos — FB Video Downloaders guide"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowFullScreen
                 loading="lazy"
@@ -238,7 +238,7 @@ function UserGuide() {
       <section className="th-section">
         <div className="th-container">
           <div className="th-section-header">
-            <h2 className="th-section-title">Contact the <span className="th-gradient-text">FBSave HD</span> Team</h2>
+            <h2 className="th-section-title">Contact the <span className="th-gradient-text">FB Video Downloaders</span> Team</h2>
             <p className="th-section-desc">
               Use this section for user questions about Facebook video link format, mobile use, HD availability, page usability, and feature suggestions.
             </p>

@@ -41,7 +41,7 @@ function BlogPostTop10Tips() {
   return (
     <>
       <SEO
-        title="Top 10 Tips for Downloading Facebook Videos in HD - FBSave HD Blog"
+        title="Top 10 Tips for Downloading Facebook Videos in HD - FB Video Downloaders Blog"
         description="Struggling to download Facebook videos? Learn the top 10 proven tips to download any Facebook video or Reel in HD quality — fix low quality, missing sound, and failed downloads."
         keywords="top 10 tips facebook video downloading, download facebook video tips, facebook video hd download, facebook reels download guide, fix facebook video download, facebook video downloader tips"
         ogImage={OG_IMAGE}
@@ -49,7 +49,7 @@ function BlogPostTop10Tips() {
         type="article"
         articlePublishedTime={`${PUBLISHED}T08:00:00+00:00`}
         articleModifiedTime={`${PUBLISHED}T08:00:00+00:00`}
-        articleAuthor="FBSave HD"
+        articleAuthor="FB Video Downloaders"
         jsonLd={buildBlogArticleJsonLd({
           idPrefix: 'top10',
           postUrl: POST_URL,

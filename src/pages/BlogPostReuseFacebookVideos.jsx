@@ -41,7 +41,7 @@ function BlogPostReuseFacebookVideos() {
         type="article"
         articlePublishedTime={`${PUBLISHED}T08:00:00+00:00`}
         articleModifiedTime={`${PUBLISHED}T08:00:00+00:00`}
-        articleAuthor="FBSave HD"
+        articleAuthor="FB Video Downloaders"
         jsonLd={buildBlogArticleJsonLd({
           idPrefix: 'reusefbvideos',
           postUrl: POST_URL,
