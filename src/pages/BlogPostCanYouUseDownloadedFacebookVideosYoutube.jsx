@@ -8,7 +8,7 @@ const SLUG = 'can-you-use-downloaded-facebook-videos-on-youtube';
 const POST_PATH = `/blog/${SLUG}`;
 const POST_URL = `${SITE_ORIGIN}${POST_PATH}`;
 const PUBLISHED = '2026-05-10';
-const FEATURED_IMAGE = '/images/can-you-use-downloaded-facebook-videos-on-youtube.png';
+const FEATURED_IMAGE = '/images/can-you-use-downloaded-facebook-videos-on-youtube.webp';
 const OG_IMAGE = `${SITE_ORIGIN}${FEATURED_IMAGE}`;
 
 const META_TITLE = 'Can You Use Downloaded Facebook Videos on YouTube? (Full Guide)';

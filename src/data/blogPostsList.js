@@ -8,7 +8,7 @@ export const BLOG_POSTS = [
     date: '2026-05-11',
     category: 'Guide',
     readTime: '10 min read',
-    image: '/images/how-to-convert-facebook-videos-into-reels-or-shorts-easy-guide.png',
+    image: '/images/can-you-convert-facebook-videos-into-reels-or-shorts.webp',
     imageAlt:
       'How to Convert Facebook Videos into Reels or Shorts (Easy Guide) featured image with video download icon and title.',
   },
@@ -20,7 +20,7 @@ export const BLOG_POSTS = [
     date: '2026-05-10',
     category: 'Legal',
     readTime: '8 min read',
-    image: '/images/can-you-use-downloaded-facebook-videos-on-youtube.png',
+    image: '/images/can-you-use-downloaded-facebook-videos-on-youtube.webp',
     imageAlt:
       'Featured graphic titled Can You Use Downloaded Facebook Videos on YouTube? with a video download icon on a light blue background.',
   },

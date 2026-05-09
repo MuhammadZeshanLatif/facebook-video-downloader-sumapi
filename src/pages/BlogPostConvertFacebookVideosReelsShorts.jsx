@@ -8,7 +8,7 @@ const SLUG = 'how-to-convert-facebook-videos-into-reels-or-shorts-easy-guide';
 const POST_PATH = `/blog/${SLUG}`;
 const POST_URL = `${SITE_ORIGIN}${POST_PATH}`;
 const PUBLISHED = '2026-05-11';
-const FEATURED_IMAGE = '/images/how-to-convert-facebook-videos-into-reels-or-shorts-easy-guide.png';
+const FEATURED_IMAGE = '/images/can-you-convert-facebook-videos-into-reels-or-shorts.webp';
 const OG_IMAGE = `${SITE_ORIGIN}${FEATURED_IMAGE}`;
 
 const META_TITLE = 'How to Convert Facebook Videos into Reels or Shorts (Easy Step-by-Step Guide)';
