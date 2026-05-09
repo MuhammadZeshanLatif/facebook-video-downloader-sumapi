@@ -1,6 +1,42 @@
 /** Shared blog listing metadata (order: newest first for "latest") */
 export const BLOG_POSTS = [
   {
+    slug: 'how-to-convert-facebook-videos-into-reels-or-shorts-easy-guide',
+    title: 'How to Convert Facebook Videos into Reels or Shorts (Easy Step-by-Step Guide)',
+    excerpt:
+      'Learn how to convert Facebook videos into Reels or Shorts with simple methods, correct format settings, clip tips, and free tools.',
+    date: '2026-05-11',
+    category: 'Guide',
+    readTime: '10 min read',
+    image: '/images/how-to-convert-facebook-videos-into-reels-or-shorts-easy-guide.png',
+    imageAlt:
+      'How to Convert Facebook Videos into Reels or Shorts (Easy Guide) featured image with video download icon and title.',
+  },
+  {
+    slug: 'can-you-use-downloaded-facebook-videos-on-youtube',
+    title: 'Can You Use Downloaded Facebook Videos on YouTube?',
+    excerpt:
+      'Can you use downloaded Facebook videos on YouTube? Learn the rules, risks, and safe ways to reuse content without strikes or harming your channel.',
+    date: '2026-05-10',
+    category: 'Legal',
+    readTime: '8 min read',
+    image: '/images/can-you-use-downloaded-facebook-videos-on-youtube.png',
+    imageAlt:
+      'Featured graphic titled Can You Use Downloaded Facebook Videos on YouTube? with a video download icon on a light blue background.',
+  },
+  {
+    slug: 'best-video-formats-for-editing-downloaded-fb-videos',
+    title: 'Best Video Formats for Editing Downloaded FB Videos',
+    excerpt:
+      'Choose the right format after you download a Facebook clip. Compare MP4 (H.264), MOV, ProRes, and AVI, and learn workflows, bitrate, and export settings to edit with less quality loss.',
+    date: '2026-05-09',
+    category: 'Technical',
+    readTime: '9 min read',
+    image: '/images/best-video-formats-editing-downloaded-fb-videos.webp',
+    imageAlt:
+      'Graphic showing a video download icon and title text: Best Video Formats for Editing Downloaded FB Videos.',
+  },
+  {
     slug: 'how-to-reuse-facebook-videos-for-content-creation-easy-guide',
     title: 'How to Reuse Facebook Videos for Content Creation (Easy Guide)',
     excerpt:

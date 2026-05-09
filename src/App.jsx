@@ -18,6 +18,9 @@ import BlogPostBestPracticesSavingFacebookVideos from './pages/BlogPostBestPract
 import BlogPostWhySomeVideosDownloadSlower from './pages/BlogPostWhySomeVideosDownloadSlower';
 import BlogPostFacebookCopyrightRules from './pages/BlogPostFacebookCopyrightRules';
 import BlogPostReuseFacebookVideos from './pages/BlogPostReuseFacebookVideos';
+import BlogPostBestVideoFormatsEditing from './pages/BlogPostBestVideoFormatsEditing';
+import BlogPostCanYouUseDownloadedFacebookVideosYoutube from './pages/BlogPostCanYouUseDownloadedFacebookVideosYoutube';
+import BlogPostConvertFacebookVideosReelsShorts from './pages/BlogPostConvertFacebookVideosReelsShorts';
 import UserGuide from './pages/UserGuide';
 import HomeSpanish from './pages/HomeSpanish';
 import SEO from './components/SEO';
@@ -1842,6 +1845,9 @@ export default function App() {
           <Route path="/blog/why-some-videos-download-slower-than-others" element={<BlogPostWhySomeVideosDownloadSlower />} />
           <Route path="/blog/facebook-copyright-rules-explained-simple-guide-2026" element={<BlogPostFacebookCopyrightRules />} />
           <Route path="/blog/how-to-reuse-facebook-videos-for-content-creation-easy-guide" element={<BlogPostReuseFacebookVideos />} />
+          <Route path="/blog/best-video-formats-for-editing-downloaded-fb-videos" element={<BlogPostBestVideoFormatsEditing />} />
+          <Route path="/blog/can-you-use-downloaded-facebook-videos-on-youtube" element={<BlogPostCanYouUseDownloadedFacebookVideosYoutube />} />
+          <Route path="/blog/how-to-convert-facebook-videos-into-reels-or-shorts-easy-guide" element={<BlogPostConvertFacebookVideosReelsShorts />} />
           <Route path="/user-guide" element={<UserGuide />} />
           <Route path="/es/descargar-video-de-facebook" element={<HomeSpanish />} />
         </Routes>
