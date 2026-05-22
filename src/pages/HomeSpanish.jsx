@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import SEO from '../components/SEO';
 import { buildHomeEsJsonLd } from '../data/pageSchemas';
 import { normalizeFacebookPageUrl } from '../utils/facebookEmbed';
 import { triggerVideoDownload } from '../utils/downloadVideo';
+import { fetchFacebookVideoMeta, normalizeInputUrl } from '../utils/facebookApi';
 
 function HeroEs() {
   const [url, setUrl] = useState('');
@@ -11,13 +12,17 @@ function HeroEs() {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    if (!url.trim()) {
+    const normalized = normalizeInputUrl(url);
+    if (!normalized) {
       setStatus('error');
       return;
     }
+    if (normalized !== url) {
+      setUrl(normalized);
+    }
     setLoading(true);
     setStatus('loading');
-    window.dispatchEvent(new CustomEvent('fb-download', { detail: { url } }));
+    window.dispatchEvent(new CustomEvent('fb-download', { detail: { url: normalized } }));
     setTimeout(() => {
       const downloaderSection = document.getElementById('downloader');
       if (downloaderSection) {
@@ -50,7 +55,10 @@ function HeroEs() {
               <div className="fb-mobile-input-full">
                 <i className="fas fa-link" aria-hidden="true"></i>
                 <input
-                  type="url"
+                  type="text"
+                  inputMode="url"
+                  autoComplete="off"
+                  spellCheck={false}
                   placeholder="Pega aqui URL publica de Facebook"
                   value={url}
                   onChange={(e) => {
@@ -95,7 +103,10 @@ function HeroEs() {
                 <i className="fas fa-link" aria-hidden="true"></i>
                 <input
                   id="video-url-tablet-es"
-                  type="url"
+                  type="text"
+                  inputMode="url"
+                  autoComplete="off"
+                  spellCheck={false}
                   placeholder="https://www.facebook.com/..."
                   value={url}
                   onChange={(e) => {
@@ -161,7 +172,10 @@ function HeroEs() {
                     <i className="fas fa-link" aria-hidden="true"></i>
                     <input
                       id="video-url-es"
-                      type="url"
+                      type="text"
+                  inputMode="url"
+                  autoComplete="off"
+                  spellCheck={false}
                       placeholder="https://www.facebook.com/..."
                       value={url}
                       onChange={(e) => {
@@ -284,25 +298,7 @@ function DownloaderSectionEs() {
     return () => window.removeEventListener('resize', checkScreenSize);
   }, []);
 
-  useEffect(() => {
-    const handler = (e) => {
-      const incomingUrl = e.detail?.url;
-      if (incomingUrl) {
-        setLink(incomingUrl);
-        fetchVideoData(incomingUrl);
-      }
-    };
-    window.addEventListener('fb-download', handler);
-    return () => window.removeEventListener('fb-download', handler);
-  }, []);
-
-  useEffect(() => {
-    if (!activeVideoUrl || !videoRef.current) return;
-    playRetryRef.current = false;
-    videoRef.current.load();
-  }, [activeVideoUrl]);
-
-  const fetchVideoData = async (url) => {
+  const fetchVideoData = useCallback(async (rawUrl) => {
     setLoading(true);
     setError(null);
     setVideoData(null);
@@ -310,81 +306,77 @@ function DownloaderSectionEs() {
     setFetchedPageUrl('');
     setDownloadKey(null);
     try {
-      const encodedUrl = encodeURIComponent(url);
-      const apiUrl = `https://facebookvideo-downloader-backend.vercel.app/api/meta/download?url=${encodedUrl}`;
-      const response = await fetch(apiUrl);
-      const data = await response.json();
-      let videoItems = null;
-      if (data.success && data.data) {
-        if (data.data.data && Array.isArray(data.data.data) && data.data.data.length > 0) videoItems = data.data.data;
-        else if (Array.isArray(data.data) && data.data.length > 0) videoItems = data.data;
-        else if (data.data.url || data.data.thumbnail || data.data.hd || data.data.sd) videoItems = [data.data];
+      const meta = await fetchFacebookVideoMeta(rawUrl);
+      setLink(meta.pageUrl);
+      setFetchedPageUrl(meta.pageUrl);
+      setVideoData({
+        items: meta.items,
+        thumbnail: meta.thumbnail,
+        title: meta.title,
+      });
+      if (meta.defaultUrl) {
+        setActiveVideoUrl(meta.defaultUrl);
       }
-      if (videoItems && videoItems.length > 0) {
-        const firstItem = videoItems[0];
-        setFetchedPageUrl(url.trim());
-        setVideoData({
-          items: videoItems,
-          thumbnail: firstItem?.thumbnail,
-          title: firstItem?.title || null,
-        });
-        if (firstItem?.url) {
-          setActiveVideoUrl(firstItem.url);
+      setTimeout(() => {
+        const videoSection = document.getElementById('video-results');
+        if (videoSection) {
+          videoSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
-        setTimeout(() => {
-          const videoSection = document.getElementById('video-results');
-          if (videoSection) {
-            videoSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          }
-        }, 100);
-      } else {
-        setError('No se encontraron datos del video.');
-      }
+      }, 100);
     } catch (err) {
-      setError('Error al obtener datos del video.');
+      const message =
+        err instanceof Error ? err.message : 'Error al obtener datos del video.';
+      setError(message);
       console.error(err);
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
+
+  useEffect(() => {
+    const handler = (e) => {
+      const incomingUrl = e.detail?.url;
+      if (incomingUrl) {
+        fetchVideoData(incomingUrl);
+      }
+    };
+    window.addEventListener('fb-download', handler);
+    return () => window.removeEventListener('fb-download', handler);
+  }, [fetchVideoData]);
+
+  useEffect(() => {
+    if (!activeVideoUrl || !videoRef.current) return;
+    playRetryRef.current = false;
+    videoRef.current.load();
+  }, [activeVideoUrl]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!link.trim()) {
+    const normalized = normalizeInputUrl(link);
+    if (!normalized) {
       setError('Ingresa una URL de Facebook.');
       return;
     }
-    fetchVideoData(link);
+    if (normalized !== link) {
+      setLink(normalized);
+    }
+    fetchVideoData(normalized);
   };
 
   const getFreshVideoUrl = async (currentUrl, quality = '') => {
     if (!fetchedPageUrl) return currentUrl;
     try {
-      const encodedUrl = encodeURIComponent(fetchedPageUrl);
-      const apiUrl = `https://facebookvideo-downloader-backend.vercel.app/api/meta/download?url=${encodedUrl}`;
-      const response = await fetch(apiUrl);
-      const data = await response.json();
-
-      let videoItems = null;
-      if (data.success && data.data) {
-        if (data.data.data && Array.isArray(data.data.data) && data.data.data.length > 0) {
-          videoItems = data.data.data;
-        } else if (Array.isArray(data.data) && data.data.length > 0) {
-          videoItems = data.data;
-        } else if (data.data.url || data.data.thumbnail || data.data.hd || data.data.sd) {
-          videoItems = [data.data];
-        }
-      }
-
-      if (!videoItems?.length) return currentUrl;
+      const meta = await fetchFacebookVideoMeta(fetchedPageUrl);
+      const items = meta.items;
+      if (!items?.length) return currentUrl;
 
       const q = String(quality || '').toLowerCase();
       const byQuality =
         q && q !== 'video'
-          ? videoItems.find((item) => String(item?.resolution || '').toLowerCase().includes(q))
+          ? items.find((item) => String(item?.resolution || '').toLowerCase().includes(q))
           : null;
-      const byUrl = currentUrl ? videoItems.find((item) => item?.url && item.url === currentUrl) : null;
-      return byQuality?.url || byUrl?.url || videoItems[0]?.url || currentUrl;
+      const byUrl = currentUrl ? items.find((item) => item?.url && item.url === currentUrl) : null;
+      return byQuality?.url || byUrl?.url || meta.defaultUrl || currentUrl;
     } catch {
       return currentUrl;
     }
@@ -448,7 +440,10 @@ function DownloaderSectionEs() {
                   <div className="fb-large-input-wrap">
                     <i className="fas fa-link" aria-hidden="true"></i>
                     <input
-                      type="url"
+                      type="text"
+                  inputMode="url"
+                  autoComplete="off"
+                  spellCheck={false}
                       placeholder="Pega URL de Facebook aqui"
                       value={link}
                       onChange={(e) => {
