@@ -21,6 +21,7 @@ import BlogPostReuseFacebookVideos from './pages/BlogPostReuseFacebookVideos';
 import BlogPostBestVideoFormatsEditing from './pages/BlogPostBestVideoFormatsEditing';
 import BlogPostCanYouUseDownloadedFacebookVideosYoutube from './pages/BlogPostCanYouUseDownloadedFacebookVideosYoutube';
 import BlogPostConvertFacebookVideosReelsShorts from './pages/BlogPostConvertFacebookVideosReelsShorts';
+import BlogPostTrimEditFacebookVideos from './pages/BlogPostTrimEditFacebookVideos';
 import UserGuide from './pages/UserGuide';
 import HomeSpanish from './pages/HomeSpanish';
 import SEO from './components/SEO';
@@ -1828,6 +1829,7 @@ export default function App() {
           <Route path="/blog/best-video-formats-for-editing-downloaded-fb-videos" element={<BlogPostBestVideoFormatsEditing />} />
           <Route path="/blog/can-you-use-downloaded-facebook-videos-on-youtube" element={<BlogPostCanYouUseDownloadedFacebookVideosYoutube />} />
           <Route path="/blog/how-to-convert-facebook-videos-into-reels-or-shorts-easy-guide" element={<BlogPostConvertFacebookVideosReelsShorts />} />
+          <Route path="/blog/how-to-trim-and-edit-facebook-videos-after-download" element={<BlogPostTrimEditFacebookVideos />} />
           <Route path="/user-guide" element={<UserGuide />} />
           <Route path="/es/descargar-video-de-facebook" element={<HomeSpanish />} />
         </Routes>

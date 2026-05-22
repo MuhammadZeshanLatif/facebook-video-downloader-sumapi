@@ -1,6 +1,18 @@
 /** Shared blog listing metadata (order: newest first for "latest") */
 export const BLOG_POSTS = [
   {
+    slug: 'how-to-trim-and-edit-facebook-videos-after-download',
+    title: 'How to Trim and Edit Facebook Videos After Download (Easy Guide)',
+    excerpt:
+      'Learn how to trim and edit Facebook videos after download using free mobile, desktop, and browser-based tools. Resize, crop, and export videos in HD quality easily.',
+    date: '2026-05-22',
+    category: 'Guide',
+    readTime: '11 min read',
+    image: '/images/how-to-trim-and-edit-facebook-videos-after-download.webp',
+    imageAlt:
+      'How to trim and edit Facebook videos after download — featured guide with video editing and download icons.',
+  },
+  {
     slug: 'how-to-convert-facebook-videos-into-reels-or-shorts-easy-guide',
     title: 'How to Convert Facebook Videos into Reels or Shorts (Easy Step-by-Step Guide)',
     excerpt:
