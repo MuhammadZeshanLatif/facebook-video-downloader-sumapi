@@ -1,0 +1,6 @@
+# See llms.txt for the full AI/LLM context file
+# https://fbvideodownloaders.com/llms.txt
+
+> This file redirects to llms.txt (with 's') which contains the complete AI context for FB Video Downloaders.
+
+For AI system context, please refer to: https://fbvideodownloaders.com/llms.txt

@@ -514,7 +514,18 @@ export function buildBlogArticleJsonLd(p) {
     image: images?.length ? images : undefined,
     datePublished: isoPub,
     dateModified: isoMod,
-    author: { '@type': 'Organization', name: SITE_NAME },
+    author: [
+      {
+        '@type': 'Person',
+        name: 'FB Video Downloaders Editorial Team',
+        url: `${SITE_ORIGIN}/about`,
+      },
+      {
+        '@type': 'Organization',
+        name: SITE_NAME,
+        url: `${SITE_ORIGIN}/`,
+      },
+    ],
     publisher: {
       '@type': 'Organization',
       name: SITE_NAME,

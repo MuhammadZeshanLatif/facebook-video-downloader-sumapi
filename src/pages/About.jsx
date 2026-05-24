@@ -67,9 +67,29 @@ function About() {
                 permission to download or reuse content and for following applicable laws and platform terms.
               </p>
 
+              <h3 className="mt-4">Our Expertise</h3>
+              <p>
+                Our editorial team focuses on digital media tools, browser-based utilities, and practical video-handling workflows.
+                Content is reviewed for accuracy before publication and updated when platform behavior changes. We cover:
+              </p>
+              <ul>
+                <li>How social video platforms serve and expose video links</li>
+                <li>Legal and copyright considerations for downloading publicly shared media</li>
+                <li>Mobile and desktop browser compatibility for video saving workflows</li>
+                <li>Safe usage practices and privacy protection when using online tools</li>
+              </ul>
+
+              <h3 className="mt-4">Content Review Process</h3>
+              <p>
+                All guides and articles are written by our editorial team, fact-checked against current platform documentation,
+                and tested on real devices before publishing. We update content when Facebook or browser behavior changes.
+                Articles include a published date so readers know how current the information is.
+              </p>
+
               <h3 className="mt-4">Contact Us</h3>
               <p>
                 If you have questions, corrections, or policy concerns, please use our <a href="/contact">contact page</a>.
+                We respond to all genuine inquiries about our content and tool.
               </p>
             </div>
           </div>
