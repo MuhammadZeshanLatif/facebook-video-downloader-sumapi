@@ -1624,40 +1624,26 @@ function Footer() {
             </div>
 
             <div className="th-footer-links-col">
-              <h5>{isSpanishPage ? 'Secciones principales' : 'Main Sections'}</h5>
+              <h5>{isSpanishPage ? 'Páginas principales' : 'Quick Links'}</h5>
               <ul>
-                {[
-                  [isSpanishPage ? 'Inicio' : 'Home', 'home'],
-                  [isSpanishPage ? 'Downloader' : 'Downloader', 'downloader'],
-                  [isSpanishPage ? 'Funciones' : 'Features', 'features'],
-                  [isSpanishPage ? 'Guia' : 'Guides', 'guides'],
-                  ['FAQ', 'faq'],
-                ].map(([label, id]) => (
-                  <li key={id}>
-                    <button onClick={() => scrollToSection(id)}>
-                      <i className="fas fa-chevron-right me-2"></i>{label}
-                    </button>
-                  </li>
-                ))}
+                <li><Link to="/"><i className="fas fa-chevron-right me-2"></i>{isSpanishPage ? 'Inicio' : 'Home'}</Link></li>
+                <li><Link to="/user-guide"><i className="fas fa-chevron-right me-2"></i>{isSpanishPage ? 'Guía de uso' : 'User Guide'}</Link></li>
+                <li><Link to="/blog"><i className="fas fa-chevron-right me-2"></i>Blog</Link></li>
+                <li><Link to="/about"><i className="fas fa-chevron-right me-2"></i>{isSpanishPage ? 'Acerca de' : 'About'}</Link></li>
+                <li><Link to="/contact"><i className="fas fa-chevron-right me-2"></i>{isSpanishPage ? 'Contacto' : 'Contact'}</Link></li>
+                <li><Link to="/privacy-policy"><i className="fas fa-chevron-right me-2"></i>{isSpanishPage ? 'Privacidad' : 'Privacy Policy'}</Link></li>
+                <li><Link to="/disclaimer"><i className="fas fa-chevron-right me-2"></i>{isSpanishPage ? 'Aviso legal' : 'Disclaimer'}</Link></li>
               </ul>
             </div>
 
             <div className="th-footer-links-col">
-              <h5>{isSpanishPage ? 'Temas populares' : 'Popular Topics'}</h5>
+              <h5>{isSpanishPage ? 'Guías populares' : 'Popular Guides'}</h5>
               <ul>
-                {[
-                  isSpanishPage ? 'Downloader de Reels de Facebook' : 'Facebook Reels Downloader',
-                  isSpanishPage ? 'Descargar video de Facebook HD' : 'Download Facebook Video HD',
-                  isSpanishPage ? 'Guardar video de Facebook en iPhone' : 'Save Facebook Video on iPhone',
-                  isSpanishPage ? 'Video de Facebook en Android' : 'Facebook Video on Android',
-                  isSpanishPage ? 'Copiar URL de publicacion de Facebook' : 'Copy Facebook Post URL',
-                ].map((item, index) => (
-                  <li key={index}>
-                    <button onClick={() => scrollToSection('guides')}>
-                      <i className="fas fa-chevron-right me-2"></i>{item}
-                    </button>
-                  </li>
-                ))}
+                <li><Link to="/user-guide"><i className="fas fa-chevron-right me-2"></i>{isSpanishPage ? 'Cómo descargar videos' : 'How to Download Facebook Videos'}</Link></li>
+                <li><Link to="/blog/facebook-reels-complete-download-guide-hd-mobile-desktop"><i className="fas fa-chevron-right me-2"></i>{isSpanishPage ? 'Descargar Reels' : 'Facebook Reels Download Guide'}</Link></li>
+                <li><Link to="/blog/how-to-download-facebook-videos-in-hd-quality-complete-guide"><i className="fas fa-chevron-right me-2"></i>{isSpanishPage ? 'Descargar en HD' : 'Download Facebook Videos in HD'}</Link></li>
+                <li><Link to="/blog/troubleshooting-common-download-issues-step-by-step-guide"><i className="fas fa-chevron-right me-2"></i>{isSpanishPage ? 'Solución de problemas' : 'Fix Download Issues'}</Link></li>
+                <li><Link to="/blog/facebook-video-downloader-privacy-and-security-safe-or-risky"><i className="fas fa-chevron-right me-2"></i>{isSpanishPage ? 'Privacidad y seguridad' : 'Privacy & Safety Guide'}</Link></li>
               </ul>
             </div>
 
@@ -1696,11 +1682,14 @@ function Footer() {
                 : 'An independent tool with no connection to Facebook or the Meta group.'}
             </p>
             <div className="th-footer-bottom-links">
+              <Link to="/">{isSpanishPage ? 'Inicio' : 'Home'}</Link>
               <Link to="/user-guide">{isSpanishPage ? 'Guia' : 'User Guide'}</Link>
-              <Link to="/privacy-policy">{isSpanishPage ? 'Privacidad' : 'Privacy'}</Link>
+              <Link to="/blog">Blog</Link>
+              <Link to="/about">{isSpanishPage ? 'Acerca de' : 'About'}</Link>
+              <Link to="/contact">{isSpanishPage ? 'Contacto' : 'Contact'}</Link>
+              <Link to="/privacy-policy">{isSpanishPage ? 'Privacidad' : 'Privacy Policy'}</Link>
               <Link to="/terms-conditions">{isSpanishPage ? 'Terminos' : 'Terms'}</Link>
               <Link to="/disclaimer">{isSpanishPage ? 'Aviso legal' : 'Disclaimer'}</Link>
-              <Link to="/about">{isSpanishPage ? 'Acerca de' : 'About'}</Link>
               <Link to="/es/descargar-video-de-facebook">ES</Link>
             </div>
           </div>
@@ -1737,7 +1726,7 @@ function HomePage() {
     <>
       <SEO
         title="Facebook Video Downloader HD Free | FB Video Downloaders"
-        description="Download Facebook videos, reels, and clips in HD or SD for free. Paste your link, download fast, no login needed."
+        description="Free Facebook video downloader — save public Facebook videos and Reels in HD or SD. No login, no app installation. Works on mobile and desktop."
         keywords="facebook video downloader, download facebook videos, fb video downloader, facebook reels downloader, save facebook video online, download fb video hd, free facebook downloader, download fb reels, facebook video saver, fb video download"
         ogUrl="https://fbvideodownloaders.com/"
         jsonLd={buildHomeJsonLd()}

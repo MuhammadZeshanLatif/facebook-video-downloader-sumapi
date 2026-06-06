@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
 import { buildAboutJsonLd } from '../data/pageSchemas';
 
@@ -6,8 +7,8 @@ function About() {
   return (
     <>
       <SEO
-        title="About FB Video Downloaders - Free Facebook Video Downloader"
-        description="Learn about FB Video Downloaders, our editorial goals, and how we provide educational guides for downloading publicly available Facebook videos responsibly."
+        title="About FB Video Downloaders | Free Facebook Video Download Tool"
+        description="Learn about FB Video Downloaders, a free online tool that helps users save publicly available Facebook videos easily and safely."
         keywords="about facebook video downloader, fb video downloaders, free facebook downloader, about us, facebook video tool, fb video saver"
         ogUrl="https://fbvideodownloaders.com/about"
         jsonLd={buildAboutJsonLd()}
@@ -17,80 +18,95 @@ function About() {
         <div className="th-section-header">
           <h1 className="th-section-title">About FB Video Downloaders</h1>
           <p className="th-section-desc">
-            We publish practical guides and tool information for saving publicly accessible Facebook videos and Reels.
+            FB Video Downloaders is a free online tool that helps you save publicly available Facebook videos and Reels directly in your browser — no app needed, no login required.
           </p>
         </div>
 
-        <div className="row g-4 mt-4">
+        <div className="row g-4 mt-2">
           <div className="col-lg-8 mx-auto">
+
+            {/* Key features at a glance */}
+            <div className="row g-3 mb-4">
+              {[
+                { icon: 'fa-lock-open', title: 'No Login Required', desc: 'You do not need a Facebook account or any login to use this tool.' },
+                { icon: 'fa-mobile-screen-button', title: 'No App to Install', desc: 'Everything runs in your browser on any device — nothing to download.' },
+                { icon: 'fa-user-shield', title: 'We Do Not Store Videos', desc: 'Videos go directly to your device. We never save copies on our servers.' },
+                { icon: 'fa-globe', title: 'Works Everywhere', desc: 'Android, iPhone, tablet, and desktop — any modern browser works.' },
+              ].map((item) => (
+                <div key={item.title} className="col-sm-6">
+                  <div className="text-center p-3" style={{ background: 'var(--th-bg-alt)', borderRadius: '12px', height: '100%' }}>
+                    <i className={`fas ${item.icon} mb-2`} style={{ fontSize: '1.5rem', color: 'var(--th-primary)' }}></i>
+                    <h3 style={{ fontSize: '0.95rem', fontWeight: 700, marginBottom: '0.4rem' }}>{item.title}</h3>
+                    <p className="small text-muted mb-0">{item.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
             <div className="fb-tool-card">
-              <h2>Who We Are</h2>
+              <h2>What Is FB Video Downloaders?</h2>
               <p>
-                FB Video Downloaders is an independent website that provides educational content and a browser-based interface for
-                publicly available Facebook video links. Our focus is clarity, safety, and compliance.
+                FB Video Downloaders is a free, browser-based tool for saving publicly available Facebook videos and Reels.
+                Paste a public Facebook video link, choose your preferred quality (HD or SD), and download the video directly to your device.
+                No account, no subscription, and no software installation is needed.
               </p>
 
-              <h3 className="mt-4">What We Publish</h3>
+              <h2 className="mt-4">Who Can Use It?</h2>
               <p>
-                We publish:
+                Anyone can use FB Video Downloaders. It is designed for everyday users who want to save a Facebook video for
+                personal offline viewing — whether on mobile, tablet, or desktop. The tool works in any modern browser including
+                Chrome, Safari, Firefox, and Edge.
               </p>
+
+              <h2 className="mt-4">Why This Website Exists</h2>
+              <p>
+                Saving a public Facebook video is not straightforward without third-party tools. FB Video Downloaders was created
+                to give users a simple, safe, and free option to do this — without ads, paywalls, or confusing steps.
+              </p>
+
+              <h2 className="mt-4">Privacy and Safety</h2>
               <ul>
-                <li>Step-by-step user guides</li>
-                <li>Troubleshooting articles for common video-link issues</li>
-                <li>Educational posts about privacy, copyright, and safe usage</li>
-                <li>Best practices for content quality and responsible reuse</li>
+                <li>We do not require a Facebook login or password</li>
+                <li>We do not store or keep copies of videos you download</li>
+                <li>Video files go directly from Facebook's servers to your device</li>
+                <li>We do not collect personal data beyond standard server logs</li>
+                <li>We do not use your data for advertising</li>
               </ul>
 
-              <h3 className="mt-4">Our Mission</h3>
+              <h2 className="mt-4">Responsible Use</h2>
               <p>
-                Our mission is to make social video guidance easier to understand for everyday users. We aim to provide
-                useful, original, and regularly maintained content.
+                This tool is intended for personal and educational use only. Users should only download videos they have
+                permission to save and must respect copyright, platform terms, and applicable laws.
+                FB Video Downloaders does not support unauthorized redistribution of content.
               </p>
 
-              <h3 className="mt-4">Editorial Standards</h3>
+              <h2 className="mt-4">Editorial Standards</h2>
               <ul>
-                <li>We prioritize practical and easy-to-follow information</li>
-                <li>We update outdated details when platform behavior changes</li>
+                <li>All guides and articles are written by our editorial team and tested on real devices</li>
+                <li>We update content when Facebook or browser behavior changes</li>
                 <li>We avoid misleading claims and unsupported guarantees</li>
-                <li>We encourage lawful and rights-respecting use</li>
+                <li>Articles include a published date so you know how current the information is</li>
               </ul>
 
-              <h3 className="mt-4">Independence and Trademark Notice</h3>
+              <h2 className="mt-4">Independence and Trademark Notice</h2>
               <p>
-                FB Video Downloaders is not affiliated with, endorsed by, or sponsored by Facebook or Meta. Any third-party brand
-                names are used only for descriptive and informational purposes.
+                FB Video Downloaders is not affiliated with, endorsed by, or sponsored by Facebook or Meta Platforms, Inc.
+                Facebook is a trademark of Meta Platforms, Inc. Any third-party brand names referenced on this site are used
+                for descriptive purposes only.
               </p>
 
-              <h3 className="mt-4">Compliance Commitment</h3>
+              <h2 className="mt-4">Contact Us</h2>
               <p>
-                We support legal, ethical, and policy-compliant use. Users are responsible for ensuring they have
-                permission to download or reuse content and for following applicable laws and platform terms.
+                If you have questions, feedback, or concerns, please use our <Link to="/contact">contact page</Link>.
+                You can also visit the <Link to="/user-guide">user guide</Link> for step-by-step instructions, or browse the <Link to="/blog">blog</Link> for tips and troubleshooting articles.
               </p>
+            </div>
 
-              <h3 className="mt-4">Our Expertise</h3>
-              <p>
-                Our editorial team focuses on digital media tools, browser-based utilities, and practical video-handling workflows.
-                Content is reviewed for accuracy before publication and updated when platform behavior changes. We cover:
-              </p>
-              <ul>
-                <li>How social video platforms serve and expose video links</li>
-                <li>Legal and copyright considerations for downloading publicly shared media</li>
-                <li>Mobile and desktop browser compatibility for video saving workflows</li>
-                <li>Safe usage practices and privacy protection when using online tools</li>
-              </ul>
-
-              <h3 className="mt-4">Content Review Process</h3>
-              <p>
-                All guides and articles are written by our editorial team, fact-checked against current platform documentation,
-                and tested on real devices before publishing. We update content when Facebook or browser behavior changes.
-                Articles include a published date so readers know how current the information is.
-              </p>
-
-              <h3 className="mt-4">Contact Us</h3>
-              <p>
-                If you have questions, corrections, or policy concerns, please use our <a href="/contact">contact page</a>.
-                We respond to all genuine inquiries about our content and tool.
-              </p>
+            {/* Disclaimer */}
+            <div className="mt-4 p-3" style={{ background: 'var(--th-bg-alt)', borderRadius: '10px', fontSize: '0.85rem', color: 'var(--th-muted)' }}>
+              <strong>Disclaimer:</strong> This website is not affiliated with Facebook or Meta Platforms.
+              Facebook is a trademark of Meta Platforms, Inc. This tool is for saving publicly accessible Facebook videos
+              for personal use only. Users are responsible for complying with applicable laws and platform terms.
             </div>
           </div>
         </div>

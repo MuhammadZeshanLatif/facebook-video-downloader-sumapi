@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useRef } from 'react';
 import { Link, useNavigate, useSearchParams } from 'react-router-dom';
+
 import SEO from '../components/SEO';
 import { BLOG_POSTS } from '../data/blogPostsList';
 import { buildBlogIndexJsonLd } from '../data/pageSchemas';
@@ -57,8 +58,8 @@ function Blog() {
   return (
     <>
       <SEO
-        title="Facebook Video Downloader Guides & Tips | FB Video Downloaders"
-        description="Read simple Facebook video downloading guides, privacy tips, HD quality help, mobile advice, and safe usage tips."
+        title="Facebook Video Downloader Blog | Tips, Guides & Tutorials"
+        description="Read helpful guides, tips, and tutorials about downloading Facebook videos online safely and easily."
         keywords="facebook video downloader blog, download facebook video guide, facebook reels tips, fb video download tutorial, how to download facebook videos, facebook video tips"
         ogUrl="https://fbvideodownloaders.com/blog"
         jsonLd={buildBlogIndexJsonLd()}
@@ -70,12 +71,12 @@ function Blog() {
           {/* Page Header */}
           <div className="th-blog-hero">
             <h1 className="th-blog-hero-title">
-              Tips, Guides &amp;{' '}
-              <span className="th-gradient-text">Tutorials</span>
+              Facebook Video Downloader{' '}
+              <span className="th-gradient-text">Blog</span>
             </h1>
             <p className="th-blog-hero-desc">
-              Stay updated with the latest guides and tips for downloading
-              Facebook videos, Reels, and more — completely free.
+              Step-by-step guides, tips, and tutorials for downloading Facebook videos and Reels safely and easily.
+              New to the tool? <Link to="/user-guide" style={{ color: 'var(--th-primary)', fontWeight: 600 }}>Read the User Guide</Link> or <Link to="/" style={{ color: 'var(--th-primary)', fontWeight: 600 }}>go to the downloader</Link>.
             </p>
           </div>
 

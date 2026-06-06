@@ -1,67 +1,74 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
 import { buildUserGuideJsonLd } from '../data/pageSchemas';
 
 function UserGuide() {
   const steps = [
     {
-      icon: 'fas fa-up-right-from-square',
-      num: '01',
-      title: 'Open the Facebook Video',
-      desc: 'Go to the Facebook video, Reel, or post you want to download. Open it in your browser and make sure it is public.',
-    },
-    {
       icon: 'fas fa-copy',
-      num: '02',
-      title: 'Copy the Video Link',
-      desc: 'Copy the full link from the address bar or use the share option. A correct link helps the downloader process the video properly.',
+      num: '01',
+      title: 'Copy the Facebook Video Link',
+      desc: 'Open the public Facebook video or Reel in your browser. Copy the URL from the address bar, or tap Share → Copy Link inside the Facebook app.',
     },
     {
       icon: 'fas fa-paste',
+      num: '02',
+      title: 'Paste the Link into the Downloader',
+      desc: 'Go to the FB Video Downloaders homepage and paste the link into the input box. Make sure the full URL is pasted correctly.',
+    },
+    {
+      icon: 'fas fa-magnifying-glass',
       num: '03',
-      title: 'Paste in the Downloader',
-      desc: 'Paste the link into the downloader field. The tool will load the video and show available download options.',
+      title: 'Click the Download Button',
+      desc: 'Click "Analyze Link" or "Download Video". The tool will process the link and fetch the available video options from Facebook.',
+    },
+    {
+      icon: 'fas fa-sliders',
+      num: '04',
+      title: 'Choose Video Quality',
+      desc: 'Select HD for higher quality or SD for a smaller file size. HD is recommended for larger screens, SD is ideal for saving storage.',
     },
     {
       icon: 'fas fa-download',
-      num: '04',
-      title: 'Choose Quality & Save',
-      desc: 'Select HD for better quality or SD for a smaller file size. Then save the video to your device.',
+      num: '05',
+      title: 'Save the Video to Your Device',
+      desc: 'Click the download button for your chosen quality. The video will be saved directly to your device\'s downloads folder.',
     },
   ];
 
   const faqs = [
     {
       q: 'How do I download a Facebook video online?',
-      a: 'Open the video, copy the link, paste it into the downloader, and choose the quality to save it.',
+      a: 'Copy the public Facebook video link, paste it into the downloader box on our homepage, click the download button, choose your quality, and save the video.',
     },
     {
       q: 'Can I download Facebook videos without an app?',
-      a: 'Yes, this FB video downloader user guide uses browser-based methods that do not require installation.',
+      a: 'Yes. FB Video Downloaders is a browser-based tool — nothing to install. Just visit the site, paste your link, and download.',
     },
     {
       q: 'Can I save Facebook Reels on my phone?',
-      a: 'Yes, if the Reel is public, you can copy the link and download it using this method.',
+      a: 'Yes. Open the Reel link in your mobile browser, copy the URL, paste it into the downloader, and download it directly to your phone.',
     },
     {
       q: 'Why is my Facebook video not downloading?',
-      a: 'This usually happens if the video is private, the link is incomplete, or it was opened inside the app.',
+      a: 'This usually happens when the video is set to private or friends-only, the link is incomplete, or the video was opened inside the Facebook app instead of a browser. Try copying the URL from a browser instead.',
     },
     {
       q: 'What is the difference between HD and SD download?',
-      a: 'HD gives better quality, while SD saves faster and uses less storage.',
+      a: 'HD gives better video quality and is ideal for viewing on larger screens. SD produces a smaller file size that downloads faster and uses less storage.',
     },
     {
       q: 'Does this work on iPhone and Android?',
-      a: 'Yes, this FB video downloader user guide works on both devices using a browser.',
+      a: 'Yes. FB Video Downloaders works on both Android and iPhone using any modern mobile browser including Chrome, Safari, Firefox, and Edge.',
     },
     {
       q: 'Is it safe to use a Facebook video downloader?',
-      a: 'Yes, as long as you use a trusted tool that does not ask for login details.',
+      a: 'Yes, as long as you use a trusted tool. FB Video Downloaders does not ask for your Facebook login, password, or personal information.',
     },
     {
-      q: 'What links are supported in this guide?',
-      a: 'This guide covers publicly accessible Facebook video and Reel links only.',
+      q: 'What links are supported?',
+      a: 'This tool works with publicly accessible Facebook video and Reel links. Private or restricted videos cannot be downloaded.',
     },
   ];
 
@@ -81,8 +88,8 @@ function UserGuide() {
   return (
     <>
       <SEO
-        title="How to Use Facebook Video Downloader | FB Video Downloaders"
-        description="Learn how to download Facebook videos and reels step by step using FB Video Downloaders. Simple guide for mobile and desktop users."
+        title="How to Use Facebook Video Downloader | Step-by-Step Guide"
+        description="Learn how to use FB Video Downloaders to save Facebook videos online with a simple step-by-step guide for mobile and desktop users."
         keywords="how to download facebook videos, fb video downloader guide, download facebook reels step by step, save facebook video without app, facebook video downloader tutorial, download fb video mobile"
         ogUrl="https://fbvideodownloaders.com/user-guide"
         jsonLd={buildUserGuideJsonLd()}
@@ -92,16 +99,16 @@ function UserGuide() {
       <div className="th-section" style={{ paddingTop: '120px', paddingBottom: '2rem' }}>
         <div className="th-container">
           <div className="th-section-header">
-            <h1 className="th-section-title">How to Use a <span className="th-gradient-text">FB Video Downloader</span></h1>
+            <h1 className="th-section-title">How to Use <span className="th-gradient-text">FB Video Downloaders</span></h1>
             <p className="th-section-desc">
-              This FB video downloader user guide explains the fastest way to download Facebook videos using a browser. It works on both mobile and desktop without an app.
-              Users can save public Facebook videos, Reels, and clips in just a few simple steps.
+              This step-by-step guide explains how to download public Facebook videos and Reels using a browser.
+              No app installation and no Facebook login required. Works on Android, iPhone, and desktop.
             </p>
           </div>
 
           <div className="fb-youtube-embed">
             <h2 className="th-section-title" style={{ fontSize: 'clamp(1.25rem, 3vw, 1.65rem)', marginBottom: '1rem', textAlign: 'center' }}>
-              Video tutorial: <span className="th-gradient-text">download step by step</span>
+              Video Tutorial: <span className="th-gradient-text">Step-by-Step Walkthrough</span>
             </h2>
             <div className="fb-youtube-embed-inner">
               <iframe
@@ -114,11 +121,16 @@ function UserGuide() {
               />
             </div>
             <p className="fb-youtube-embed-caption">
-              Prefer watching? Follow the same steps in the video, then use the written steps below on any device.
+              Prefer watching? Follow the same steps in the video, then use the written guide below for reference on any device.
             </p>
           </div>
 
           {/* Steps */}
+          <div className="th-section-header mt-4">
+            <h2 className="th-section-title" style={{ fontSize: 'clamp(1.3rem, 3vw, 1.8rem)' }}>
+              5-Step Download Guide
+            </h2>
+          </div>
           <div className="th-steps-grid">
             {steps.map((step, index) => (
               <div key={index} className="th-step-card">
@@ -126,7 +138,7 @@ function UserGuide() {
                 <div className="th-step-icon-wrap">
                   <i className={step.icon}></i>
                 </div>
-                <h4 className="th-step-title">{step.title}</h4>
+                <h3 className="th-step-title">{step.title}</h3>
                 <p className="th-step-desc">{step.desc}</p>
                 {index < steps.length - 1 && (
                   <div className="th-step-arrow">
@@ -137,60 +149,121 @@ function UserGuide() {
             ))}
           </div>
 
-          {/* Tips & Search Intent Cards */}
+          {/* Platform-specific guides */}
           <div className="fb-guide-content mt-5">
+            <div className="th-section-header">
+              <h2 className="th-section-title" style={{ fontSize: 'clamp(1.3rem, 3vw, 1.8rem)' }}>
+                Download by Device Type
+              </h2>
+            </div>
+            <div className="row g-4">
+              <div className="col-lg-4">
+                <div className="fb-content-card">
+                  <h3><i className="fab fa-android me-2" style={{ color: '#3ddc84' }}></i>How to Use on Android</h3>
+                  <ol style={{ paddingLeft: '1.2rem', marginBottom: 0 }}>
+                    <li>Open Facebook in your Android browser (Chrome recommended)</li>
+                    <li>Find the public video or Reel you want to save</li>
+                    <li>Copy the URL from the browser address bar</li>
+                    <li>Open <Link to="/">FB Video Downloaders</Link> in a new tab</li>
+                    <li>Paste the link and tap Download</li>
+                    <li>The video saves to your Downloads folder</li>
+                  </ol>
+                </div>
+              </div>
+              <div className="col-lg-4">
+                <div className="fb-content-card">
+                  <h3><i className="fab fa-apple me-2" style={{ color: '#555' }}></i>How to Use on iPhone</h3>
+                  <ol style={{ paddingLeft: '1.2rem', marginBottom: 0 }}>
+                    <li>Open Facebook in Safari or Chrome on your iPhone</li>
+                    <li>Navigate to the public video or Reel</li>
+                    <li>Tap the Share icon, then Copy Link</li>
+                    <li>Open <Link to="/">FB Video Downloaders</Link> in your browser</li>
+                    <li>Paste the link and tap Download</li>
+                    <li>Use the share icon to save to Files or Camera Roll</li>
+                  </ol>
+                </div>
+              </div>
+              <div className="col-lg-4">
+                <div className="fb-content-card">
+                  <h3><i className="fas fa-laptop me-2" style={{ color: 'var(--th-primary)' }}></i>How to Use on Desktop</h3>
+                  <ol style={{ paddingLeft: '1.2rem', marginBottom: 0 }}>
+                    <li>Open Facebook in your desktop browser</li>
+                    <li>Click on the public video to open its dedicated page</li>
+                    <li>Copy the full URL from the address bar</li>
+                    <li>Visit <Link to="/">fbvideodownloaders.com</Link></li>
+                    <li>Paste the link and click Analyze Link</li>
+                    <li>Choose HD or SD and click Download</li>
+                  </ol>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Tips & Common Issues */}
+          <div className="fb-guide-content mt-4">
             <div className="row g-4">
               <div className="col-lg-6">
                 <div className="fb-content-card">
-                  <h3>Facebook Downloader Tips for Better Results</h3>
-                  <p>
-                    This FB video downloader user guide also includes tips to help users avoid common issues.
-                  </p>
+                  <h3><i className="fas fa-lightbulb me-2" style={{ color: 'var(--th-primary)' }}></i>Tips for Better Results</h3>
                   <ul className="fb-bullet-list">
-                    <li>Always copy the full public Facebook link</li>
-                    <li>Avoid incomplete or shortened URLs</li>
-                    <li>Open videos in a browser instead of the app</li>
-                    <li>Use updated browsers like Chrome, Safari, Edge, or Firefox</li>
-                    <li>Choose HD only if available</li>
-                    <li>Use SD for faster downloads</li>
+                    <li>Always copy the full public Facebook link — not a shortened or app-generated URL</li>
+                    <li>Open videos in a browser (not the Facebook app) to get the correct URL format</li>
+                    <li>Use an updated browser like Chrome, Safari, Edge, or Firefox</li>
+                    <li>Choose HD only when available — not all videos offer HD quality</li>
+                    <li>Use SD for faster downloads when storage is limited</li>
+                    <li>If the link fails, try refreshing the Facebook page and copying the URL again</li>
                   </ul>
                 </div>
               </div>
               <div className="col-lg-6">
                 <div className="fb-content-card">
-                  <h3>Facebook-Related Search Intent Covered Here</h3>
-                  <p>
-                    This FB video downloader user guide supports common user searches and helps users complete the task easily.
-                  </p>
+                  <h3><i className="fas fa-wrench me-2" style={{ color: 'var(--th-primary)' }}></i>Common Issues and Fixes</h3>
                   <ul className="fb-bullet-list">
-                    <li>Facebook video downloader online</li>
-                    <li>Download Facebook video on Android</li>
-                    <li>Download Facebook video on iPhone</li>
-                    <li>Save Facebook Reel HD</li>
-                    <li>Facebook clips downloader</li>
-                    <li>Copy Facebook video link</li>
-                    <li>Download Facebook video without app</li>
+                    <li><strong>Video not found:</strong> The video may be private or restricted — only public videos can be downloaded</li>
+                    <li><strong>Invalid URL error:</strong> Make sure you paste the complete URL, including https://</li>
+                    <li><strong>Download not starting:</strong> Try a different browser or disable browser ad blockers</li>
+                    <li><strong>Low quality only:</strong> Some Facebook videos are only uploaded in SD — HD is not always available</li>
+                    <li><strong>Reel not downloading:</strong> Open the Reel in a browser instead of the Facebook app and copy that URL</li>
                   </ul>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Supported Content Types */}
+          {/* Safety & Supported Types */}
           <div className="row g-4 mt-2">
-            <div className="col-lg-12">
+            <div className="col-lg-6">
               <div className="fb-content-card">
-                <h3>Supported Content Types</h3>
-                <p>With this FB video downloader user guide, users can download:</p>
+                <h3><i className="fas fa-shield-halved me-2" style={{ color: 'var(--th-primary)' }}></i>Safety Notes</h3>
                 <ul className="fb-check-list">
-                  <li><i className="fas fa-check-circle"></i>Facebook timeline videos</li>
-                  <li><i className="fas fa-check-circle"></i>Facebook page videos and clips</li>
-                  <li><i className="fas fa-check-circle"></i>Facebook Reels</li>
-                  <li><i className="fas fa-check-circle"></i>Mobile browser downloads (Android and iPhone)</li>
-                  <li><i className="fas fa-check-circle"></i>Desktop browser downloads</li>
+                  <li><i className="fas fa-check-circle"></i>We never ask for your Facebook login or password</li>
+                  <li><i className="fas fa-check-circle"></i>We do not store videos on our servers</li>
+                  <li><i className="fas fa-check-circle"></i>Only download videos you have permission to save</li>
+                  <li><i className="fas fa-check-circle"></i>Use this tool for personal and educational purposes only</li>
+                  <li><i className="fas fa-check-circle"></i>Respect copyright and Facebook's Terms of Service</li>
                 </ul>
               </div>
             </div>
+            <div className="col-lg-6">
+              <div className="fb-content-card">
+                <h3><i className="fas fa-check-circle me-2" style={{ color: 'var(--th-primary)' }}></i>Supported Content Types</h3>
+                <ul className="fb-check-list">
+                  <li><i className="fas fa-check-circle"></i>Facebook timeline videos (public posts)</li>
+                  <li><i className="fas fa-check-circle"></i>Facebook page videos and clips</li>
+                  <li><i className="fas fa-check-circle"></i>Facebook Reels</li>
+                  <li><i className="fas fa-check-circle"></i>Videos shared in public Facebook groups</li>
+                  <li><i className="fas fa-check-circle"></i>Downloads on Android, iPhone, tablet, and desktop</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          {/* CTA to tool */}
+          <div className="mt-5 text-center">
+            <p style={{ fontSize: '1.1rem', marginBottom: '1rem' }}>Ready to download? Use the tool directly from our homepage:</p>
+            <Link to="/" className="th-btn th-btn-primary">
+              <i className="fas fa-download me-2"></i>Open Facebook Video Downloader
+            </Link>
           </div>
         </div>
       </div>
@@ -199,16 +272,16 @@ function UserGuide() {
       <section className="th-section th-section-alt">
         <div className="th-container">
           <div className="th-section-header">
-            <h2 className="th-section-title">FB Video Downloader <span className="th-gradient-text">FAQs</span></h2>
+            <h2 className="th-section-title">Frequently Asked <span className="th-gradient-text">Questions</span></h2>
             <p className="th-section-desc">
-              This FB video downloader user guide answers the most common questions users have.
+              Common questions about downloading Facebook videos answered simply and clearly.
             </p>
           </div>
 
           <div className="accordion fb-accordion" id="ugFaqAccordion">
             {faqs.map((faq, index) => (
               <div className="accordion-item" key={index}>
-                <h2 className="accordion-header" id={`ug-heading-${index}`}>
+                <h3 className="accordion-header" id={`ug-heading-${index}`}>
                   <button
                     className={`accordion-button ${index !== 0 ? 'collapsed' : ''}`}
                     type="button"
@@ -219,7 +292,7 @@ function UserGuide() {
                   >
                     {faq.q}
                   </button>
-                </h2>
+                </h3>
                 <div
                   id={`ug-collapse-${index}`}
                   className={`accordion-collapse collapse ${index === 0 ? 'show' : ''}`}
@@ -231,6 +304,10 @@ function UserGuide() {
               </div>
             ))}
           </div>
+
+          <div className="mt-4 text-center">
+            <p>Still have questions? Read more in our <Link to="/blog">blog</Link> or <Link to="/contact">contact us</Link>.</p>
+          </div>
         </div>
       </section>
 
@@ -238,9 +315,9 @@ function UserGuide() {
       <section className="th-section">
         <div className="th-container">
           <div className="th-section-header">
-            <h2 className="th-section-title">Contact the <span className="th-gradient-text">FB Video Downloaders</span> Team</h2>
+            <h2 className="th-section-title">Need More Help?</h2>
             <p className="th-section-desc">
-              Use this section for user questions about Facebook video link format, mobile use, HD availability, page usability, and feature suggestions.
+              Contact us with questions about Facebook video links, mobile use, download quality, or any other issues.
             </p>
           </div>
 
@@ -249,28 +326,28 @@ function UserGuide() {
               <div className="th-contact-info-card">
                 <div className="th-contact-icon th-icon-blue"><i className="fas fa-link"></i></div>
                 <div>
-                  <h5 className="th-contact-info-title">Facebook Link Help</h5>
-                  <p className="th-contact-info-line">Need help copying the correct Facebook video or Reel URL to use with Facebook Video Downloader?</p>
+                  <h3 className="th-contact-info-title">Facebook Link Help</h3>
+                  <p className="th-contact-info-line">Need help copying the correct Facebook video or Reel URL to use with the downloader?</p>
                 </div>
               </div>
               <div className="th-contact-info-card">
                 <div className="th-contact-icon th-icon-green"><i className="fas fa-mobile-screen-button"></i></div>
                 <div>
-                  <h5 className="th-contact-info-title">Mobile Experience</h5>
-                  <p className="th-contact-info-line">Questions about downloading Facebook videos on Android phones, iPhones, or tablets using Facebook Video Downloader.</p>
+                  <h3 className="th-contact-info-title">Mobile Experience</h3>
+                  <p className="th-contact-info-line">Questions about downloading Facebook videos on Android phones, iPhones, or tablets.</p>
                 </div>
               </div>
               <div className="th-contact-info-card">
                 <div className="th-contact-icon th-icon-purple"><i className="fas fa-sliders"></i></div>
                 <div>
-                  <h5 className="th-contact-info-title">Quality Guidance</h5>
-                  <p className="th-contact-info-line">Understand when HD or SD download options are available depending on the original Facebook video quality.</p>
+                  <h3 className="th-contact-info-title">Quality Guidance</h3>
+                  <p className="th-contact-info-line">Understand when HD or SD download options are available depending on the original video quality.</p>
                 </div>
               </div>
               <div className="th-contact-info-card">
                 <div className="th-contact-icon th-icon-orange"><i className="fas fa-user-shield"></i></div>
                 <div>
-                  <h5 className="th-contact-info-title">Safe Usage Info</h5>
+                  <h3 className="th-contact-info-title">Safe Usage Info</h3>
                   <p className="th-contact-info-line">Guidance around copyright, permissions, privacy, and responsible use of publicly accessible Facebook content.</p>
                 </div>
               </div>
@@ -279,7 +356,7 @@ function UserGuide() {
             <div className="th-contact-form-wrap">
               <div className="th-contact-form">
                 <h3>Send a Support Message</h3>
-                <p className="th-contact-form-sub">Have a question? Fill in the form and we will get back to you.</p>
+                <p className="th-contact-form-sub">Have a question? Fill in the form and we will get back to you within 2–5 business days.</p>
                 {sent && (
                   <div className="th-success-msg">
                     <i className="fas fa-check-circle me-2"></i>Your message has been sent successfully.
@@ -310,6 +387,12 @@ function UserGuide() {
                 </form>
               </div>
             </div>
+          </div>
+
+          {/* Disclaimer */}
+          <div className="mt-5 p-3" style={{ background: 'var(--th-bg-alt)', borderRadius: '10px', fontSize: '0.85rem', color: 'var(--th-muted)', textAlign: 'center' }}>
+            This website is not affiliated with Facebook or Meta Platforms, Inc. Facebook is a trademark of Meta Platforms, Inc.
+            Use this tool responsibly and only download videos you have permission to save.
           </div>
         </div>
       </section>
