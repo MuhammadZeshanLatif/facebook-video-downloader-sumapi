@@ -11,9 +11,9 @@ const IS_LOCALHOST =
 const CANONICAL_BASE = IS_LOCALHOST ? ORIGIN : DOMAIN;
 const DEFAULT_IMG = `${ORIGIN}/images/og-image.png`;
 const DEFAULT_TITLE =
-  'Facebook Video Downloader HD Free | FB Video Downloaders';
+  'Free, Fast and Online Facebook Video Downloader | FB Video Downloaders';
 const DEFAULT_DESC =
-  'Download Facebook videos, reels, and clips in HD or SD for free. Paste your link, download fast, no login needed.';
+  'Download Facebook HD videos, FB Reels, Private and Public Clips. Fb video downloader helps users download Facebook videos, reels, and public clips directly from their google browser.';
 
 const SEO = ({
   title,

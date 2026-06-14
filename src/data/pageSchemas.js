@@ -50,9 +50,9 @@ export function buildHomeJsonLd() {
         '@type': 'WebPage',
         '@id': `${SITE_ORIGIN}/#webpage`,
         url: `${SITE_ORIGIN}/`,
-        name: 'Facebook Video Downloader HD Free | FB Video Downloaders',
+        name: 'Free, Fast and Online Facebook Video Downloader | FB Video Downloaders',
         description:
-          'Free Facebook video downloader — save public Facebook videos and Reels in HD or SD. No login, no app installation. Works on mobile and desktop.',
+          'Download Facebook HD videos, FB Reels, Private and Public Clips. Fb video downloader helps users download Facebook videos, reels, and public clips directly from their google browser.',
         isPartOf: webSitePartOf(),
         publisher: orgPublisher(),
         inLanguage: 'en-US',
@@ -65,42 +65,74 @@ export function buildHomeJsonLd() {
         mainEntity: [
           {
             '@type': 'Question',
-            name: 'How do I download a Facebook video for free?',
+            name: 'Is FB Video Downloader free to use?',
             acceptedAnswer: {
               '@type': 'Answer',
-              text: 'Copy the public Facebook video URL, paste it into the FB Video Downloaders field, and click Download. Choose HD or SD quality and save the video to your device instantly — no login or app needed.',
+              text: 'Yes. Fb video downloader is a free online tool that allows users to download Facebook videos without registration or subscription.',
             },
           },
           {
             '@type': 'Question',
-            name: 'Can I download Facebook Reels on my phone?',
+            name: 'Can I download Facebook reels with this tool?',
             acceptedAnswer: {
               '@type': 'Answer',
-              text: 'Yes. Open the Facebook Reel, copy its link, then paste it on fbvideodownloaders.com. It works on Android and iPhone browsers without any app installation.',
+              text: 'Yes. This tool supports downloading public Facebook reels. Simply copy the reel link and paste it into the downloader.',
             },
           },
           {
             '@type': 'Question',
-            name: 'What links are supported by FB Video Downloaders?',
+            name: 'Do I need to install any software?',
             acceptedAnswer: {
               '@type': 'Answer',
-              text: 'FB Video Downloaders supports publicly accessible Facebook video and Reel links only.',
+              text: 'No. The tool works directly in your browser, so there is no need to install apps or browser extensions.',
             },
           },
           {
             '@type': 'Question',
-            name: 'What video formats and quality are available?',
+            name: 'Can I download Facebook videos on my phone?',
             acceptedAnswer: {
               '@type': 'Answer',
-              text: 'FB Video Downloaders provides both HD (720p or 1080p) and SD quality download options in MP4 format, depending on what quality the original video was uploaded in.',
+              text: 'Yes. It works on Android phones and iPhones as long as you use a web browser.',
             },
           },
           {
             '@type': 'Question',
-            name: 'Is FB Video Downloaders safe to use?',
+            name: 'Why is my Facebook video not downloading?',
             acceptedAnswer: {
               '@type': 'Answer',
-              text: 'Yes. FB Video Downloaders does not require your Facebook login or any personal information. We do not store your downloaded videos. Just paste the video link and download.',
+              text: 'This usually happens when the video is private, the link is incomplete, or the post has restricted access. Make sure you copy the full public video link.',
+            },
+          },
+          {
+            '@type': 'Question',
+            name: 'Can I download someone else\'s Facebook video?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'Yes, but only if it is set to public, and you should never use the content for commercial purposes.',
+            },
+          },
+          {
+            '@type': 'Question',
+            name: 'Where are downloaded videos saved?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'Downloaded videos are stored in your device\'s download folder or the location selected by your browser.',
+            },
+          },
+          {
+            '@type': 'Question',
+            name: 'Does the downloader store my videos?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'No. This tool does not keep copies of videos. The files are downloaded directly to your device.',
+            },
+          },
+          {
+            '@type': 'Question',
+            name: 'Can I download private Facebook videos?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'The tool only works with publicly accessible videos. Private or restricted posts cannot be processed.',
             },
           },
         ],
