@@ -4,13 +4,25 @@
  * Run: node scripts/prerender.js
  */
 
-import { writeFileSync, mkdirSync } from 'node:fs';
+import { writeFileSync, mkdirSync, readFileSync } from 'node:fs';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, '..');
-const PUBLIC = resolve(ROOT, 'public');
+const DIST = resolve(ROOT, 'dist');
+const builtIndex = readFileSync(resolve(DIST, 'index.html'), 'utf8');
+const assets = [...builtIndex.matchAll(/<(?:script|link)\b[^>]*(?:\/assets\/)[^>]*>(?:<\/script>)?/g)].map((match) => match[0]).join('\n  ');
+if (!assets.includes('/assets/') || !assets.includes('<script')) {
+  throw new Error('Build the Vite app before generating route HTML.');
+}
+
+function withApp(html) {
+  return html
+    .replace('</head>', `  ${assets}\n</head>`)
+    .replace('<body>', '<body>\n<div id="root">')
+    .replace(/\s*<script type="module" src="\/src\/main\.jsx"><\/script>\s*<\/body>/, '\n</div>\n</body>');
+}
 
 const SITE_ORIGIN = 'https://fbvideodownloaders.com';
 const SITE_NAME = 'FB Video Downloaders';
@@ -630,9 +642,9 @@ let count = 0;
 
 // Generate blog post static HTML files
 for (const post of BLOG_POSTS) {
-  const dir = resolve(PUBLIC, 'blog', post.slug);
+  const dir = resolve(DIST, 'blog', post.slug);
   mkdirSync(dir, { recursive: true });
-  writeFileSync(resolve(dir, 'index.html'), generateBlogHTML(post), 'utf8');
+  writeFileSync(resolve(dir, 'index.html'), withApp(generateBlogHTML(post)), 'utf8');
   console.log(`✓ Generated: /blog/${post.slug}/index.html`);
   count++;
 }
@@ -646,12 +658,11 @@ const pages = [
 ];
 
 for (const page of pages) {
-  const dir = resolve(PUBLIC, page.path);
+  const dir = resolve(DIST, page.path);
   mkdirSync(dir, { recursive: true });
-  writeFileSync(resolve(dir, 'index.html'), page.generate(), 'utf8');
+  writeFileSync(resolve(dir, 'index.html'), withApp(page.generate()), 'utf8');
   console.log(`✓ Generated: /${page.path}/index.html`);
   count++;
 }
 
-console.log(`\nDone! Generated ${count} static HTML files in public/`);
-console.log('These files serve real content to AI crawlers and users without JavaScript.');
+console.log(`\nDone! Generated ${count} route HTML files in dist/`);
