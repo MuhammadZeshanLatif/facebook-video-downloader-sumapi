@@ -4,24 +4,43 @@
  * Run: node scripts/prerender.js
  */
 
-import { writeFileSync, mkdirSync, readFileSync } from 'node:fs';
+import { writeFileSync, mkdirSync, readFileSync, unlinkSync } from 'node:fs';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { build } from 'esbuild';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, '..');
 const DIST = resolve(ROOT, 'dist');
 const builtIndex = readFileSync(resolve(DIST, 'index.html'), 'utf8');
+const ssrBundle = resolve(DIST, '.ssr-entry.mjs');
+await build({ entryPoints: [resolve(__dirname, 'ssr-entry.jsx')], outfile: ssrBundle, bundle: true, platform: 'node', format: 'esm', external: ['react', 'react-dom', 'react-dom/server'] });
+const { renderRoute } = await import(`file://${ssrBundle.replaceAll('\\', '/')}`);
 const assets = [...builtIndex.matchAll(/<(?:script|link)\b[^>]*(?:\/assets\/)[^>]*>(?:<\/script>)?/g)].map((match) => match[0]).join('\n  ');
 if (!assets.includes('/assets/') || !assets.includes('<script')) {
   throw new Error('Build the Vite app before generating route HTML.');
 }
 
-function withApp(html) {
-  return html
-    .replace('</head>', `  ${assets}\n</head>`)
-    .replace('<body>', '<body>\n<div id="root">')
-    .replace(/\s*<script type="module" src="\/src\/main\.jsx"><\/script>\s*<\/body>/, '\n</div>\n</body>');
+function withApp(html, route) {
+  const { html: appHtml, seo } = renderRoute(route);
+  if (seo && route !== '/' && !route.startsWith('/es/')) {
+    const schema = (seo.jsonLd || []).map((block) => `<script type="application/ld+json" data-seo-jsonld="prerendered">${JSON.stringify(block.data)}</script>`).join('\n  ');
+    const head = htmlHead({
+      title: seo.title,
+      description: seo.description,
+      keywords: seo.keywords,
+      canonical: `${SITE_ORIGIN}${route}`,
+      ogType: seo.type,
+      ogImage: seo.ogImage,
+      articleDate: seo.articlePublishedTime,
+      schema,
+    }).replace('content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"', `content="${seo.robots || 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1'}"`);
+    html = html.replace(/<!DOCTYPE html>[\s\S]*?<body>/i, `${head}\n<body>`);
+  } else {
+    html = html.replaceAll('<script type="application/ld+json">', '<script type="application/ld+json" data-seo-jsonld="prerendered">');
+  }
+  return (html.includes('/assets/') ? html : html.replace('</head>', `  ${assets}\n</head>`))
+    .replace(/<body>[\s\S]*<\/body>/, `<body>\n<div id="root">${appHtml}</div>\n</body>`);
 }
 
 const SITE_ORIGIN = 'https://fbvideodownloaders.com';
@@ -147,10 +166,8 @@ function generateBlogHTML(post) {
       image: [imageUrl],
       datePublished: isoPub,
       dateModified: isoPub,
-      author: [
-        { '@type': 'Person', name: 'FB Video Downloaders Editorial Team', url: `${SITE_ORIGIN}/about` },
-        { '@type': 'Organization', name: SITE_NAME, url: `${SITE_ORIGIN}/` },
-      ],
+      '@id': `${url}#article`,
+      author: { '@type': 'Organization', name: SITE_NAME, url: `${SITE_ORIGIN}/about` },
       publisher: {
         '@type': 'Organization',
         name: SITE_NAME,
@@ -168,7 +185,7 @@ function generateBlogHTML(post) {
         { '@type': 'ListItem', position: 3, name: post.title, item: url },
       ],
     }),
-  ].map((s) => `<script type="application/ld+json">${s}</script>`).join('\n  ');
+  ].map((s) => `<script type="application/ld+json" data-seo-jsonld="prerendered">${s}</script>`).join('\n  ');
 
   const head = htmlHead({
     title: `${post.title} | ${SITE_NAME}`,
@@ -644,7 +661,7 @@ let count = 0;
 for (const post of BLOG_POSTS) {
   const dir = resolve(DIST, 'blog', post.slug);
   mkdirSync(dir, { recursive: true });
-  writeFileSync(resolve(dir, 'index.html'), withApp(generateBlogHTML(post)), 'utf8');
+  writeFileSync(resolve(dir, 'index.html'), withApp(generateBlogHTML(post), `/blog/${post.slug}`), 'utf8');
   console.log(`✓ Generated: /blog/${post.slug}/index.html`);
   count++;
 }
@@ -660,9 +677,29 @@ const pages = [
 for (const page of pages) {
   const dir = resolve(DIST, page.path);
   mkdirSync(dir, { recursive: true });
-  writeFileSync(resolve(dir, 'index.html'), withApp(page.generate()), 'utf8');
+  writeFileSync(resolve(dir, 'index.html'), withApp(page.generate(), `/${page.path}`), 'utf8');
   console.log(`✓ Generated: /${page.path}/index.html`);
   count++;
 }
+
+const legalPages = [
+  { path: 'privacy-policy', title: 'Privacy Policy - FB Video Downloaders', description: "Read FB Video Downloaders' privacy policy and how the service handles links and personal information." },
+  { path: 'terms-conditions', title: 'Terms of Service - FB Video Downloaders', description: 'Read the terms of service for using FB Video Downloaders responsibly.' },
+  { path: 'disclaimer', title: 'Disclaimer - FB Video Downloaders', description: 'Read the FB Video Downloaders disclaimer and trademark notice.' },
+];
+for (const page of legalPages) {
+  const dir = resolve(DIST, page.path);
+  mkdirSync(dir, { recursive: true });
+  const head = htmlHead({ title: page.title, description: page.description, canonical: `${SITE_ORIGIN}/${page.path}`, schema: '' })
+    .replace('content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"', 'content="noindex, follow"');
+  writeFileSync(resolve(dir, 'index.html'), withApp(`${head}<body></body></html>`, `/${page.path}`), 'utf8');
+  count++;
+}
+
+const spanishPath = 'es/descargar-video-de-facebook';
+const spanishFile = resolve(DIST, spanishPath, 'index.html');
+writeFileSync(spanishFile, withApp(readFileSync(spanishFile, 'utf8'), `/${spanishPath}`), 'utf8');
+writeFileSync(resolve(DIST, 'index.html'), withApp(builtIndex, '/'), 'utf8');
+unlinkSync(ssrBundle);
 
 console.log(`\nDone! Generated ${count} route HTML files in dist/`);

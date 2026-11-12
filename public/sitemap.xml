@@ -37,6 +37,14 @@
     <priority>0.7</priority>
   </url>
 
+  <url><loc>https://fbvideodownloaders.com/privacy-policy</loc></url>
+  <url><loc>https://fbvideodownloaders.com/terms-conditions</loc></url>
+  <url><loc>https://fbvideodownloaders.com/disclaimer</loc></url>
+
+  <url>
+    <loc>https://fbvideodownloaders.com/es/descargar-video-de-facebook</loc>
+  </url>
+
   <!-- Blog posts -->
   <url>
     <loc>https://fbvideodownloaders.com/blog/how-to-trim-and-edit-facebook-videos-after-download</loc>

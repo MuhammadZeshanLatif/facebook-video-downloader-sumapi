@@ -11,7 +11,6 @@ function Disclaimer() {
         title="Disclaimer - FB Video Downloaders"
         description="Read the FB Video Downloaders disclaimer, including third-party trademark notice, content responsibility, and limitation of liability."
         keywords="fb video downloaders disclaimer, legal disclaimer, trademark notice, limitation of liability"
-        robots="noindex, follow"
         ogUrl="https://fbvideodownloaders.com/disclaimer"
         jsonLd={buildDisclaimerJsonLd()}
       />

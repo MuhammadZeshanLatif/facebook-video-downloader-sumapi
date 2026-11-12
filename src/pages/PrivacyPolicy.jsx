@@ -11,7 +11,6 @@ function PrivacyPolicy() {
         title="Privacy Policy - FB Video Downloaders"
         description="Read FB Video Downloaders' privacy policy. We do not store your videos or require your Facebook login. Your privacy is our priority."
         keywords="facebook video downloader privacy policy, fb video downloaders privacy, data protection, no login required, facebook downloader safe"
-        robots="noindex, follow"
         ogUrl="https://fbvideodownloaders.com/privacy-policy"
         jsonLd={buildPrivacyJsonLd()}
       />

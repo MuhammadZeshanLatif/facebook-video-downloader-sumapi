@@ -41,7 +41,7 @@ function BrandLogo({ className = '', footer = false }) {
       width={200}
       height={48}
       decoding="async"
-      fetchPriority="high"
+      fetchpriority="high"
     />
   );
 }
@@ -1842,13 +1842,9 @@ function Layout({ children }) {
   );
 }
 
-export default function App() {
-  useEffect(() => {
-    document.title = 'Free, Fast and Online Facebook Video Downloader | FB Video Downloaders';
-  }, []);
-
+export function AppRoutes() {
   return (
-    <Router>
+    <>
       <Layout>
         <Routes>
           <Route index path="/" element={<HomePage />} />
@@ -1878,6 +1874,10 @@ export default function App() {
           <Route path="/es/descargar-video-de-facebook" element={<HomeSpanish />} />
         </Routes>
       </Layout>
-    </Router>
+    </>
   );
+}
+
+export default function App() {
+  return <Router><AppRoutes /></Router>;
 }

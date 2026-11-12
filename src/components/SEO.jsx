@@ -9,7 +9,7 @@ const IS_LOCALHOST =
   typeof window !== 'undefined' &&
   (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
 const CANONICAL_BASE = IS_LOCALHOST ? ORIGIN : DOMAIN;
-const DEFAULT_IMG = `${ORIGIN}/images/og-image.png`;
+const DEFAULT_IMG = `${DOMAIN}/images/og-image.png`;
 const DEFAULT_TITLE =
   'Free, Fast and Online Facebook Video Downloader | FB Video Downloaders';
 const DEFAULT_DESC =
@@ -33,19 +33,24 @@ const SEO = ({
   /** @type {{ id: string, data: Record<string, unknown> }[] | null | undefined} */
   jsonLd,
 }) => {
+  if (typeof window === 'undefined') {
+    globalThis.__prerenderSeo = { title, description, keywords, ogImage, ogUrl, type, articlePublishedTime, articleModifiedTime, articleAuthor, ogLocale, robots, jsonLd };
+  }
   const location = useLocation();
   const resolvedTitle = title || DEFAULT_TITLE;
   const resolvedDesc  = description || DEFAULT_DESC;
   const resolvedImg   = ogImage || DEFAULT_IMG;
-  const resolvedUrl   = ogUrl || `${CANONICAL_BASE}${location.pathname}`;
-  const canonical     = `${CANONICAL_BASE}${location.pathname}`;
+  const normalizedPath = location.pathname === '/' ? '/' : location.pathname.replace(/\/+$/, '');
+  const canonical     = `${CANONICAL_BASE}${normalizedPath}`;
+  const resolvedUrl   = ogUrl || canonical;
   const resolvedOgImageAlt = ogImageAlt || `${SITE_NAME} - ${resolvedTitle}`;
   const isEnglishHome = location.pathname === '/';
-  const isSpanishHome = location.pathname === '/es/descargar-video-de-facebook';
+  const isSpanishHome = normalizedPath === '/es/descargar-video-de-facebook';
 
   useEffect(() => {
     // ── Title ──────────────────────────────────────────────
     document.title = resolvedTitle;
+    document.documentElement.lang = isSpanishHome ? 'es' : 'en';
 
     // ── Helper: upsert a <meta> tag ────────────────────────
     const setMeta = (attr, value, content) => {
@@ -66,6 +71,7 @@ const SEO = ({
     setMeta('name', 'author',       SITE_NAME);
     setMeta('name', 'robots', robots || 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1');
     if (keywords) setMeta('name', 'keywords', keywords);
+    else removeMeta('name', 'keywords');
 
     // ── Open Graph ─────────────────────────────────────────
     setMeta('property', 'og:type',        type);
@@ -102,7 +108,9 @@ const SEO = ({
     }
 
     // ── Canonical ──────────────────────────────────────────
-    let link = document.querySelector('link[rel="canonical"]');
+    const canonicalLinks = document.querySelectorAll('link[rel="canonical"]');
+    canonicalLinks.forEach((el, i) => { if (i > 0) el.remove(); });
+    let link = canonicalLinks[0];
     if (!link) {
       link = document.createElement('link');
       link.setAttribute('rel', 'canonical');
@@ -112,7 +120,7 @@ const SEO = ({
 
     // ── Hreflang alternates for EN/ES home routes ───────────
     const removeHreflangLinks = () => {
-      document.querySelectorAll('link[data-seo-hreflang]').forEach((el) => el.remove());
+      document.querySelectorAll('link[rel="alternate"][hreflang]').forEach((el) => el.remove());
     };
     removeHreflangLinks();
     if (isEnglishHome || isSpanishHome) {

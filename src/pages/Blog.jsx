@@ -5,7 +5,8 @@ import SEO from '../components/SEO';
 import { BLOG_POSTS } from '../data/blogPostsList';
 import { buildBlogIndexJsonLd } from '../data/pageSchemas';
 
-const POSTS_PER_PAGE = 9;
+// Keep every article linked from the indexable blog landing page.
+const POSTS_PER_PAGE = BLOG_POSTS.length;
 
 const CATEGORY_ICONS = {
   Tips:       'fa-lightbulb',

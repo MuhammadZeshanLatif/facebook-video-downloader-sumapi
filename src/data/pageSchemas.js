@@ -549,27 +549,14 @@ export function buildBlogArticleJsonLd(p) {
 
   const blogPostingNode = {
     '@type': 'BlogPosting',
+    '@id': `${postUrl}#article`,
+    url: postUrl,
     headline,
     image: images?.length ? images : undefined,
     datePublished: isoPub,
     dateModified: isoMod,
-    author: [
-      {
-        '@type': 'Person',
-        name: 'FB Video Downloaders Editorial Team',
-        url: `${SITE_ORIGIN}/about`,
-      },
-      {
-        '@type': 'Organization',
-        name: SITE_NAME,
-        url: `${SITE_ORIGIN}/`,
-      },
-    ],
-    publisher: {
-      '@type': 'Organization',
-      name: SITE_NAME,
-      logo: { '@type': 'ImageObject', url: `${SITE_ORIGIN}/images/logo.webp` },
-    },
+    author: orgPublisher(),
+    publisher: orgPublisher(),
     description,
     mainEntityOfPage: { '@type': 'WebPage', '@id': webpageId },
   };

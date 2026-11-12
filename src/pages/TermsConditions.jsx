@@ -11,7 +11,6 @@ function TermsConditions() {
         title="Terms of Service - FB Video Downloaders"
         description="Read the terms of service for FB Video Downloaders. Understand the rules for using our free tool to download public Facebook videos and Reels responsibly."
         keywords="facebook video downloader terms of service, fb video downloaders terms, terms and conditions, usage policy, facebook downloader legal"
-        robots="noindex, follow"
         ogUrl="https://fbvideodownloaders.com/terms-conditions"
         jsonLd={buildTermsJsonLd()}
       />
