@@ -36,7 +36,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
-        <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-WTW3XB56" />
+        <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-TC6XTKSP" />
         <script
           dangerouslySetInnerHTML={{
             __html: `

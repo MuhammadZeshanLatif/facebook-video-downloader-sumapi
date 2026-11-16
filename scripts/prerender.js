@@ -70,7 +70,7 @@ function htmlHead({ title, description, keywords, canonical, ogType, ogImage, ar
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
-  <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-WTW3XB56"></script>
+  <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-TC6XTKSP"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
